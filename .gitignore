@@ -1,3 +1,4 @@
 #ignore yang dibutuhkan
 .vscode
-Inventory/driverInventory.exe
+Inventory/*.exe
+Engimon/*.exe
