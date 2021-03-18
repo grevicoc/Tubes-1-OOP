@@ -1,76 +1,42 @@
+#ifndef INVENTORY_HPP
+#define INVENTORY_HPP
+
 #include <unordered_map>
 #include <iterator>
 #include <iostream>
 
+using namespace std;
+
 template<class T>
 class Inventory{
     protected:
-        std::unordered_map<T*,int> things;         //dengan T* adalah pointer yang mengarah ke objek 
-        static int currentCapacity=0;
-        static int maxCapacity=50;
+        unordered_map<T*,int> things;         //dengan T* adalah pointer yang mengarah ke objek 
+        static int currentCapacity;
+        static int maxCapacity;
 
         //kayaknya skill dibikin abstract class trs subclassnya skillEngimon
 
     public:
         //ctor
-        Inventory(){}
+        Inventory();
 
         //dtor, kepikirannya sih karena masing-masing objek di instatiate sebagai pointer makanya perlu  diapus di akhir program
-        ~Inventory(){
-            std::unordered_map<T*,int>::iterator itr;
-            for (itr = things.begin(); itr != things.end(); ++itr) { 
-                T* tempPtr = itr->first;
-                things.erase(itr);
-                delete tempPtr;
-            } 
-        }
+        ~Inventory();
 
-        std::unordered_map<T*,int> getThings(){
-            return things;
-        }
+        //getter things, kasarnya sih ngereturn list objek yang kita punya
+        unordered_map<T*,int> getThings();
+        
+        //getter currentCapacity
+        static int getCurrentCapacity();
 
-        static int getCurrentCapacity(){
-            return currentCapacity;
-        }
+        //getter maxCapacity
+        static int getMaxCapacity();
 
-        static int getMaxCapacity(){
-            return maxCapacity;
-        }
+        //Method menambahkan 1 objek ke inventory, jika operasi berhasil kembalian true (mungkin nanti bisa pake try and catch).
+        bool addThing(T* object);
 
-        //Method menambahkan 1 objek ke inventory, jika operasi berhasil kembalian true.
-        bool addThing(T* object){
-            //Cek apakah inventory penuh atau tidak
-            if (getMaxCapacity()-getCurrentCapacity()==0){
-                return false;
-            }else{
-                //Cek apakah barang tersebut sudah ada
-                if (things.find(object) != things.end()){   //barang sudah ada
-                    things[object]++;
-                    currentCapacity++;
-                }else{                                      //barang blm ada
-                    things[object] = 1;
-                    currentCapacity++;
-                }
-                return true;
-            }
-        }
-
-        //Method mengurangi 1 objek dari inventory, jika operasi berhasil kembalian true.
-        bool deleteThing(T* object){
-            std::unordered_map<T*,int>::iterator itr;
-            itr = things.find(object);
-
-            //Cek apakah barang tersebut sudah ada
-            if (itr != things.end()){       //barang ada
-                things[object]--;
-                if (itr->second==0){            //bendanya habis
-                    T* tempPtr = itr->first;
-                    things.erase(itr);
-                    delete tempPtr;
-                }
-                return true;
-            }else{
-                return false;
-            }
-        }
+        //Method mengurangi 1 objek dari inventory, jika operasi berhasil kembalian true (mungkin nanti bisa pake try and catch).
+        bool deleteThing(T* object);
 };
+
+#endif
