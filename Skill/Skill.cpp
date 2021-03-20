@@ -19,12 +19,3 @@ string Skill::getElemen() const{
 int Skill::getBasePower() const{
     return basePower;
 }
-
-EngimonSkill::EngimonSkill(const Skill& baseSkill){
-    namaSkill = baseSkill.getNamaSkill();
-    basePower = baseSkill.getBasePower();
-    unique = baseSkill.getElemen();
-    masteryLevel = 1;
-}
-
-EngimonSkill::~EngimonSkill(){}

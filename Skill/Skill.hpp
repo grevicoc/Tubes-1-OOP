@@ -23,15 +23,5 @@ class Skill{
 
 };
 
-class EngimonSkill: public Skill{
-
-    protected:
-        int masteryLevel;
-
-    public:
-        EngimonSkill(const Skill& baseSkill);
-        ~EngimonSkill();
-
-};
 
 #endif
