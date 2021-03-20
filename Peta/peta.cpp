@@ -1,7 +1,7 @@
 #include "peta.hpp"
 #include <fstream>
 #include <string>
-#include<iostream>
+#include <iostream>
 
 using namespace std;
 
@@ -38,8 +38,9 @@ void Peta::loadMap(){
     }else{
         cout<<"gagal me-load peta."<<endl;
     }
+}
 
-
-
+char Peta::getTypePeta(int x, int y) {
+    return (peta[x][y].cellType);
 }
 

@@ -21,6 +21,7 @@ class Peta{
         void movingWildEngimon();
         void spawnWildEngimon();
         void loadMap();
+        static char getTypePeta(int x, int y);
 
     protected:
         Cell peta[10][12];
