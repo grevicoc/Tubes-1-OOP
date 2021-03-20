@@ -4,6 +4,10 @@
 #include "../Point/Point.cpp"
 #include "../Skill/Skill.hpp"
 #include "../Skill/Skill.cpp"
+#include "../Peta/peta.hpp"
+#include "../Peta/peta.cpp"
+#include "../Peta/cell.hpp"
+#include "../Peta/cell.cpp"
 
 #include <iostream>
 

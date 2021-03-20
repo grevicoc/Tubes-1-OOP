@@ -18,14 +18,14 @@ Skill& Skill::operator=(const Skill& other) {
 Skill::~Skill(){}
 
 string Skill::getNamaSkill() {
-    return namaSkill;
+    return this->namaSkill;
 }
 
 string Skill::getElemen() {
-    return unique;
+    return this->unique;
 }
 int Skill::getBasePower() {
-    return basePower;
+    return this->basePower;
 }
 
 void Skill::setNamaSkill(string namaskill){

@@ -103,31 +103,25 @@ Engimon::Engimon(string species, int level, Point posisi) {
     }
 }
 Engimon::Engimon(const Engimon& otherEngimon) {
-    //skill = new Skill[4];
-
-    //for (int i = 0; i < 4; i++){
-    //    this->skill[i] = otherEngimon.skill[i];
-    //}
     this->species = otherEngimon.species;
     this->elements = otherEngimon.elements;
     this->level = otherEngimon.level;
     this->posisi = otherEngimon.posisi;
     skill = new Skill[4];
     for (int i = 0; i < 4; i++) {
-        this->skill = otherEngimon.skill;
+        this->skill[i] = otherEngimon.skill[i];
     }
 }
 Engimon::~Engimon() {
     delete [] skill;
-    cout << "Engimon's has been dead!" << endl;
 }
 Engimon& Engimon::operator=(const Engimon& otherEngimon) {
-    // if (this != &otherEngimon){
-    //     delete [] skill;
-    //     skill = nullptr;
-    //     skill = new Skill[4];
-    //     copy(otherEngimon.skill, 4+otherEngimon.skill, skill);
-    // }
+    delete [] skill;
+    
+    skill = new Skill[4];
+    for (int i = 0; i < 4; i++){
+        skill[i] = otherEngimon.skill[i];
+    }
     return *this;
 }
 string Engimon::get_species(){
@@ -163,6 +157,13 @@ void Engimon::displayEngiInfo(){
     cout << "Posisi : " << "(" << get_posisiX() << ", " << get_posisiY() << ")" << endl;
     cout << "Skill : " << endl;
     for (int i = 0 ; i < 4; i++) {
-         cout << i+1 << ". " << skill[i].getNamaSkill() << ", Base Power : " << skill[i].getBasePower() << endl;
+        cout << i+1 << ". " << skill[i].getNamaSkill() << ", Base Power : " << skill[i].getBasePower() << endl;
     }
 }
+
+/*int Engimon::powerEngimon(Engimon& other) {
+    int power = 0;
+    if (this->elements == "Fire" && other.elements == "Water") {
+        power = this->level*0+
+    }
+}*/

@@ -20,7 +20,15 @@ int Point::getY () {
     return this->y;
 }
 
-Point::Point(Point& P) {
+void Point::setX(int x){
+    this->x = x;
+}
+
+void Point::setY(int y){
+    this->y = y;
+}
+
+Point::Point(const Point& P) {
     this->x = P.x;
     this->y = P.y;
 }
@@ -28,6 +36,7 @@ Point::Point(Point& P) {
 Point& Point::operator=(const Point& other) {
     this->x = other.x;
     this->y = other.y;
+    return *this;
 }
 
 bool Point::isValidPosisi(int _x, int _y) {

@@ -41,6 +41,6 @@ void Peta::loadMap(){
 }
 
 char Peta::getTypePeta(int x, int y) {
-    return (peta[x][y].cellType);
+    return this->peta[x][y].cellType;
 }
 

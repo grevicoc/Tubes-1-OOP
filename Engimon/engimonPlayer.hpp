@@ -4,7 +4,7 @@
 #include <iostream>
 #include "../Engimon/engimon.hpp"
 
-class EngimonPlayer : public Engimon {
+class EngimonPlayer :  public Engimon {
     public :
         //ctor, cctor, dtor, operator
         EngimonPlayer();
@@ -26,7 +26,7 @@ class EngimonPlayer : public Engimon {
         //methods
         void levelUp(int);
         void maksCumExp();
-        void displayEngimonInfo();
+        void displayEngiInfo();
     
     protected :
         string name;
@@ -34,3 +34,5 @@ class EngimonPlayer : public Engimon {
         int exp;
         int cumExp;
 };
+
+#endif

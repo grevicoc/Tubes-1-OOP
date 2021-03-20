@@ -14,7 +14,7 @@ class Engimon {
         Engimon();
         Engimon(string species, int level, Point posisi);
         Engimon(const Engimon&);
-        ~Engimon();
+        virtual ~Engimon();
         Engimon& operator=(const Engimon&);
 
         //getter, setter, methods
@@ -26,16 +26,18 @@ class Engimon {
         void set_species(string);
         void set_elements(string);
         void set_level(int);
+        int powerEngimon(Engimon&);
 
         //methods
         virtual void displayEngiInfo();
+        //public atribut
+        Skill* skill;
 
     protected :
         string species;
         string elements;
         int level;
         Point posisi;
-        Skill* skill;
 };
 
 #endif
