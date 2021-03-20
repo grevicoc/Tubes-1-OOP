@@ -10,3 +10,7 @@ EngimonSkill::EngimonSkill(const Skill& baseSkill){
 }
 
 EngimonSkill::~EngimonSkill(){}
+
+int EngimonSkill::damage(){
+    return basePower*masteryLevel;
+}

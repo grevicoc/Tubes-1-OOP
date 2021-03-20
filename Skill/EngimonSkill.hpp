@@ -10,6 +10,8 @@ class EngimonSkill : public Skill{
         EngimonSkill();
         EngimonSkill(const Skill&);
         ~EngimonSkill();
+
+        int damage();
     protected:
         int masteryLevel;
     
