@@ -6,7 +6,14 @@ using namespace std;
 EngimonPlayer::EngimonPlayer() {
     name = "XXX";
     parentsName = "XXX";
-    Engimon::Engimon();
+    species = "XXX";
+    elements = "XXX";
+    posisi = Point(-1,-1);
+    level = 1;
+    skill = new Skill[4];
+    for (int i = 0; i < 4; i++){
+        skill[i] = Skill("Fireball", "Fire", 50);
+    }
     exp = 0;
     cumExp = level*100;
 }
@@ -18,6 +25,10 @@ EngimonPlayer::EngimonPlayer(Engimon& wildEngi) {
     this->elements = wildEngi.elements;
     this->level = wildEngi.level;
     this->posisi - wildEngi.posisi;
+    this->skill = new Skill[4];
+    for (int i = 0; i < 4; i++){
+        skill[i] = Skill("Fireball", "Fire", 50);
+    }
     this->exp = 0;
     this->cumExp = this->level*100;
 }
@@ -29,6 +40,10 @@ EngimonPlayer::EngimonPlayer(const EngimonPlayer& other) {
     this->elements = other.elements;
     this->posisi = other.posisi;
     this->level = other.level;
+    this->skill = new Skill[4];
+    for (int i = 0; i < 4; i++){
+        skill[i] = other.skill[i];
+    }
     this->exp = other.exp;
     this->cumExp = other.cumExp;
 }

@@ -22,50 +22,65 @@ int main(){
     Point posisi8 = Point(4, 8);
     Point posisi9 = Point(5, 5);
 
-    Engimon* engi1 = new Engimon();
-    Engimon* engi2 = new Engimon("Dragon", 2, posisi2);
-    Engimon* engi3 = new Engimon("Cat", 3, posisi3);
-    Engimon* engi4 = new Engimon("Bird", 4, posisi4);
-    Engimon* engi5 = new Engimon("Fish", 3, posisi5);
-    Engimon* engi6 = new Engimon("Octopus", 2, posisi6);
-    Engimon* engi7 = new Engimon("Plant", 4, posisi7);
-    Engimon* engi8 = new Engimon("Worm", 5, posisi8);
-    Engimon* engi9 = new Engimon("Tiger", 5, posisi9);
+    Engimon engi1 = Engimon();
+    Engimon engi2 = Engimon("Dragon", 2, posisi2);
+    Engimon engi3 = Engimon("Cat", 3, posisi3);
+    Engimon engi4 = Engimon("Bird", 4, posisi4);
+    Engimon engi5 = Engimon("Fish", 3, posisi5);
+    Engimon engi6 = Engimon("Octopus", 2, posisi6);
+    Engimon engi7 = Engimon("Plant", 4, posisi7);
+    Engimon engi8 = Engimon("Worm", 5, posisi8);
+    Engimon engi9 = Engimon("Tiger", 5, posisi9);
 
-    Engimon* engi10 = new Engimon();
+    Engimon engi10 = Engimon();
 
     //cctor
-    Engimon* engi11 = new Engimon(*engi3);
+    Engimon engi11 = Engimon(engi3);
 
     //operator
     engi10 = engi2;
 
+    //get posisi
+    cout << "Posisi engimon 1 : " << "(" << engi1.get_posisiX() << ", " << engi1.get_posisiY() << ")" << endl;
+    cout << "Posisi engimon 2 : " << "(" << engi2.get_posisiX() << ", " << engi2.get_posisiY() << ")" << endl;
+    cout << "Posisi engimon 3 : " << "(" << engi3.get_posisiX() << ", " << engi3.get_posisiY() << ")" << endl;
+    cout << "Posisi engimon 4 : " << "(" << engi4.get_posisiX() << ", " << engi4.get_posisiY() << ")" << endl;
+    cout << "Posisi engimon 5 : " << "(" << engi5.get_posisiX() << ", " << engi5.get_posisiY() << ")" << endl;
+    cout << "Posisi engimon 6 : " << "(" << engi6.get_posisiX() << ", " << engi6.get_posisiY() << ")" << endl;
+    cout << "Posisi engimon 7 : " << "(" << engi7.get_posisiX() << ", " << engi7.get_posisiY() << ")" << endl;
+    cout << "Posisi engimon 8 : " << "(" << engi8.get_posisiX() << ", " << engi8.get_posisiY() << ")" << endl;
+    cout << "Posisi engimon 9 : " << "(" << engi9.get_posisiX() << ", " << engi9.get_posisiY() << ")" << endl;
+    cout << "Posisi engimon 10 : " << "(" << engi10.get_posisiX() << ", " << engi10.get_posisiY() << ")" << endl;
+    cout << "Posisi engimon 11 : " << "(" << engi11.get_posisiX() << ", " << engi11.get_posisiY() << ")" << endl;
+    cout << "Posisi engimon 11 : " << "(" << engi11.get_posisiX() << ", " << engi11.get_posisiY() << ")" << endl;
+    cout << endl;
+
     //display
-    engi1->displayEngiInfo(); cout << endl;
-    //starting engimon
-    engi2->displayEngiInfo(); cout << endl;
-    engi3->displayEngiInfo(); cout << endl;
-    engi4->displayEngiInfo(); cout << endl;
-    engi5->displayEngiInfo(); cout << endl;
-    engi6->displayEngiInfo(); cout << endl;
-    engi7->displayEngiInfo(); cout << endl;
-    engi8->displayEngiInfo(); cout << endl;
-    engi9->displayEngiInfo(); cout << endl;
-    engi10->displayEngiInfo(); cout << endl;
-    engi11->displayEngiInfo(); cout << endl;
+    engi1.displayEngiInfo(); cout << endl;
+    //starting wild engimon
+    engi2.displayEngiInfo(); cout << endl;
+    engi3.displayEngiInfo(); cout << endl;
+    engi4.displayEngiInfo(); cout << endl;
+    engi5.displayEngiInfo(); cout << endl;
+    engi6.displayEngiInfo(); cout << endl;
+    engi7.displayEngiInfo(); cout << endl;
+    engi8.displayEngiInfo(); cout << endl;
+    engi9.displayEngiInfo(); cout << endl;
+    engi10.displayEngiInfo(); cout << endl;
+    engi11.displayEngiInfo(); cout << endl;
 
     //dtor
-    engi1->~Engimon();
-    engi2->~Engimon();
-    engi3->~Engimon();
-    engi4->~Engimon();
-    engi5->~Engimon();
-    engi6->~Engimon();
-    engi7->~Engimon();
-    engi8->~Engimon();
-    engi9->~Engimon();
-    engi10->~Engimon();
-    engi11->~Engimon();
+    engi1.~Engimon();
+    engi2.~Engimon();
+    engi3.~Engimon();
+    engi4.~Engimon();
+    engi5.~Engimon();
+    engi6.~Engimon();
+    engi7.~Engimon();
+    engi8.~Engimon();
+    engi9.~Engimon();
+    engi10.~Engimon();
+    engi11.~Engimon();
 
     return 0;
 }

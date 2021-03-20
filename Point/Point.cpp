@@ -7,14 +7,14 @@ Point::Point () {
 }
 
 Point::Point (int _x, int _y) {
-    x = _x;
-    y = _y;
+    this->x = _x;
+    this->y = _y;
 }
 
 int Point::getX () {
-    return x;
+    return this->x;
 }
 
 int Point::getY () {
-    return y;
+    return this->y;
 }

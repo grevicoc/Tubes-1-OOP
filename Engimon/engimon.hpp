@@ -21,7 +21,8 @@ class Engimon {
         string get_species();
         string get_elements();
         int get_level();
-        int get_cumExp();
+        int get_posisiX();
+        int get_posisiY();
         void set_species(string);
         void set_elements(string);
         void set_level(int);

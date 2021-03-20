@@ -15,11 +15,16 @@ class Skill{
     public:
         Skill();
         Skill(string _namaSkill, string elemen, int basePower);
+        Skill& operator=(const Skill&);
         ~Skill();
 
-        string getNamaSkill() const;
-        string getElemen() const;
-        int getBasePower() const;
+        string getNamaSkill();
+        string getElemen();
+        int getBasePower();
+
+        void setNamaSkill(string);
+        void setElemen(string);
+        void setBasePower(int);
 
 };
 
