@@ -1,4 +1,4 @@
-#include "Skill.hpp"
+#include "EngimonSkill.hpp"
 
 int main(){
     Skill skill1("fireball","api",50);
