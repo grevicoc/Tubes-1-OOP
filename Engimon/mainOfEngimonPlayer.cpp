@@ -44,4 +44,6 @@ int main() {
     //Get the engimon from the battle
     EngimonPlayer* player2 = new EngimonPlayer(engi2);
     player2->displayEngiInfo();
+    
+    return 0;
 }
