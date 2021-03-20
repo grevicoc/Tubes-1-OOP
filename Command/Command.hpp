@@ -5,6 +5,8 @@
 #include <string>
 #include <iostream>
 
+using namespace std;
+
 class Command {
 protected:
   string currentCommand;
