@@ -31,9 +31,7 @@ void Peta::loadMap(){
                 this->peta[i][j].cellType = line[j];
                 this->peta[i][j].x = i;
                 this->peta[i][j].y = j;
-                cout<<peta[i][j].cellType;
             }
-            cout<<endl;
 
             i++;
         }
