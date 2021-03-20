@@ -3,11 +3,14 @@
 
 using namespace std;
 
-EngimonPlayer::EngimonPlayer() {
+int EngimonPlayer::numOfEngimonPlayer = 0;
+
+EngimonPlayer::EngimonPlayer() : idEngiPlayer(EngimonPlayer::numOfEngimonPlayer+1) {
     name = "Pikachu";
     parentsName = "Pika";
     species = "Cat";
     elements = "Electric";
+    numOfEngimonPlayer = numOfEngimonPlayer+1;
     posisi = Point(5,8);
     level = 1;
     skill = new Skill[4];
@@ -22,11 +25,12 @@ EngimonPlayer::EngimonPlayer() {
     cumExp = level*100;
 }
 
-EngimonPlayer::EngimonPlayer(Engimon& wildEngi) {
+EngimonPlayer::EngimonPlayer(Engimon& wildEngi) : idEngiPlayer(EngimonPlayer::numOfEngimonPlayer+1){
     cout << "You got a engimon!" << endl; cout << endl;
     wildEngi.displayEngiInfo(); cout << endl;
     set_name(this->name); cout << endl;
     this->parentsName = "-";
+    this->numOfEngimonPlayer = this->numOfEngimonPlayer+1;
     this->species = wildEngi.get_species();
     this->elements = wildEngi.get_elements();
     this->level = wildEngi.get_level();
@@ -40,7 +44,7 @@ EngimonPlayer::EngimonPlayer(Engimon& wildEngi) {
     this->cumExp = this->level*100;
 }
 
-EngimonPlayer::EngimonPlayer(const EngimonPlayer& other) {
+EngimonPlayer::EngimonPlayer(const EngimonPlayer& other) : idEngiPlayer(other.idEngiPlayer) {
     this->name = other.name;
     this->parentsName = other.parentsName;
     this->species = other.species;
@@ -92,6 +96,9 @@ int EngimonPlayer::get_cumExp() {
     return this->cumExp;
 }
 
+int EngimonPlayer::get_idEngiPlayer() const {
+    return this->idEngiPlayer;
+}
 void EngimonPlayer::set_name(string name) {
     cout << "Masukkan nama engimon : " << endl;
     cin >> name;
@@ -130,6 +137,7 @@ void EngimonPlayer::maksCumExp() {
 
 void EngimonPlayer::displayEngiInfo() {
     cout << "~~ Profile Engimon ~~" << endl;
+    cout << "Id : " << get_idEngiPlayer() << endl;
     cout << "Name : " << get_name() << endl;
     cout << "Parents Name : " << get_parentsName() << endl;
     cout << "Species : " << get_species() << endl;

@@ -6,6 +6,8 @@
 #include "../Point/Point.cpp"
 #include "../Skill/Skill.hpp"
 #include "../Skill/Skill.cpp"
+#include "../Skill/EngimonSkill.hpp"
+#include "../Skill/EngimonSkill.cpp"
 #include "../Peta/peta.hpp"
 #include "../Peta/peta.cpp"
 #include "../Peta/cell.hpp"
@@ -42,6 +44,8 @@ int main() {
     player1->displayEngiInfo(); cout << endl;
 
     //Get the engimon from the battle
+    
+    cout << "Power " << player1->get_name() << " : " << player1->powerEngimon(engi2) << endl;
     EngimonPlayer* player2 = new EngimonPlayer(engi2);
     player2->displayEngiInfo();
     

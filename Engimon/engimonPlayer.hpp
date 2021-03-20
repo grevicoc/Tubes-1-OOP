@@ -18,6 +18,7 @@ class EngimonPlayer :  public Engimon {
         string get_parentsName();
         int get_exp();
         int get_cumExp();
+        int get_idEngiPlayer() const;
         void set_name(string);
         void set_parentsName(string);
         void set_exp(int);
@@ -33,6 +34,8 @@ class EngimonPlayer :  public Engimon {
         string parentsName;
         int exp;
         int cumExp;
+        const int idEngiPlayer;
+        static int numOfEngimonPlayer;
 };
 
 #endif

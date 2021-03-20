@@ -3,17 +3,20 @@
 
 using namespace std;
 
-Engimon::Engimon() {
+int Engimon::numOfEngimon = 0;
+
+Engimon::Engimon() : id(Engimon::numOfEngimon+1) {
     species = "XXX";
     elements = "XXX";
     level = 1;
+    numOfEngimon = numOfEngimon+1;
     posisi = Point();
     skill = new Skill[4];
     for (int i = 0; i < 4; i++){
         skill[i] = Skill("XXX", this->elements, 50);
     }
 }
-Engimon::Engimon(string species, int level, Point posisi) {
+Engimon::Engimon(string species, int level, Point posisi) : id(Engimon::numOfEngimon+1) {
     if (species == "Dragon" || species == "dragon") {
         set_elements("Fire");
     } else if (species == "Cat" || species == "cat") {
@@ -33,6 +36,7 @@ Engimon::Engimon(string species, int level, Point posisi) {
     }
     this->species = species;
     this->level = 1;
+    this->numOfEngimon = this->numOfEngimon+1;
     this->posisi = posisi;
     this->skill = new Skill[4];
     
@@ -102,7 +106,7 @@ Engimon::Engimon(string species, int level, Point posisi) {
         }
     }
 }
-Engimon::Engimon(const Engimon& otherEngimon) {
+Engimon::Engimon(const Engimon& otherEngimon) : id(otherEngimon.id) {
     this->species = otherEngimon.species;
     this->elements = otherEngimon.elements;
     this->level = otherEngimon.level;
@@ -117,7 +121,9 @@ Engimon::~Engimon() {
 }
 Engimon& Engimon::operator=(const Engimon& otherEngimon) {
     delete [] skill;
-    
+    this->species = otherEngimon.species;
+    this->elements = otherEngimon.elements;
+    this->level = otherEngimon.level;
     skill = new Skill[4];
     for (int i = 0; i < 4; i++){
         skill[i] = otherEngimon.skill[i];
@@ -139,6 +145,9 @@ int Engimon::get_posisiX(){
 int Engimon::get_posisiY(){
     return this->posisi.getY(); 
 }
+int Engimon::get_id() const{
+    return this->id;
+}
 void Engimon::set_species(string _species){
     this->species = _species;
 }
@@ -151,6 +160,7 @@ void Engimon::set_level(int _level){
 
 void Engimon::displayEngiInfo(){
     cout << "~~ Profile Engimon ~~" << endl;
+    cout << "Id : " << get_id() << endl;
     cout << "Species : " << get_species() << endl;
     cout << "Elements : " << get_elements() << endl;
     cout << "Level : " << get_level() << endl;
@@ -161,9 +171,62 @@ void Engimon::displayEngiInfo(){
     }
 }
 
-/*int Engimon::powerEngimon(Engimon& other) {
+int Engimon::powerEngimon(Engimon& other) {
     int power = 0;
-    if (this->elements == "Fire" && other.elements == "Water") {
-        power = this->level*0+
+    int sum = 0;
+    engiSkill = new EngimonSkill[4];
+    for (int i = 0; i<4; i++){
+        engiSkill[i] = skill[i];
     }
-}*/
+    for (int k = 0; k<4; k++){
+        sum = sum + engiSkill[k].damage();
+    }
+    if (this->elements == "Fire" && other.elements == "Water") {
+        power = this->level*0+sum;
+    } else if (this->elements == "Water" && other.elements == "Fire") {
+        power = this->level*2+sum;
+    } else if (this->elements == "Fire" && other.elements == "Fire") {
+        power = this->level*1+sum;
+    } else if (this->elements == "Water" && other.elements == "Water") {
+        power = this->level*1+sum;
+    } else if (this->elements == "Fire" && other.elements == "Electric") {
+        power = this->level*1+sum;
+    } else if (this->elements == "Electric" && other.elements == "Fire") {
+        power = this->level*1+sum;
+    } else if (this->elements == "Electric" && other.elements == "Electric") {
+        power = this->level*1+sum;
+    } else if (this->elements == "Fire" && other.elements == "Ground") {
+        power = this->level*0.5+sum;
+    } else if (this->elements == "Ground" && other.elements == "Fire") {
+        power = this->level*1.5+sum;
+    } else if (this->elements == "Ground" && other.elements == "Ground") {
+        power = this->level*1+sum;
+    } else if (this->elements == "Fire" && other.elements == "Ice") {
+        power = this->level*2+sum;
+    } else if (this->elements == "Ice" && other.elements == "Fire") {
+        power = this->level*0+sum;
+    } else if (this->elements == "Ice" && other.elements == "Ice") {
+        power = this->level*1+sum;
+    } else if (this->elements == "Water" && other.elements == "Electric") {
+        power = this->level*0+sum;
+    } else if (this->elements == "Electric" && other.elements == "Water") {
+        power = this->level*2+sum;
+    } else if (this->elements == "Water" && other.elements == "Ground") {
+        power = this->level*1+sum;
+    } else if (this->elements == "Ground" && other.elements == "Water") {
+        power = this->level*1+sum;
+    } else if (this->elements == "Water" && other.elements == "Ice") {
+        power = this->level*1+sum;
+    } else if (this->elements == "Ice" && other.elements == "Water") {
+        power = this->level*1+sum;
+    } else if (this->elements == "Electric" && other.elements == "Ground") {
+        power = this->level*0+sum;
+    } else if (this->elements == "Ground" && other.elements == "Electric") {
+        power = this->level*2+sum;
+    } else if (this->elements == "Electric" && other.elements == "Ice") {
+        power = this->level*1.5+sum;
+    } else if (this->elements == "Ice" && other.elements == "Electric") {
+        power = this->level*0.5+sum;
+    }
+    return power;
+}

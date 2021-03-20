@@ -4,6 +4,8 @@
 #include "../Point/Point.cpp"
 #include "../Skill/Skill.hpp"
 #include "../Skill/Skill.cpp"
+#include "../Skill/EngimonSkill.hpp"
+#include "../Skill/EngimonSkill.cpp"
 #include "../Peta/peta.hpp"
 #include "../Peta/peta.cpp"
 #include "../Peta/cell.hpp"
@@ -36,13 +38,8 @@ int main(){
     Engimon engi8 = Engimon("Worm", 5, posisi8);
     Engimon engi9 = Engimon("Tiger", 5, posisi9);
 
-    Engimon engi10 = Engimon();
-
     //cctor
-    Engimon engi11 = Engimon(engi3);
-
-    //operator
-    engi10 = engi2;
+    Engimon engi10 = Engimon(engi3);
 
     //get posisi
     cout << "Posisi engimon 1 : " << "(" << engi1.get_posisiX() << ", " << engi1.get_posisiY() << ")" << endl;
@@ -55,8 +52,11 @@ int main(){
     cout << "Posisi engimon 8 : " << "(" << engi8.get_posisiX() << ", " << engi8.get_posisiY() << ")" << endl;
     cout << "Posisi engimon 9 : " << "(" << engi9.get_posisiX() << ", " << engi9.get_posisiY() << ")" << endl;
     cout << "Posisi engimon 10 : " << "(" << engi10.get_posisiX() << ", " << engi10.get_posisiY() << ")" << endl;
-    cout << "Posisi engimon 11 : " << "(" << engi11.get_posisiX() << ", " << engi11.get_posisiY() << ")" << endl;
-    cout << "Posisi engimon 11 : " << "(" << engi11.get_posisiX() << ", " << engi11.get_posisiY() << ")" << endl;
+    cout << endl;
+
+    //power
+    cout << "Power " << engi5.get_species() << " : " << engi5.powerEngimon(engi2)<< endl;
+    cout << "Power " << engi2.get_species() << " : " << engi2.powerEngimon(engi5)<< endl;
     cout << endl;
 
     //display
@@ -71,7 +71,6 @@ int main(){
     engi8.displayEngiInfo(); cout << endl;
     engi9.displayEngiInfo(); cout << endl;
     engi10.displayEngiInfo(); cout << endl;
-    engi11.displayEngiInfo(); cout << endl;
 
     //dtor
     engi1.~Engimon();
@@ -84,7 +83,6 @@ int main(){
     engi8.~Engimon();
     engi9.~Engimon();
     engi10.~Engimon();
-    engi11.~Engimon();
 
     return 0;
 }
