@@ -12,6 +12,13 @@ Cell::Cell(int x, int y, char cellType){
     this -> cellType = cellType;
 }
 
+Cell& Cell::operator=(const Cell& other) {
+    this->x = other.x;
+    this->y = other.y;
+    this->cellType = other.cellType;
+    return *this;
+}
+
 int Cell::getX(){ return x; }
 
 int Cell::getY(){ return y; }

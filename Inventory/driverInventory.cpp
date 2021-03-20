@@ -1,5 +1,7 @@
 #include "Inventory.hpp"
+#include "Inventory.cpp"
 #include "../Engimon/engimon.hpp"
+#include "../Engimon/engimon.cpp"
 
 int main(){
     Inventory<Engimon> IE;

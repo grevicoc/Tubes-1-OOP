@@ -1,4 +1,9 @@
 #include "engimon.hpp"
+#include "engimon.cpp"
+#include "../Point/Point.hpp"
+#include "../Point/Point.cpp"
+#include "../Skill/Skill.hpp"
+#include "../Skill/Skill.cpp"
 
 #include <iostream>
 
@@ -7,15 +12,25 @@ using namespace std;
 int main(){
 
     //ctor
+    Point posisi = Point();
+    Point posisi2 = Point(1, 2);
+    Point posisi3 = Point(2, 4);
+    Point posisi4 = Point(9, 4);
+    Point posisi5 = Point(10, 6);
+    Point posisi6 = Point(12, 6);
+    Point posisi7 = Point(3, 6);
+    Point posisi8 = Point(4, 8);
+    Point posisi9 = Point(5, 5);
+
     Engimon* engi1 = new Engimon();
-    Engimon* engi2 = new Engimon("Igneel", "Dragneel", "Dragon", "Fire");
-    Engimon* engi3 = new Engimon("Raichu", "Pikachu", "Cat", "Electric");
-    Engimon* engi4 = new Engimon("Articuno", "Artic", "Bird", "Water/Ice");
-    Engimon* engi5 = new Engimon("Magikarp", "Magi", "Fish", "Water");
-    Engimon* engi6 = new Engimon("Octillery", "Remoraid", "Octopus", "Ice");
-    Engimon* engi7 = new Engimon("Ivysaur", "Bulbasaur", "Plant", "Ground");
-    Engimon* engi8 = new Engimon("Caterpie", "Cater", "Worm", "Water/Ground");
-    Engimon* engi9 = new Engimon("Purugly", "Glameow", "Tiger", "Fire/Electric");
+    Engimon* engi2 = new Engimon("Dragon", 2, posisi2);
+    Engimon* engi3 = new Engimon("Cat", 3, posisi3);
+    Engimon* engi4 = new Engimon("Bird", 4, posisi4);
+    Engimon* engi5 = new Engimon("Fish", 3, posisi5);
+    Engimon* engi6 = new Engimon("Octopus", 2, posisi6);
+    Engimon* engi7 = new Engimon("Plant", 4, posisi7);
+    Engimon* engi8 = new Engimon("Worm", 5, posisi8);
+    Engimon* engi9 = new Engimon("Tiger", 5, posisi9);
 
     Engimon* engi10 = new Engimon();
 
@@ -24,11 +39,6 @@ int main(){
 
     //operator
     engi10 = engi2;
-
-    //level up
-    engi2->levelUP(4900); cout << endl;
-    //maksCumExp
-    engi2->maksCumExp(); cout << endl;
 
     //display
     engi1->displayEngiInfo(); cout << endl;

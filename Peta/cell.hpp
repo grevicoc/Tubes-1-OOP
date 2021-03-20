@@ -5,12 +5,13 @@ class Cell{
 public :
     Cell();
     Cell(int x,int y,char cellType);
+    Cell& operator=(const Cell&);
     int getX();
     int getY();
     char getCellType();
     friend class Peta;
     
-private :
+protected :
     int x;
     int y;
     char cellType;
