@@ -3,6 +3,7 @@
 #define PLAYYER_HPP
 
 #include "../Engimon/engimon.hpp"
+#include "../Engimon/engimonPlayer.hpp"
 #include "../Inventory/Inventory.hpp"
 #include "../Point/Point.hpp"
 
@@ -12,8 +13,8 @@ using namespace std;
 
 class Player {
     public:
-        void getActiveEngimon();
-        int setActiveEngimon();
+        EngimonPlayer& getActiveEngimon();
+        void setActiveEngimon(EngimonPlayer*);
         void Bergerak();
         void displayAllEngimon();
         // void displaySpecificEngimon();
@@ -22,11 +23,15 @@ class Player {
         void Breeding();
         // void Battle(); jadi kelas
         void interactActiveEngimon();
+        string input();
         
     protected:
         Point posisi;
-        int activeEngimon;
-        //Inventory inventory; blom bisa
+        EngimonPlayer* activeEngimon;
+        Inventory<EngimonPlayer> engiInventory;
+        Inventory<Skill> skillInventory;
+        string inputCommandMove;
+    private:
         void moveActiveEngimon();
 };
 

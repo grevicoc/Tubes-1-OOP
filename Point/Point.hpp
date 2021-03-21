@@ -13,6 +13,7 @@ class Point : public Peta {
         int getY();     // mendapatkan koordinat ordinat (y)
         void setX(int); // merubah koordinat absis (x)
         void setY(int); // merubah koordinat ordinat (y)
+        void set(int _x, int _y);   // mengubah posisi (x,y) menjadi (_x, _y)
         Point(const Point& P);    // cctor
         Point& operator=(const Point& other); // operator
         static bool isValidPosisi(int _x, int _y); // menentukan apakah titik valid/tidak di luar map

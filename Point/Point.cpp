@@ -28,6 +28,11 @@ void Point::setY(int y){
     this->y = y;
 }
 
+void Point::set(int _x, int _y) {
+    this->x = _x;
+    this->y = _y;
+}
+
 Point::Point(const Point& P) {
     this->x = P.x;
     this->y = P.y;
