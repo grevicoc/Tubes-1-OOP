@@ -20,10 +20,12 @@ class Player {
         // void displaySpecificEngimon();
         // void displayAllSkillItem();
         void useSkillItem();
-        void Breeding();
+        void Breeding(EngimonPlayer*, EngimonPlayer*);
         // void Battle(); jadi kelas
         void interactActiveEngimon();
         string input();
+        bool isFullInventory();
+        void InventoryFull();
         
     protected:
         Point posisi;

@@ -19,10 +19,12 @@ class EngimonPlayer :  public Engimon {
         int get_exp();
         int get_cumExp();
         int get_idEngiPlayer() const;
-        void set_name(string);
+        void set_name();
         void set_parentsName(string);
         void set_exp(int);
         void set_cumExp(int);
+        void set_PosisiX(int);
+        void set_PosisiY(int);
 
         //methods
         void levelUp(int);

@@ -99,7 +99,8 @@ int EngimonPlayer::get_cumExp() {
 int EngimonPlayer::get_idEngiPlayer() const {
     return this->idEngiPlayer;
 }
-void EngimonPlayer::set_name(string name) {
+void EngimonPlayer::set_name() {
+    string name;
     cout << "Masukkan nama engimon : " << endl;
     cin >> name;
     this->name = name;
@@ -115,6 +116,14 @@ void EngimonPlayer::set_exp(int exp) {
 
 void EngimonPlayer::set_cumExp(int cumExp) {
     this->cumExp = cumExp;
+}
+
+void EngimonPlayer::set_PosisiX(int x) {
+    this->posisi.setX(x);
+
+}
+void EngimonPlayer::set_PosisiY(int y) {
+    this->posisi.setY(y);
 }
 
 void EngimonPlayer::levelUp(int exp) {
