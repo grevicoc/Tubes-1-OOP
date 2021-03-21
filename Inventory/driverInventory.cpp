@@ -2,14 +2,29 @@
 #include "Inventory.cpp"
 #include "../Engimon/engimon.hpp"
 #include "../Engimon/engimon.cpp"
+#include "../Point/Point.hpp"
+#include "../Point/Point.cpp"
+#include "../Skill/Skill.hpp"
+#include "../Skill/Skill.cpp"
+#include "../Skill/EngimonSkill.hpp"
+#include "../Skill/EngimonSkill.cpp"
+#include "../Peta/peta.hpp"
+#include "../Peta/peta.cpp"
+#include "../Peta/cell.hpp"
+#include "../Peta/cell.cpp"
 
 int main(){
     Inventory<Engimon> IE;
     
-    Engimon* engi2 = new Engimon("Igneel", "Dragneel", "Dragon", "Fire");
-    Engimon* engi3 = new Engimon("Raichu", "Pikachu", "Cat", "Electric");
-    Engimon* engi4 = new Engimon("Articuno", "Artic", "Bird", "Water/Ice");
-    Engimon* engi5 = new Engimon("Magikarp", "Magi", "Fish", "Water");
+    Point posisi1 = Point();
+    Point posisi2 = Point(2,4);
+    Point posisi3 = Point(3,6);
+    Point posisi4 = Point(4,8);
+
+    Engimon* engi2 = new Engimon("Dragon", 10, posisi1);
+    Engimon* engi3 = new Engimon("Cat", 4, posisi2);
+    Engimon* engi4 = new Engimon("Bird", 6, posisi3);
+    Engimon* engi5 = new Engimon("Fish", 8, posisi4);
 
     IE.addThing(engi2);
     IE.addThing(engi3);
