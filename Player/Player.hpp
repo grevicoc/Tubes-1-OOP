@@ -24,8 +24,6 @@ class Player {
         // void Battle(); jadi kelas
         void interactActiveEngimon();
         string input();
-        bool isFullInventory();
-        void InventoryFull();
         
     protected:
         Point posisi;
@@ -33,6 +31,7 @@ class Player {
         Inventory<EngimonPlayer> engiInventory;
         Inventory<Skill> skillInventory;
         string inputCommandMove;
+
     private:
         void moveActiveEngimon();
 };
