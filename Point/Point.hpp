@@ -15,10 +15,9 @@ class Point : public Peta {
         void setY(int); // merubah koordinat ordinat (y)
         Point(const Point& P);    // cctor
         Point& operator=(const Point& other); // operator
-        bool isValidPosisi(int _x, int _y); // menentukan apakah titik valid/tidak di luar map
-        bool isAdjacent(int _x1, int _y1, int _x2, int _y2);    // menentukan apa dua posisi bertetanggaan
-        bool isNextWater(int _x, int _y);   // menentukan apakah posisi tujuan adalah air
-        bool isNextGrass(int _x, int _y);   // menentukan apakah posisi tujuan adalah grassland
+        static bool isValidPosisi(int _x, int _y); // menentukan apakah titik valid/tidak di luar map
+        static bool isAdjacent(int _x1, int _y1, int _x2, int _y2);    // menentukan apa dua posisi bertetanggaan
+        char getTypePeta(int x, int y); // menentukan type peta dari suatu point
 
     protected:
         int x;

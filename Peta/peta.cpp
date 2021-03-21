@@ -39,8 +39,3 @@ void Peta::loadMap(){
         cout<<"gagal me-load peta."<<endl;
     }
 }
-
-char Peta::getTypePeta(int x, int y) {
-    return this->peta[x][y].cellType;
-}
-
