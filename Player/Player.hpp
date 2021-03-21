@@ -17,8 +17,8 @@ class Player {
         void setActiveEngimon(EngimonPlayer*);
         void Bergerak();
         void displayAllEngimon();
-        // void displaySpecificEngimon();
-        // void displayAllSkillItem();
+        void displaySpecificEngimon(EngimonPlayer*);
+        void displayAllSkillItem();
         void useSkillItem();
         void Breeding(EngimonPlayer*, EngimonPlayer*);
         // void Battle(); jadi kelas

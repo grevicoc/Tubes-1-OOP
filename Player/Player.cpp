@@ -70,16 +70,23 @@ void Player::Bergerak() {
 }
 
 void Player::displayAllEngimon(){
-    for (int i = 0; i < engiInventory.getCurrentCapacity(); i++) {
-        // ini gatau cara akses per engimon gimana, gini bener ga?
-        unordered_map<EngimonPlayer*,int> Test = engiInventory.getThings();
-        unordered_map<EngimonPlayer*,int>::iterator itrTest = Test.begin();
-        itrTest->first->displayEngiInfo();
-    }
+    // ini gatau cara akses per engimon gimana, gini bener ga?
+    unordered_map<EngimonPlayer*,int> Test = engiInventory.getThings();
+    unordered_map<EngimonPlayer*,int>::iterator itrTest = Test.begin();
+    itrTest->first->displayEngiInfo();
 }
 
-// void displaySpecificEngimon();
-// void displayAllSkillItem();
+void Player::displaySpecificEngimon(EngimonPlayer* EP) {
+    EP->displayEngiInfo();
+}
+
+void Player::displayAllSkillItem() {
+    // ini gatau cara akses per engimon gimana, gini bener ga?
+    unordered_map<Skill*,int> Test = skillInventory.getThings();
+    unordered_map<Skill*,int>::iterator itrTest = Test.begin();
+    itrTest->first->getNamaSkill();
+}
+
 void Player::useSkillItem(){
 
 }
@@ -102,7 +109,7 @@ void Player::Breeding(EngimonPlayer* A, EngimonPlayer* B) { // inherit skillnya 
                 child->set_species(B->get_species());
             }
         } else {
-            if (A->get_elements() == "Fire") { //|| (B->get_elements() == "Fire" && A->get_elements() == "Water")) {
+            if (A->get_elements() == "Fire") {
                 if (B->get_elements() == "Water") {
                     child->set_elements(B->get_elements());
                     child->set_species(B->get_species());
@@ -253,6 +260,7 @@ void Player::Breeding(EngimonPlayer* A, EngimonPlayer* B) { // inherit skillnya 
 }
 
 // void Battle(); jadi kelas
+
 void Player::interactActiveEngimon() {
     if (activeEngimon->get_species() == "Dragon") {
         cout << "[" << activeEngimon->get_name() << "]: Hhhuuaaaa...." << endl;  // ganti aja gaes gatau isi slogan apa
@@ -279,7 +287,7 @@ string Player::input() {
     this->inputCommandMove = dest;
 }
 
-void Player::moveActiveEngimon() {
+void Player::moveActiveEngimon() {  // Exception handling belom
     if (this->inputCommandMove == "up" || this->inputCommandMove == "UP") {
         if (Point::isValidPosisi(activeEngimon->get_posisiX()-1, activeEngimon->get_posisiY())) {
             activeEngimon->set_PosisiX(activeEngimon->get_posisiX()-1);
