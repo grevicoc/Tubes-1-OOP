@@ -8,6 +8,8 @@
 #include <string>
 using namespace std;
 
+Player::Player(){}
+
 EngimonPlayer& Player::getActiveEngimon() {
     return *(this->activeEngimon);
 }
@@ -281,11 +283,11 @@ void Player::interactActiveEngimon() {
     }
 }
 
-string Player::input() {
-    string dest;
-    cin >> dest;
-    this->inputCommandMove = dest;
-}
+// string Player::input() {
+//     string dest;
+//     cin >> dest;
+//     this->inputCommandMove = dest;
+// }
 
 void Player::moveActiveEngimon() {  // Exception handling belom
     if (this->inputCommandMove == "up" || this->inputCommandMove == "UP") {
@@ -321,4 +323,14 @@ void Player::moveActiveEngimon() {  // Exception handling belom
         }
     }
     // ngubah peta posisi tujuan jd X dan posisi asal menjadi - atau o
+}
+
+void Player::addEngimonPlayer(EngimonPlayer* engi){
+    engiInventory.addThing(engi);
+    cout<<engi->get_name()<<" berhasil ditambahkan!\n";
+}
+
+void Player::addSkillItem(Skill* _skill){
+    skillInventory.addThing(_skill);
+    cout<<_skill->getNamaSkill()<<" berhasil ditambahkan!\n";
 }

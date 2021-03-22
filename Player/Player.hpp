@@ -13,6 +13,7 @@ using namespace std;
 
 class Player {
     public:
+        Player();
         EngimonPlayer& getActiveEngimon();
         void setActiveEngimon(EngimonPlayer*);
         void Bergerak();
@@ -24,6 +25,8 @@ class Player {
         // void Battle(); jadi kelas
         void interactActiveEngimon();
         string input();
+        void addEngimonPlayer(EngimonPlayer*);
+        void addSkillItem(Skill*);
         
     protected:
         Point posisi;

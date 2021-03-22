@@ -1,5 +1,7 @@
 #include "Inventory.hpp"
 #include "../Engimon/engimon.hpp"
+#include "../Engimon/engimonPlayer.hpp"
+#include "../Skill/Skill.hpp"
 
 template<class T>
 int Inventory<T>::maxCapacity = 50;
@@ -10,7 +12,7 @@ int Inventory<T>::currentCapacity = 0;
 template<class T>
 Inventory<T>::Inventory(){}
 
-template<class T>
+template<class T>   //destructornya bermasalah sepertinya
 Inventory<T>::~Inventory(){
     for(auto itr=things.begin();itr!=things.end();itr++){
         T* tempPtr = itr->first;
@@ -72,5 +74,6 @@ bool Inventory<T>::deleteThing(T* object){
 }
 
 //Initial instantiate biar compiler tau gimana seluk beluk Inventory<Engimon>
+template class Inventory<EngimonPlayer>;
+template class Inventory<Skill>;
 template class Inventory<Engimon>;
-//template class Inventory<Skill>;
