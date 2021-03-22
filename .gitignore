@@ -3,3 +3,8 @@
 Inventory/*.exe
 Engimon/*.exe
 Skill/*.exe
+Command/*.exe
+Display/*.exe
+Peta/*.exe
+Point/*.exe
+Player/*.exe

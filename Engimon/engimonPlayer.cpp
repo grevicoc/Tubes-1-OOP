@@ -28,7 +28,7 @@ EngimonPlayer::EngimonPlayer() : idEngiPlayer(EngimonPlayer::numOfEngimonPlayer+
 EngimonPlayer::EngimonPlayer(Engimon& wildEngi) : idEngiPlayer(EngimonPlayer::numOfEngimonPlayer+1){
     cout << "You got a engimon!" << endl; cout << endl;
     wildEngi.displayEngiInfo(); cout << endl;
-    set_name(this->name); cout << endl;
+    set_name(); cout << endl;
     this->parentsName = "-";
     this->numOfEngimonPlayer = this->numOfEngimonPlayer+1;
     this->species = wildEngi.get_species();

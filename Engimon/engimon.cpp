@@ -1,6 +1,7 @@
 //File engimon.cpp
 #include "engimon.hpp"
 
+
 using namespace std;
 
 int Engimon::numOfEngimon = 0;
