@@ -3,10 +3,11 @@
 #define DISPLAYENGIMON_HPP
 
 #include "DisplaySomething.hpp"
+#include "../Engimon/engimon.hpp"
 
 class DisplayEngimon : public DisplaySomething {
     public:
-        void Display();
+        void Display(const Engimon&);
     protected:
         int playerActiveEngimon;
 };
