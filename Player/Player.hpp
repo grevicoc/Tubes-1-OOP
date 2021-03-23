@@ -14,6 +14,7 @@ using namespace std;
 class Player {
     public:
         Player();
+        ~Player();
         EngimonPlayer& getActiveEngimon();
         void setActiveEngimon(EngimonPlayer*);
         void Bergerak();

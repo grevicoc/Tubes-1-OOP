@@ -10,6 +10,8 @@ using namespace std;
 
 Player::Player(){}
 
+Player::~Player(){}
+
 EngimonPlayer& Player::getActiveEngimon() {
     return *(this->activeEngimon);
 }

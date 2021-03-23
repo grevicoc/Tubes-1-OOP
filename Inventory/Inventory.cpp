@@ -14,7 +14,8 @@ Inventory<T>::Inventory(){}
 
 template<class T>   //destructornya bermasalah sepertinya
 Inventory<T>::~Inventory(){
-    for(auto itr=things.begin();itr!=things.end();itr++){
+    typename unordered_map<T*,int>::iterator itr;
+    for(itr=things.begin();itr!=things.end();itr++){
         T* tempPtr = itr->first;
         delete tempPtr;
     }

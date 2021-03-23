@@ -5,7 +5,7 @@ using namespace std;
 
 int EngimonPlayer::numOfEngimonPlayer = 0;
 
-EngimonPlayer::EngimonPlayer() : idEngiPlayer(EngimonPlayer::numOfEngimonPlayer+1) {
+EngimonPlayer::EngimonPlayer() :  idEngiPlayer(EngimonPlayer::numOfEngimonPlayer+1) {
     name = "Pikachu";
     parentsName = "Pika";
     species = "Cat";
@@ -60,7 +60,8 @@ EngimonPlayer::EngimonPlayer(const EngimonPlayer& other) : idEngiPlayer(other.id
 }
 
 EngimonPlayer::~EngimonPlayer() {
-    delete [] skill;
+    delete[] skill;
+    cout<<"DESTRUCTOR ENGIMONPLAYER!\n";
 }
 
 EngimonPlayer& EngimonPlayer::operator=(const EngimonPlayer& other) {
