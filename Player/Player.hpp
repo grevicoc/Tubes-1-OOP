@@ -1,6 +1,6 @@
 //File Player.hpp
 #ifndef PLAYER_HPP
-#define PLAYYER_HPP
+#define PLAYER_HPP
 
 #include "../Engimon/engimon.hpp"
 #include "../Engimon/engimonPlayer.hpp"
