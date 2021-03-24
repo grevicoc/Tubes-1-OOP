@@ -42,12 +42,21 @@ int main() {
     //set default engimon player
     EngimonPlayer* player1 = new EngimonPlayer();
     player1->displayEngiInfo(); cout << endl;
+    //set cum exp
+    player1->set_cumExp(4800);
+    //level up
+    player1->levelUp(50); cout << endl;
+    player1->displayEngiInfo(); cout << endl;
+    //level up to level max
+    player1->levelUp(100); cout << endl;
+    player1->displayEngiInfo(); cout << endl;
+    //level up again and engimon die
+    player1->levelUp(50); cout << endl;
 
     //Get the engimon from the battle
-    
-    cout << "Power " << player1->get_name() << " : " << player1->powerEngimon(engi2) << endl;
+    /*cout << "Power " << player1->get_name() << " : " << player1->powerEngimon(engi2) << endl;
     EngimonPlayer* player2 = new EngimonPlayer(engi2);
-    player2->displayEngiInfo();
+    player2->EngimonPlayer::displayEngiInfo();*/
     
     return 0;
 }

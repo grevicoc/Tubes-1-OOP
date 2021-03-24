@@ -20,7 +20,7 @@ Skill& Skill::operator=(const Skill& other) {
 }
 
 Skill::~Skill(){
-    cout<<"Skill hilang!\n";    //buat debugging
+    //cout<<"Skill hilang!\n";    //buat debugging
 }
 
 string Skill::getNamaSkill() {
