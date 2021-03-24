@@ -37,3 +37,11 @@ void EngimonSkill::setEngimonBasePower(int base) {
 int EngimonSkill::damage(){
     return basePower*masteryLevel;
 }
+
+int EngimonSkill::getMasteryLevel() {
+    return this->masteryLevel;
+}
+
+void EngimonSkill::setMasteryLevel(int masteryLevel) {
+    this->masteryLevel = masteryLevel;
+}

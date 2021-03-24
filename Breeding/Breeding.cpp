@@ -187,6 +187,56 @@ void Breeding::setSpecies(EngimonPlayer* A, EngimonPlayer* B, EngimonPlayer* C) 
     }
 }
 
-Skill& Breeding::inheritSkill(Inventory<Skill> skillEngimon) {
-
+void Breeding::inheritSkill(EngimonPlayer* A, EngimonPlayer* B, EngimonPlayer* C) {
+    int countA, countB, i;
+    i = 1;
+    countA = 1;
+    countB = 1;
+    while (i < 4) {
+        bool sama = false;
+        int j = 1;
+        if (A->engiSkill[countA].getMasteryLevel() > B->engiSkill[countB].getMasteryLevel()) {
+            while(j < 4 && sama == false) {
+                if (A->engiSkill[i].getNamaSkill() == C->engiSkill[j].getNamaSkill()) {
+                    sama = true;
+                } j++;
+            }
+            if (sama == false) {
+                C->engiSkill[i].setNamaSkill(A->engiSkill[countA].getNamaSkill());
+                C->engiSkill[i].setElemen(A->engiSkill[countA].getElemen());
+                C->engiSkill[i].setBasePower(A->engiSkill[countA].getBasePower());
+                C->engiSkill[i].setMasteryLevel(A->engiSkill[countA].getMasteryLevel());
+            }
+            countA++;
+        } else if (A->engiSkill[countA].getMasteryLevel() == B->engiSkill[countB].getMasteryLevel()) {
+            while(j < 4 && sama == false) {
+                if (A->engiSkill[i].getNamaSkill() == C->engiSkill[j].getNamaSkill()) {
+                    sama = true;
+                } j++;
+            }
+            C->engiSkill[i].setNamaSkill(A->engiSkill[countA].getNamaSkill());
+            C->engiSkill[i].setElemen(A->engiSkill[countA].getElemen());
+            C->engiSkill[i].setBasePower(A->engiSkill[countA].getBasePower());
+            if (sama == false) {
+                C->engiSkill[i].setMasteryLevel(A->engiSkill[countA].getMasteryLevel());
+            } else {
+                C->engiSkill[i].setMasteryLevel(A->engiSkill[countA].getMasteryLevel()+1);
+            }
+            countA++;
+        } else {
+            while(j < 4 && sama == false) {
+                if (B->engiSkill[i].getNamaSkill() == C->engiSkill[j].getNamaSkill()) {
+                    sama = true;
+                } j++;
+            }
+            if (sama == false) {
+                C->engiSkill[i].setNamaSkill(B->engiSkill[countB].getNamaSkill());
+                C->engiSkill[i].setElemen(B->engiSkill[countB].getElemen());
+                C->engiSkill[i].setBasePower(B->engiSkill[countB].getBasePower());
+                C->engiSkill[i].setMasteryLevel(B->engiSkill[countB].getMasteryLevel());
+            }
+            countB++;
+        }
+        i++;
+    }
 }

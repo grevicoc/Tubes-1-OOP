@@ -18,8 +18,8 @@ class Breeding {
         EngimonPlayer& makeBreeding(EngimonPlayer*, EngimonPlayer*);
         int getRandom(int);
         void setParentName(EngimonPlayer*, EngimonPlayer*, EngimonPlayer*);
-        void setElement(EngimonPlayer*, EngimonPlayer*, EngimonPlayer* C);
-        void setSpecies(EngimonPlayer*, EngimonPlayer*, EngimonPlayer* C);
-        Skill& inheritSkill(Inventory<Skill>);
+        void setElement(EngimonPlayer*, EngimonPlayer*, EngimonPlayer*);
+        void setSpecies(EngimonPlayer*, EngimonPlayer*, EngimonPlayer*);
+        void inheritSkill(EngimonPlayer*, EngimonPlayer*, EngimonPlayer*);
 };
 #endif;
