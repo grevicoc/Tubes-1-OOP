@@ -54,9 +54,9 @@ int main() {
     player1->levelUp(50); cout << endl;
 
     //Get the engimon from the battle
-    /*cout << "Power " << player1->get_name() << " : " << player1->powerEngimon(engi2) << endl;
+    cout << "Power " << player1->get_name() << " : " << player1->powerEngimon(engi2) << endl;
     EngimonPlayer* player2 = new EngimonPlayer(engi2);
-    player2->EngimonPlayer::displayEngiInfo();*/
+    player2->EngimonPlayer::displayEngiInfo();
     
     return 0;
 }
