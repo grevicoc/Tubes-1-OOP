@@ -214,13 +214,15 @@ void Breeding::inheritSkill(EngimonPlayer* A, EngimonPlayer* B, EngimonPlayer* C
                     sama = true;
                 } j++;
             }
-            C->engiSkill[i].setNamaSkill(A->engiSkill[countA].getNamaSkill());
-            C->engiSkill[i].setElemen(A->engiSkill[countA].getElemen());
-            C->engiSkill[i].setBasePower(A->engiSkill[countA].getBasePower());
             if (sama == false) {
-                C->engiSkill[i].setMasteryLevel(A->engiSkill[countA].getMasteryLevel());
-            } else {
-                C->engiSkill[i].setMasteryLevel(A->engiSkill[countA].getMasteryLevel()+1);
+                C->engiSkill[i].setNamaSkill(A->engiSkill[countA].getNamaSkill());
+                C->engiSkill[i].setElemen(A->engiSkill[countA].getElemen());
+                C->engiSkill[i].setBasePower(A->engiSkill[countA].getBasePower());
+                if (A->engiSkill[countA].getNamaSkill() == B->engiSkill[countB].getNamaSkill()) {
+                    C->engiSkill[i].setMasteryLevel(A->engiSkill[countA].getMasteryLevel()+1);
+                } else {
+                    C->engiSkill[i].setMasteryLevel(A->engiSkill[countA].getMasteryLevel());
+                }
             }
             countA++;
         } else {
