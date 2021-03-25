@@ -44,15 +44,21 @@ Point& Point::operator=(const Point& other) {
     return *this;
 }
 
-bool Point::isValidPosisiRelatif() {
-    return (x >= 0 && x < 10 && y >= 0 && y < 12);
-}
+// bool Point::operator==(const Point& other){
+//     if (this->getX()==other.x && this->getY()==other.y){
+//         return true;
+//     }else{
+//         return false;
+//     }
+// }
 
-bool Point::isValidPosisiRelatif(int _x, int _y) {
-    int xRel = x + _x;
-    int yRel = y + _y;
-    return (xRel >= 0 && xRel < 10 && yRel >= 0 && yRel < 12);
-}
+// bool Point::operator!=(const Point& other){
+//     if (this->getX()!=other.x || this->getY()!=other.y){
+//         return true;
+//     }else if (this->getX()==other.x && this->getY()==other.y){
+//         return false;
+//     }
+// }
 
 bool Point::isValidPosisi(int _x, int _y) {
     return (_x >= 0 && _x < 10 && _y >= 0 && _y < 12);
@@ -66,12 +72,12 @@ bool Point::isPosisiNotEngimonRelatif(int _x, int _y){
     return getTypePetaRelatif(_x,_y) == 'o' || getTypePetaRelatif(_x,_y) == '-';
 }
 
-char Point::getTypePeta(int _x, int _y) {
-    return (Peta::peta[_x][_y].getCellType());
-}
+// char Point::getTypePeta(int _x, int _y) {
+//     return (Peta::peta[_x][_y].getCellType());
+// }
 
-char Point::getTypePetaRelatif(int _x, int _y) {
-    int xRel = x + _x;
-    int yRel = y + _y;
-    return Peta::peta[xRel][yRel].getCellType();
-}
+// char Point::getTypePetaRelatif(int _x, int _y) {
+//     int xRel = x + _x;
+//     int yRel = y + _y;
+//     return Peta::peta[xRel][yRel].getCellType();
+// }

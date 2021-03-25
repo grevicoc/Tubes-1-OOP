@@ -16,13 +16,13 @@ class Point{
         void set(int _x, int _y);   // mengubah posisi (x,y) menjadi (_x, _y)
         Point(const Point& P);    // cctor
         Point& operator=(const Point& other); // operator
-        bool isValidPosisiRelatif();    // menentukan apakah objek Point valid (berada di map)
-        bool isValidPosisiRelatif(int _x, int _y);  // menentukan apakah posisi dengan offset relatif terhadap objek Point valid
+        // bool operator==(const Point& other);
+        // bool operator!=(const Point& other);
         static bool isValidPosisi(int _x, int _y); // menentukan apakah titik valid/tidak di luar map
         static bool isAdjacent(int _x1, int _y1, int _x2, int _y2);    // menentukan apa dua posisi bertetanggaan
         bool isPosisiNotEngimonRelatif(int _x, int _y); // menentukan apakah posisi relatif terhadap objek Point bukanlah Engimon
         char getTypePeta(int _x, int _y); // menentukan type peta dari suatu point
-        char getTypePetaRelatif(int _x, int _Y) // menetukan type peta relatif dari suatu objek Point
+        char getTypePetaRelatif(int _x, int _Y); // menetukan type peta relatif dari suatu objek Point
 
     protected:
         int x;

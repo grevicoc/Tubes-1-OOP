@@ -20,7 +20,7 @@ class Peta{
         ~Peta();
 
         // Method
-        void movingWildEngimon(Engimon&);
+        // void movingWildEngimon(Engimon&);
         void spawnWildEngimon();
         void loadMap();
         
