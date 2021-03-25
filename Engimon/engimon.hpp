@@ -3,6 +3,7 @@
 #define ENGIMON_HPP
 
 #include <iostream>
+#include <vector>
 #include "../Point/Point.hpp"
 #include "../Skill/EngimonSkill.hpp"
 
@@ -27,14 +28,14 @@ class Engimon {
         void set_species(string);
         void set_elements(string);
         void set_level(int);
-        void set_Posisi(Point);
         int powerEngimon(Engimon&);
+        int powerEngimon2(Engimon&);
+        vector<EngimonSkill> getEngiSkill() const;
 
         //methods
         virtual void displayEngiInfo();
         //public atribut
-        Skill* skill;
-        EngimonSkill* engiSkill;
+        vector<EngimonSkill> engiSkill;
 
     protected :
         string species;

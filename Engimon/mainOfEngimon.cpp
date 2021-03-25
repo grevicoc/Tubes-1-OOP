@@ -12,6 +12,7 @@
 #include "../Peta/cell.cpp"
 
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -55,9 +56,9 @@ int main(){
     cout << endl;
 
     //power
-    cout << "Power " << engi5.get_species() << " : " << engi5.powerEngimon(engi2)<< endl;
+    /*cout << "Power " << engi5.get_species() << " : " << engi5.powerEngimon(engi2)<< endl;
     cout << "Power " << engi2.get_species() << " : " << engi2.powerEngimon(engi5)<< endl;
-    cout << endl;
+    cout << endl;*/
 
     //display
     engi1.displayEngiInfo(); cout << endl;
