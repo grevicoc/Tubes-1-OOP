@@ -76,8 +76,11 @@ void Player::setActiveEngimon(EngimonPlayer* EP) {
 void Player::displayAllEngimon(){
     // ini gatau cara akses per engimon gimana, gini bener ga?
     unordered_map<EngimonPlayer*,int> Test = engiInventory.getThings();
-    unordered_map<EngimonPlayer*,int>::iterator itrTest = Test.begin();
-    itrTest->first->displayEngiInfo();
+    unordered_map<EngimonPlayer*,int>::iterator itrTest;
+    
+    for (itrTest = Test.begin();itrTest!=Test.end();itrTest++){
+        itrTest->first->displayEngiInfo();
+    }
 }
 
 void Player::displaySpecificEngimon(EngimonPlayer* EP) {
@@ -87,8 +90,14 @@ void Player::displaySpecificEngimon(EngimonPlayer* EP) {
 void Player::displayAllSkillItem() {
     // ini gatau cara akses per engimon gimana, gini bener ga?
     unordered_map<Skill*,int> Test = skillInventory.getThings();
-    unordered_map<Skill*,int>::iterator itrTest = Test.begin();
-    itrTest->first->getNamaSkill();
+    unordered_map<Skill*,int>::iterator itrTest;
+    int i=1;
+    for (itrTest = Test.begin();itrTest!=Test.end();itrTest++){
+        cout<<i<<". Item: "<<itrTest->first->getNamaSkill()<<endl;
+        cout<<"   Base Power: "<<itrTest->first->getBasePower()<<endl;
+        cout<<"   Elemen dibutuhkan: "<<itrTest->first->getElemen()<<endl;
+        cout<<"   Jumlah saat ini: "<<itrTest->second;
+    }
 }
 
 void Player::useSkillItem(){

@@ -32,7 +32,7 @@ class Player {
         Inventory<EngimonPlayer> engiInventory;
         Inventory<Skill> skillInventory;
         Point getPosisiPlayer();
-        void setPosisiPlayer();
+        void setPosisiPlayer(Point);
         
     protected:
         Point posisi;

@@ -15,11 +15,11 @@ using namespace std;
 
 class Breeding {
     public:
-        EngimonPlayer& makeBreeding(EngimonPlayer*, EngimonPlayer*);
+        EngimonPlayer* makeBreeding(EngimonPlayer*, EngimonPlayer*);
         int getRandom(int);
         void setParentName(EngimonPlayer*, EngimonPlayer*, EngimonPlayer*);
         void setElement(EngimonPlayer*, EngimonPlayer*, EngimonPlayer*);
         void setSpecies(EngimonPlayer*, EngimonPlayer*, EngimonPlayer*);
         void inheritSkill(EngimonPlayer*, EngimonPlayer*, EngimonPlayer*);
 };
-#endif;
+#endif

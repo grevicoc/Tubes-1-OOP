@@ -1,12 +1,11 @@
-#include "Battle.hpp"
+#include "BattleCommand.hpp"
 #include "../Generate/GenerateSkill.hpp"
 
+BattleCommand::BattleCommand(): Command(){}
 
-Battle::Battle(){}
+BattleCommand::~BattleCommand(){}
 
-Battle::~Battle(){}
-
-void Battle::battleBetween(EngimonPlayer * eng1 , Engimon *eng2, Player& currentPlayer, vector<Skill*>& listOfSkillGenerated){
+void BattleCommand::battleBetween(EngimonPlayer * eng1 , Engimon *eng2, Player& currentPlayer, vector<Skill*>& listOfSkillGenerated){
 
     //Mendapatkan nilai elements advantage
     float eng1ElemenAdv = getElementsAdvantage(eng1,eng2);
@@ -56,7 +55,7 @@ void Battle::battleBetween(EngimonPlayer * eng1 , Engimon *eng2, Player& current
 
 //ini anggep kek database elements advantage nya
 //elemen1 menyerang elemen2
-float Battle::elementAdvChart(string elemen1, string elemen2){
+float BattleCommand::elementAdvChart(string elemen1, string elemen2){
     if(elemen1 == "Fire"){
         if(elemen2 == "Fire"){ return 1.0;}
         else if(elemen2 == "Water"){ return 0.0;}
@@ -93,7 +92,7 @@ float Battle::elementAdvChart(string elemen1, string elemen2){
 
 //Ga ngerti ngambil 2 elemennya
 //engimon1 menyerang engimon2
-float Battle::getElementsAdvantage(Engimon* engimon1 , Engimon* engimon2){
+float BattleCommand::getElementsAdvantage(Engimon* engimon1 , Engimon* engimon2){
 
     vector<string> elementsEngimon1 = elementsParser(engimon1->get_elements());
     vector<string> elementsEngimon2 = elementsParser(engimon2->get_elements());
@@ -106,19 +105,10 @@ float Battle::getElementsAdvantage(Engimon* engimon1 , Engimon* engimon2){
             }
         }
     }
-    
     return max;
-
-    // float max = 0;
-    // for (int i = 0; i < this->countElementsPlayer; i++){
-    //     for(int j = 0; j < this->countElementsLawan; j++){
-    //         if(elementAdvChart(this->elementsPlayer[i], this->elementsLawan[j]) > max) max = elementAdvChart(this->elementsPlayer[i], this->elementsLawan[j]);
-    //     }
-    // }
-    // return max;
 }
 
-vector<string> Battle::elementsParser(string elements){
+vector<string> BattleCommand::elementsParser(string elements){
     vector<string> retVal;
     if (elements.find("/") != string::npos){
         string delimiter = "/";

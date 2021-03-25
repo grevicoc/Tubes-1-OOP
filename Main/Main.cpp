@@ -9,8 +9,9 @@
 
 #include "../Player/Player.hpp"
 
-#include "../Battle/Battle.hpp"
+#include "../Command/BattleCommand.hpp"
 
+#include "../Breeding/Breeding.hpp"
 
 #include <vector>
 
@@ -19,18 +20,28 @@ vector<Engimon*> listOfWildEngimon;
 
 int main(){
     srand(time(0));
-
-    Player P;
-    EngimonPlayer* starterEngimon = new EngimonPlayer();
-    P.addEngimonPlayer(starterEngimon);
-    starterEngimon->displayEngiInfo();
-    
-    
-    Skill* generatedSkill = GenerateSkill::generateSkill(listOfSkillGenerated);
     Engimon* generatedEngimon = GenerateEngimon::generateEngimon(listOfWildEngimon);
     generatedEngimon->displayEngiInfo();
 
-    Battle::battleBetween(starterEngimon,generatedEngimon,P,listOfSkillGenerated);
+    Player P;
+    EngimonPlayer* starterEngimon1 = new EngimonPlayer();
+    // starterEngimon1->set_level(35);
+    // P.addEngimonPlayer(starterEngimon1);
+    // starterEngimon1->displayEngiInfo();
+    // EngimonPlayer* starterEngimon2 = new EngimonPlayer(*generatedEngimon);
+    // P.addEngimonPlayer(starterEngimon2);
+    // starterEngimon2->set_level(35);
+    // starterEngimon2->set_name();
+    // starterEngimon2->displayEngiInfo();
+    // //dummy
+    // Breeding B;
+    // EngimonPlayer* childStarterEngimon = B.makeBreeding(starterEngimon1,starterEngimon2);
+    // childStarterEngimon->displayEngiInfo();
+    
+    
+    // Skill* generatedSkill = GenerateSkill::generateSkill(listOfSkillGenerated);
+
+    BattleCommand::battleBetween(starterEngimon1,generatedEngimon,P,listOfSkillGenerated);
     
 
     // cout<<generatedSkill->getNamaSkill()<<endl;

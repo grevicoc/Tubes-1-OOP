@@ -5,16 +5,19 @@
 #include <vector>
 using namespace std;
 
-EngimonPlayer& Breeding::makeBreeding(EngimonPlayer* A, EngimonPlayer* B) {
+EngimonPlayer* Breeding::makeBreeding(EngimonPlayer* A, EngimonPlayer* B) {
     if (A->get_level() >= 30 && B->get_level() >= 30) {
         EngimonPlayer* child = new EngimonPlayer();
         child->set_name();
         setParentName(A, B, child);
         setElement(A, B, child);
         setSpecies(A, B, child);
+        inheritSkill(A,B,child);
         A->set_level(A->get_level() - 30);
         B->set_level(B->get_level() - 30);
-        return *(child);
+        return child;
+    }else{
+        throw 1;
     }
 }
 

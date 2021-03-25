@@ -14,8 +14,10 @@ void Command::updateGameMode(char gm) {
 
 void Command::executeCommand() {
   try {
-    if (isCommandValid) {
-      //
+    if (isCommandValid()) {
+      // if (currentCommand=="up" || currentCommand=="down"  || currentCommand=="left"  || currentCommand=="right" ){
+        
+      // }
     }
   }
   catch (CommandException err) {
@@ -23,22 +25,13 @@ void Command::executeCommand() {
   }
 }
 
-bool Command::isCommandValid() {
-  if (gameMode == 'E') {  // exploration mode
-    // cek
-    // ...
-    return true;
-  }
-  else if (gameMode == 'I') {   // inventory mode
-    // cek
-    // ...
-    return true;
-  }
-  else if (gameMode == 'B') {   // battle mode
-    // cek
-    // ...
-    return true;
-  }
+bool Command::isCommandValid() const{
+  // if (currentCommand!="up"||currentCommand!="down"||currentCommand!="left"||currentCommand!="right"||currentCommand!="breeding" || currentCommand!="battle" || currentCommand!="showallengimon" || currentCommand!="showallskillitem" || currentCommand!="interact" || currentCommand!="swicthactiveengimon" || currentCommand!="learnskill" || currentCommand!="showspecificengimon"){
+  //   return false;
+  // }else{
+  //   return true;
+  // }
+
   CommandException error("INVALID_COMMAND", gameMode);
   throw error;
 }
