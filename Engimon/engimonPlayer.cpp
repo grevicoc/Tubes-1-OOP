@@ -30,9 +30,7 @@ EngimonPlayer::EngimonPlayer(const EngimonPlayer& other) : idEngiPlayer(other.id
     this->cumExp = other.cumExp;
 }
 
-EngimonPlayer::~EngimonPlayer() {
-    delete[] skill;
-}
+EngimonPlayer::~EngimonPlayer() {}
 
 EngimonPlayer& EngimonPlayer::operator=(const EngimonPlayer& other) {
     this->name = other.name;
@@ -40,10 +38,7 @@ EngimonPlayer& EngimonPlayer::operator=(const EngimonPlayer& other) {
     this->species = other.species;
     this->elements = other.elements;
     this->posisi = other.posisi;
-    skill = new Skill[4];
-    for (int i = 0; i < 4; i++){
-        skill[i] = other.skill[i];
-    }
+    this->engiSkill = other.engiSkill;
     this->level = other.level;
     this->exp = other.exp;
     this->cumExp = other.cumExp;
@@ -140,7 +135,7 @@ void EngimonPlayer::displayEngiInfo() {
     cout << "Exp : " << get_exp() << endl;
     cout << "Cumulative Exp : " << get_cumExp() << endl;
     cout << "Skill : " << endl;
-    for (int i = 0 ; i < 4; i++) {
-        cout << i+1 << ". " << skill[i].getNamaSkill() << ", Base Power : " << skill[i].getBasePower() << endl;
+    for (int i = 0 ; i < engiSkill.size(); i++) {
+        cout << i+1 << ". " << engiSkill.at(i).getNamaSkill() << ", Base Power : " << engiSkill.at(i).getBasePower() << endl;
     }
 }

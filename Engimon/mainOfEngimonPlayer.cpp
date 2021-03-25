@@ -8,10 +8,10 @@
 #include "../Skill/Skill.cpp"
 #include "../Skill/EngimonSkill.hpp"
 #include "../Skill/EngimonSkill.cpp"
-#include "../Peta/peta.hpp"
-#include "../Peta/peta.cpp"
-#include "../Peta/cell.hpp"
-#include "../Peta/cell.cpp"
+// #include "../Peta/peta.hpp"
+// #include "../Peta/peta.cpp"
+// #include "../Peta/cell.hpp"
+// #include "../Peta/cell.cpp"
 
 #include <iostream>
 
@@ -54,7 +54,7 @@ int main() {
     player1->levelUp(50); cout << endl;
 
     //Get the engimon from the battle
-    cout << "Power " << player1->get_name() << " : " << player1->powerEngimon(engi2) << endl;
+    //cout << "Power " << player1->get_name() << " : " << player1->powerEngimon(engi2) << endl;
     EngimonPlayer* player2 = new EngimonPlayer(engi2);
     player2->EngimonPlayer::displayEngiInfo();
     
