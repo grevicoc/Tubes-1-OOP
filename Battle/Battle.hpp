@@ -7,6 +7,10 @@
 #include "../Point/Point.hpp"
 #include "../Player/Player.hpp"
 #include "../Engimon/engimon.hpp"
+#include "../Engimon/engimonPlayer.hpp"
+#include "../Inventory/Inventory.hpp"
+
+
 
 #include <string>
 
@@ -16,17 +20,12 @@ class Battle{
     public:
         Battle();
         ~Battle();
-        Battle(EngimonPlayer *, EngimonPlayer * );
-        float elementAdvChart(Engimon&);
-        float getElementsAdvantage(string countElementsPlayer , string countElementsLawan);
+        static void battleBetween(EngimonPlayer*, Engimon*, Player& ,vector<Skill*>& listOfSkillGenerated);
 
-        Skill* skill;
-        EngimonSkill* engiSkill1;
-        EngimonSkill* engiSkill2;
-        Inventory<EngimonPlayer> IE;
-        Inventory<Skill> skillMusuh;
-
-        
+    private:
+        static float getElementsAdvantage(Engimon* engimon1 , Engimon* engimon2);
+        static float elementAdvChart(string,string);
+        static vector<string> elementsParser(string);
 
 };
 

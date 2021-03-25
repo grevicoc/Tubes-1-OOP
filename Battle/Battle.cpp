@@ -1,104 +1,131 @@
-#include"Battle.hpp"
-
+#include "Battle.hpp"
+#include "../Generate/GenerateSkill.hpp"
 
 
 Battle::Battle(){}
 
 Battle::~Battle(){}
 
-Battle::Battle(EngimonPlayer * eng1 , EngimonPlayer *eng2){
+void Battle::battleBetween(EngimonPlayer * eng1 , Engimon *eng2, Player& currentPlayer, vector<Skill*>& listOfSkillGenerated){
 
     //Mendapatkan nilai elements advantage
-    double eng1ElemenAdv = eng1.getElementAdvantage();
-    double eng2ElemenAdv = eng2.getElementAdvantage();
+    float eng1ElemenAdv = getElementsAdvantage(eng1,eng2);
+    float eng2ElemenAdv = getElementsAdvantage(eng2,eng1);
 
     //Mendapatkan SUM(Basepower * mastery level)
-    int sumskill1 = 0;
-    engiSkill1 = new EngimonSkill[4];
-    for (int i = 0; i<4; i++){
-        engiSkill1[i] = skill[i];
+    float sumLevel1 = (float) (eng1->get_level() * eng1ElemenAdv);
+    cout<<eng1ElemenAdv<<endl;
+    float sumSkill1 = 0;
+    vector<EngimonSkill> tempSkill1 = eng1->getEngiSkill();
+    
+    for (int i = 0; i<tempSkill1.size();i++){
+        sumSkill1 = sumSkill1 + (float)tempSkill1.at(i).damage();
     }
-    for (int k = 0; k<4; k++){
-        sumskill1 = sumskill1 + engiSkill1[k].damage();
-    }
+    float power1 = sumSkill1 + sumLevel1;
 
-    int sumskill2 = 0;
-    engiSkill2 = new EngimonSkill[4];
-    for (int i = 0; i<4; i++){
-        engiSkill2[i] = skill[i];
+    float sumLevel2 = (float) (eng2->get_level()*eng2ElemenAdv);
+    cout<<eng2ElemenAdv<<endl;
+    float sumSkill2 = 0;
+    vector<EngimonSkill> tempSkill2 = eng2->getEngiSkill();
+    
+    for (int i = 0; i<tempSkill2.size();i++){
+        sumSkill2 = sumSkill2 + (float)tempSkill2.at(i).damage();
     }
-    for (int k = 0; k<4; k++){
-        sumskill2 = sumskill2 + engiSkill2[k].damage();
-    }
+    float power2 = sumSkill2 + sumLevel2;
 
-    //Menghitung nilai power
-    double PowerEngimon1 = (eng1.get_level()*eng1ElemenAdv + sumskill1);
-    double PowerEngimon2 = (eng2.get_level()*eng2ElemenAdv + sumskill2);
+    
 
     //cout<< "Power Level Player : " << PowerEngimon1 << endl;
     //cout<< "Power Level Lawan : " << PowerEngimon2 << endl;
-    
-    if ( PowerEngimon1 < PowerEngimon2){
-        cout << eng1->get_name() << " Telah mati " << endl;
-        this->IE.deleteThing(eng1);
+    cout<<power1<<endl;
+    cout<<power2<<endl;
+    if ( power1 < power2){
+        cout << eng1->get_name() << " Telah Kalah! " << endl;
+        currentPlayer.deleteEngimonPlayer(eng1);
     }
     else{
         cout << eng1->get_name() << " Telah Menang! " << endl;
-        if (!getMaxCapacity()){
-            IE.addThing(eng2);
+        if (Inventory<EngimonPlayer>::getMaxCapacity()-Inventory<EngimonPlayer>::getCurrentCapacity()==0){
+            currentPlayer.skillInventory.addThing(GenerateSkill::generateSkill(listOfSkillGenerated));
+            // cout<<currentPlayer.displayAllSkillItem()<<endl;
         }
-        eng1->set_Exp(eng1->get_exp());
-        eng1->levelUp(eng1->set_cumExp());
-
-        //getskillmusuh, ga ngerti
-
+        eng1->set_exp(sumSkill1-sumSkill2);
     }
 
 }
 
 //ini anggep kek database elements advantage nya
-float Battle::elementAdvChart(Engimon& other){
-    if(this->elements == "Fire"){
-        if(this->other.elements == "Fire") return 1;
-        else if(other.element == "Water") return 0;
-        else if(other.element == "Electric") return 1;
-        else if(other.element == "Ground") return 0.5;
-        else return 2;
-    } else if(this->element == "Water"){
-        if(other.element == "Fire") return 2;
-        else if(other.element == "Water") return 1;
-        else if(other.element == "Electric") return 0;
-        else if(other.element == "Ground") return 1;
-        else return 1;
-    } else if(this->elements == "Electric"){
-        if(other.element== "Fire") return 1;
-        else if(other.elements == "Water") return 2;
-        else if(other.elements == "Electric") return 1;
-        else if(other.elements == "Ground") return 0;
-        else return 1.5;
-    } else if(this->elements == "Ground"){
-        if(other.elements == "Fire") return 1.5;
-        else if(other.elements == "Water") return 1;
-        else if(other.elements == "Electric") return 2;
-        else if(other.elements == "Ground") return 1;
-        else return 0;
+//elemen1 menyerang elemen2
+float Battle::elementAdvChart(string elemen1, string elemen2){
+    if(elemen1 == "Fire"){
+        if(elemen2 == "Fire"){ return 1.0;}
+        else if(elemen2 == "Water"){ return 0.0;}
+        else if(elemen2 == "Electric"){ return 1.0;}
+        else if(elemen2 == "Ground"){ return 0.5;}
+        else {return 2.0;}
+    } else if(elemen1 == "Water"){
+        if(elemen2 == "Fire") {return 2.0;}
+        else if(elemen2 == "Water") {return 1.0;}
+        else if(elemen2 == "Electric"){ return 0.0;}
+        else if(elemen2 == "Ground"){ return 1.0;}
+        else {return 1.0;}
+    } else if(elemen1 == "Electric"){
+        if(elemen2== "Fire"){ return 1.0;}
+        else if(elemen2 == "Water"){ return 2.0;}
+        else if(elemen2 == "Electric"){ return 1.0;}
+        else if(elemen2 == "Ground"){ return 0.0;}
+        else {return 1.5;}
+    } else if(elemen1 == "Ground"){
+        if(elemen2 == "Fire") {return 1.5;}
+        else if(elemen2 == "Water") {return 1.0;}
+        else if(elemen2 == "Electric"){ return 2.0;}
+        else if(elemen2 == "Ground") {return 1.0;}
+        else {return 0.0;}
     } else{
-        if(this->elements == "Fire") return 0;
-        else if(other.elements == "Water") return 1;
-        else if(other.elements == "Electric") return 0.5;
-        else if(other.elements == "Ground") return 2;
-        else return 1;
+        if(elemen1 == "Fire") {return 0.0;}
+        else if(elemen2 == "Water") {return 1.0;}
+        else if(elemen2 == "Electric") {return 0.5;}
+        else if(elemen2 == "Ground") {return 2.0;}
+        else {return 1.0;}
     }
 }
 
 
 //Ga ngerti ngambil 2 elemennya
-float Battle::getElementAdvantage(string countElementsPlayer , string countElementsLawan){
+//engimon1 menyerang engimon2
+float Battle::getElementsAdvantage(Engimon* engimon1 , Engimon* engimon2){
+
+    vector<string> elementsEngimon1 = elementsParser(engimon1->get_elements());
+    vector<string> elementsEngimon2 = elementsParser(engimon2->get_elements());
     float max = 0;
-    for (int i = 0; i < this->countElementsPlayer; i++){
-        for(int j = 0; j < this->countElementsLawan; j++){
-            if(elementAdvChart(this->elementsPlayer[i], this->elementsLawan[j]) > max) max = elementAdvChart(this->elementsPlayer[i], this->elementsLawan[j]);
+
+    for (int i=0;i<elementsEngimon1.size();i++){
+        for (int j=0;j<elementsEngimon2.size();j++){
+            if (elementAdvChart(elementsEngimon1.at(i),elementsEngimon2.at(j)) > max){
+                max = elementAdvChart(elementsEngimon1.at(i),elementsEngimon2.at(j));
+            }
         }
     }
+    
     return max;
+
+    // float max = 0;
+    // for (int i = 0; i < this->countElementsPlayer; i++){
+    //     for(int j = 0; j < this->countElementsLawan; j++){
+    //         if(elementAdvChart(this->elementsPlayer[i], this->elementsLawan[j]) > max) max = elementAdvChart(this->elementsPlayer[i], this->elementsLawan[j]);
+    //     }
+    // }
+    // return max;
+}
+
+vector<string> Battle::elementsParser(string elements){
+    vector<string> retVal;
+    if (elements.find("/") != string::npos){
+        string delimiter = "/";
+        retVal.push_back(elements.substr(0, elements.find(delimiter))); 
+        retVal.push_back(elements.substr(elements.find("/")+1,elements.size()));
+        return retVal;
+    }
+    retVal.push_back(elements);
+    return retVal;
 }

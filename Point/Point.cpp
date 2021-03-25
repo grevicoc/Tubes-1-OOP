@@ -68,9 +68,9 @@ bool Point::isAdjacent(int _x1, int _y1, int _x2, int _y2) {
     return ((_x1 == _x2 + 1 && _y1 == _y2) || (_x1 = _x2 - 1 && _y1 == _y2) || (_x1 == _x2 && _y1 == _y2 + 1) || (_x1 = _x2 && _y1 == _y2 - 1));
 }
 
-bool Point::isPosisiNotEngimonRelatif(int _x, int _y){
-    return getTypePetaRelatif(_x,_y) == 'o' || getTypePetaRelatif(_x,_y) == '-';
-}
+// bool Point::isPosisiNotEngimonRelatif(int _x, int _y){
+//     return getTypePetaRelatif(_x,_y) == 'o' || getTypePetaRelatif(_x,_y) == '-';
+// }
 
 // char Point::getTypePeta(int _x, int _y) {
 //     return (Peta::peta[_x][_y].getCellType());

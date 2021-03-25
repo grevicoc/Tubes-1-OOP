@@ -5,7 +5,7 @@ using namespace std;
 
 int EngimonPlayer::numOfEngimonPlayer = 0;
 
-EngimonPlayer::EngimonPlayer() : Engimon("Cat", 1, Point(5,8)), idEngiPlayer(EngimonPlayer::numOfEngimonPlayer+1) {
+EngimonPlayer::EngimonPlayer() : Engimon("Dragon", 1, Point(5,8)), idEngiPlayer(EngimonPlayer::numOfEngimonPlayer+1) {
     name = "Pikachu";
     parentsName = "Pika";
     numOfEngimonPlayer = numOfEngimonPlayer+1;
@@ -30,7 +30,9 @@ EngimonPlayer::EngimonPlayer(const EngimonPlayer& other) : idEngiPlayer(other.id
     this->cumExp = other.cumExp;
 }
 
-EngimonPlayer::~EngimonPlayer() {}
+EngimonPlayer::~EngimonPlayer() {
+    cout<<"Engimon kamu DIED!\n";
+}
 
 EngimonPlayer& EngimonPlayer::operator=(const EngimonPlayer& other) {
     this->name = other.name;

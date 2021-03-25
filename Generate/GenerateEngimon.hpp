@@ -6,6 +6,7 @@
 #include <ctime>
 #include "../Engimon/engimon.hpp"
 
+
 class GenerateEngimon: public Generate{
     public:
         static Engimon* generateEngimon(vector<Engimon*>&);

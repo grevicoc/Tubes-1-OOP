@@ -17,23 +17,24 @@ class Player {
         ~Player();
         EngimonPlayer& getActiveEngimon();
         void setActiveEngimon(EngimonPlayer*);
-        void Bergerak();
+        // void Bergerak();
         void displayAllEngimon();
         void displaySpecificEngimon(EngimonPlayer*);
         void displayAllSkillItem();
         void useSkillItem();
-        void Breeding(EngimonPlayer*, EngimonPlayer*);
+        
         // void Battle(); jadi kelas
         void interactActiveEngimon();
         string input();
         void addEngimonPlayer(EngimonPlayer*);
         void addSkillItem(Skill*);
+        void deleteEngimonPlayer(EngimonPlayer*);
+        Inventory<EngimonPlayer> engiInventory;
+        Inventory<Skill> skillInventory;
         
     protected:
         Point posisi;
         EngimonPlayer* activeEngimon;
-        Inventory<EngimonPlayer> engiInventory;
-        Inventory<Skill> skillInventory;
         string inputCommandMove;
 
     private:

@@ -33,18 +33,19 @@ Engimon::Engimon(string species, int level, Point posisi) : id(Engimon::numOfEng
     this->species = species;
     this->level = level;
     this->numOfEngimon = this->numOfEngimon+1;
-    this->posisi = posisi;
+    this->posisi.setX(posisi.getX());
+    this->posisi.setY(posisi.getY());
     
     if (species == "Dragon" || species == "dragon") {
         string list_skill[4] = {"Fire Ball", "Fire Claw", "Fire Breathe", "Fire Punch"};
-        int list_basePower[4] = {50, 100, 150, 210};
+        int list_basePower[4] = {50, 100, 150, 180};
         for (int i = 0; i < 4; i++){
             EngimonSkill skill = EngimonSkill(list_skill[i], list_basePower[i], this->elements);  
             engiSkill.push_back(skill);
         }
     } else if (species == "Cat" || species == "cat") {
         string list_skill[4] = {"Electric Ball", "Electric Claw", "Electric Slash", "Giga Volt"};
-        int list_basePower[4] = {65, 105, 140, 200};
+        int list_basePower[4] = {65, 105, 140, 170};
         for (int i = 0; i < 4; i++){
             EngimonSkill skill = EngimonSkill(list_skill[i], list_basePower[i], this->elements);  
             engiSkill.push_back(skill);
@@ -65,28 +66,28 @@ Engimon::Engimon(string species, int level, Point posisi) : id(Engimon::numOfEng
         }
     } else if (species == "Octopus" || species == "octopus") {
         string list_skill[4] = {"Ice Ball", "Ice Smash", "Ice punch", "Ice Bomb"};
-        int list_basePower[4] = {55, 75, 145, 195};
+        int list_basePower[4] = {55, 75, 145, 180};
         for (int i = 0; i < 4; i++){
             EngimonSkill skill = EngimonSkill(list_skill[i], list_basePower[i], this->elements);  
             engiSkill.push_back(skill);
         }
     } else if (species == "Plant" || species == "plant") {
         string list_skill[4] = {"Ground Ball", "Ground Punch", "Ground Smash", "Ground Bomb"};
-        int list_basePower[4] = {60, 80, 145, 198};
+        int list_basePower[4] = {60, 80, 145, 180};
         for (int i = 0; i < 4; i++){
             EngimonSkill skill = EngimonSkill(list_skill[i], list_basePower[i], this->elements);  
             engiSkill.push_back(skill);
         }
     } else if (species == "Worm" || species == "worm") {
         string list_skill[4] = {"Water Ball", "Ground Punch", "Water Spread", "Ground Bomb"};
-        int list_basePower[4] = {48, 80, 130, 198};
+        int list_basePower[4] = {48, 80, 130, 180};
         for (int i = 0; i < 4; i++){
             EngimonSkill skill = EngimonSkill(list_skill[i], list_basePower[i], this->elements);  
             engiSkill.push_back(skill);
         }
     } else if (species == "Tiger" || species == "tiger") {
         string list_skill[4] = {"Fire Ball", "Electric Claw", "Fire Breathe", "Giga Volt"};
-        int list_basePower[4] = {50, 105, 150, 200};
+        int list_basePower[4] = {50, 105, 150, 170};
         for (int i = 0; i < 4; i++){
             EngimonSkill skill = EngimonSkill(list_skill[i], list_basePower[i], this->elements);  
             engiSkill.push_back(skill);
@@ -127,6 +128,10 @@ int Engimon::get_posisiY(){
 }
 int Engimon::get_id() const{
     return this->id;
+}
+void Engimon::set_posisi(Point P){
+    posisi.setX(P.getX());
+    posisi.setY(P.getY());
 }
 void Engimon::set_species(string _species){
     this->species = _species;

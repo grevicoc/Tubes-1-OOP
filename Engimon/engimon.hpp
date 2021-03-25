@@ -13,7 +13,7 @@ class Engimon {
     public :
         //ctor, cctor, dtor, operator
         Engimon();
-        Engimon(string species, int level, Point posisi);
+        Engimon(string, int, Point);
         Engimon(const Engimon&);
         virtual ~Engimon();
         Engimon& operator=(const Engimon&);
@@ -25,6 +25,7 @@ class Engimon {
         int get_posisiX();
         int get_posisiY();
         int get_id() const;
+        void set_posisi(Point);
         void set_species(string);
         void set_elements(string);
         void set_level(int);

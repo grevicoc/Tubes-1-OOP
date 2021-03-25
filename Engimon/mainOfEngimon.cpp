@@ -1,20 +1,21 @@
 #include "engimon.hpp"
-#include "engimon.cpp"
+// #include "engimon.cpp"
 #include "../Point/Point.hpp"
-#include "../Point/Point.cpp"
+// #include "../Point/Point.cpp"
 #include "../Skill/Skill.hpp"
-#include "../Skill/Skill.cpp"
+// #include "../Skill/Skill.cpp"
 #include "../Skill/EngimonSkill.hpp"
-#include "../Skill/EngimonSkill.cpp"
-#include "../Peta/peta.hpp"
-#include "../Peta/peta.cpp"
-#include "../Peta/cell.hpp"
-#include "../Peta/cell.cpp"
+// #include "../Skill/EngimonSkill.cpp"
+// #include "../Peta/peta.hpp"
+// #include "../Peta/peta.cpp"
+// #include "../Peta/cell.hpp"
+// #include "../Peta/cell.cpp"
 
 #include <iostream>
 #include <vector>
 
 using namespace std;
+
 
 int main(){
 
@@ -38,6 +39,11 @@ int main(){
     Engimon engi7 = Engimon("Plant", 4, posisi7);
     Engimon engi8 = Engimon("Worm", 5, posisi8);
     Engimon engi9 = Engimon("Tiger", 5, posisi9);
+
+    // vector<string> temp = elementsParser(engi9.get_elements());
+    // cout<<temp.at(0)<<endl;
+    // cout<<temp.at(1)<<endl;
+    // cout<<getElementsAdvantage(&engi9,&engi8)<<endl;
 
     //cctor
     Engimon engi10 = Engimon(engi3);
@@ -74,16 +80,16 @@ int main(){
     engi10.displayEngiInfo(); cout << endl;
 
     //dtor
-    engi1.~Engimon();
-    engi2.~Engimon();
-    engi3.~Engimon();
-    engi4.~Engimon();
-    engi5.~Engimon();
-    engi6.~Engimon();
-    engi7.~Engimon();
-    engi8.~Engimon();
-    engi9.~Engimon();
-    engi10.~Engimon();
+    // engi1.~Engimon();
+    // engi2.~Engimon();
+    // engi3.~Engimon();
+    // engi4.~Engimon();
+    // engi5.~Engimon();
+    // engi6.~Engimon();
+    // engi7.~Engimon();
+    // engi8.~Engimon();
+    // engi9.~Engimon();
+    // engi10.~Engimon();
 
     return 0;
 }

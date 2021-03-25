@@ -2,7 +2,7 @@
 #include "../Engimon/engimon.hpp"
 #include "../Engimon/engimonPlayer.hpp"
 #include "../Inventory/Inventory.hpp"
-#include "../Point/Point.hpp"
+// #include "../Point/Point.hpp"
 
 #include <iostream>
 #include <string>
@@ -25,53 +25,53 @@ void Player::setActiveEngimon(EngimonPlayer* EP) {
     this->activeEngimon->set_PosisiY(j);
 }
 
-void Player::Bergerak() {
-    if (this->inputCommandMove == "up" || this->inputCommandMove == "UP") {
-        if (posisi.isValidPosisiRelatif(-1, 0)) {
-            if (posisi.getTypePeta(posisi.getX() - 1, posisi.getY()) == 'o' || posisi.getTypePeta(posisi.getX() - 1, posisi.getY()) == '-') {
-                posisi.set(posisi.getX() - 1, posisi.getY());
-            } else {
-                cout << "Tidak bisa pindah! Ada engimon." << endl;
-            }
-        } else {
-            cout << "Tidak bisa pindah ke luar peta!" << endl;
-        }
-    }
-    else if (this->inputCommandMove == "down" || this->inputCommandMove == "DOWN") {
-        if (posisi.isValidPosisiRelatif(1, 0)) {
-            if (posisi.getTypePeta(posisi.getX() + 1, posisi.getY()) == 'o' || posisi.getTypePeta(posisi.getX() + 1, posisi.getY()) == '-') {
-                posisi.set(posisi.getX() + 1, posisi.getY());
-            } else {
-                cout << "Tidak bisa pindah! Ada engimon." << endl;
-            }
-        } else {
-            cout << "Tidak bisa pindah ke luar peta!" << endl;
-        }
-    }
-    else if (this->inputCommandMove == "right" || this->inputCommandMove == "RIGHT") {
-        if (posisi.isValidPosisiRelatif(0, 1)) {
-            if (posisi.getTypePeta(posisi.getX(), posisi.getY() + 1) == 'o' || posisi.getTypePeta(posisi.getX(), posisi.getY() + 1) == '-') {
-                posisi.set(posisi.getX(), posisi.getY() + 1);
-            } else {
-                cout << "Tidak bisa pindah! Ada engimon." << endl;
-            }
-        } else {
-            cout << "Tidak bisa pindah ke luar peta!" << endl;
-        }
-    }
-    else if (this->inputCommandMove == "left" || this->inputCommandMove == "LEFT") {
-        if (posisi.isValidPosisiRelatif(0, -1)) {
-            if (posisi.getTypePeta(posisi.getX(), posisi.getY() - 1) == 'o' || posisi.getTypePeta(posisi.getX(), posisi.getY() - 1) == '-') {
-                posisi.set(posisi.getX(), posisi.getY() - 1);
-            } else {
-                cout << "Tidak bisa pindah! Ada engimon." << endl;
-            }
-        } else {
-            cout << "Tidak bisa pindah ke luar peta!" << endl;
-        }
-    }
-    // ngubah peta posisi tujuan jd P dan posisi asal ditempati engimon aktif
-}
+// void Player::Bergerak() {
+//     if (this->inputCommandMove == "up" || this->inputCommandMove == "UP") {
+//         if (posisi.isValidPosisiRelatif(-1, 0)) {
+//             if (posisi.getTypePeta(posisi.getX() - 1, posisi.getY()) == 'o' || posisi.getTypePeta(posisi.getX() - 1, posisi.getY()) == '-') {
+//                 posisi.set(posisi.getX() - 1, posisi.getY());
+//             } else {
+//                 cout << "Tidak bisa pindah! Ada engimon." << endl;
+//             }
+//         } else {
+//             cout << "Tidak bisa pindah ke luar peta!" << endl;
+//         }
+//     }
+//     else if (this->inputCommandMove == "down" || this->inputCommandMove == "DOWN") {
+//         if (posisi.isValidPosisiRelatif(1, 0)) {
+//             if (posisi.getTypePeta(posisi.getX() + 1, posisi.getY()) == 'o' || posisi.getTypePeta(posisi.getX() + 1, posisi.getY()) == '-') {
+//                 posisi.set(posisi.getX() + 1, posisi.getY());
+//             } else {
+//                 cout << "Tidak bisa pindah! Ada engimon." << endl;
+//             }
+//         } else {
+//             cout << "Tidak bisa pindah ke luar peta!" << endl;
+//         }
+//     }
+//     else if (this->inputCommandMove == "right" || this->inputCommandMove == "RIGHT") {
+//         if (posisi.isValidPosisiRelatif(0, 1)) {
+//             if (posisi.getTypePeta(posisi.getX(), posisi.getY() + 1) == 'o' || posisi.getTypePeta(posisi.getX(), posisi.getY() + 1) == '-') {
+//                 posisi.set(posisi.getX(), posisi.getY() + 1);
+//             } else {
+//                 cout << "Tidak bisa pindah! Ada engimon." << endl;
+//             }
+//         } else {
+//             cout << "Tidak bisa pindah ke luar peta!" << endl;
+//         }
+//     }
+//     else if (this->inputCommandMove == "left" || this->inputCommandMove == "LEFT") {
+//         if (posisi.isValidPosisiRelatif(0, -1)) {
+//             if (posisi.getTypePeta(posisi.getX(), posisi.getY() - 1) == 'o' || posisi.getTypePeta(posisi.getX(), posisi.getY() - 1) == '-') {
+//                 posisi.set(posisi.getX(), posisi.getY() - 1);
+//             } else {
+//                 cout << "Tidak bisa pindah! Ada engimon." << endl;
+//             }
+//         } else {
+//             cout << "Tidak bisa pindah ke luar peta!" << endl;
+//         }
+//     }
+//     // ngubah peta posisi tujuan jd P dan posisi asal ditempati engimon aktif
+// }
 
 void Player::displayAllEngimon(){
     // ini gatau cara akses per engimon gimana, gini bener ga?
@@ -93,174 +93,6 @@ void Player::displayAllSkillItem() {
 
 void Player::useSkillItem(){
 
-}
-
-void Player::Breeding(EngimonPlayer* A, EngimonPlayer* B) { // inherit skillnya belom
-    int random;
-    if (A->get_level() >= 30 && B->get_level() >= 30) {
-        EngimonPlayer* child = new EngimonPlayer();
-        child->set_name();
-        string parentA(A->get_name());
-        string parentB(B->get_name());
-        parentA.append("/");
-        child->set_parentsName(parentA.append(parentB));
-        if (A->get_elements() == B->get_elements()) {
-            child->set_elements(A->get_elements());
-            random = rand()%2;
-            if (random == 0) {
-                child->set_species(A->get_species());
-            } else {
-                child->set_species(B->get_species());
-            }
-        } else {
-            if (A->get_elements() == "Fire") {
-                if (B->get_elements() == "Water") {
-                    child->set_elements(B->get_elements());
-                    child->set_species(B->get_species());
-                } else if (B->get_elements() == "Electric") {
-                    child->set_elements("Fire/Electric");
-                    random = rand()%5;
-                    if (random == 0) {
-                        child->set_species("Bird");
-                    } else if (random == 1) {
-                        child->set_species("Fish");
-                    } else if (random == 2) {
-                        child->set_species("Octopus");
-                    } else if (random == 3) {
-                        child->set_species("Plant");
-                    } else {
-                        child->set_species("Worm");
-                    }
-                } else if (B->get_elements() == "Ground") {
-                    child->set_elements(B->get_elements());
-                    child->set_species(B->get_species());
-                } else if (B->get_elements() == "Ice") {
-                    child->set_elements(A->get_elements());
-                    child->set_species(A->get_species());
-                } else {
-                    // kombinasi fire dengan engimon dua elemen
-                }
-            } else if (A->get_elements() == "Water") {
-                if (B->get_elements() == "Fire") {
-                    child->set_elements(A->get_elements());
-                    child->set_species(A->get_species());
-                } else if (B->get_elements() == "Electric") {
-                    child->set_elements(B->get_elements());
-                    child->set_species(B->get_species());
-                } else if (B->get_elements() == "Ground") {
-                    child->set_elements("Water/Ground");
-                    random = rand()%4;
-                    if (random == 0) {
-                        child->set_species("Dragon");
-                    } else if (random == 1) {
-                        child->set_species("Cat");
-                    } else if (random == 2) {
-                        child->set_species("Octopus");
-                    } else {
-                        child->set_species("Tiger");
-                    }
-                } else if (B->get_elements() == "Ice") {
-                    child->set_elements("Water/Ice");
-                    random = rand()%4;
-                    if (random == 0) {
-                        child->set_species("Dragon");
-                    } else if (random == 1) {
-                        child->set_species("Cat");
-                    } else if (random == 2) {
-                        child->set_species("Plant");
-                    } else {
-                        child->set_species("Tiger");
-                    }
-                } else {
-                    // kombinasi water dengan engimon dua elemen
-                }
-            } else if (A->get_elements() == "Electric") {
-                if (B->get_elements() == "Fire") {
-                    child->set_elements("Fire/Electric");
-                    random = rand()%5;
-                    if (random == 0) {
-                        child->set_species("Bird");
-                    } else if (random == 1) {
-                        child->set_species("Fish");
-                    } else if (random == 2) {
-                        child->set_species("Octopus");
-                    } else if (random == 3) {
-                        child->set_species("Plant");
-                    } else {
-                        child->set_species("Worm");
-                    }
-                } else if (B->get_elements() == "Water") {
-                    child->set_elements(A->get_elements());
-                    child->set_species(A->get_species());
-                } else if (B->get_elements() == "Ground") {
-                    child->set_elements(B->get_elements());
-                    child->set_species(B->get_species());
-                } else if (B->get_elements() == "Ice") {
-                    child->set_elements(A->get_elements());
-                    child->set_species(A->get_species());
-                } else {
-                    // kombinasi electric dengan engimon dua element
-                }
-            } else if (A->get_elements() == "Ground") {
-                if (B->get_elements() == "Fire") {
-                    child->set_elements(A->get_elements());
-                    child->set_species(A->get_species());
-                } else if (B->get_elements() == "Water") {
-                    child->set_elements("Fire/Ground");
-                    random = rand()%4;
-                    if (random == 0) {
-                        child->set_species("Cat");
-                    } else if (random == 1) {
-                        child->set_species("Bird");
-                    } else if (random == 2) {
-                        child->set_species("Fish");
-                    } else {
-                        child->set_species("Octopus");
-                    }
-                } else if (B->get_elements() == "Electric") {
-                    child->set_elements(A->get_elements());
-                    child->set_species(A->get_species());
-                } else if (B->get_elements() == "Fire") {
-                    child->set_elements(B->get_elements());
-                    child->set_species(B->get_species());
-                } else {
-                    // kombinasi ground dengan engimon dua elementt
-                }
-            } else if (A->get_elements() == "Ice") {
-                if (B->get_elements() == "Fire") {
-                    child->set_elements(B->get_elements());
-                    child->set_species(B->get_species());
-                } else if (B->get_elements() == "Water") {
-                    child->set_elements("Water/Ice");
-                    random = rand()%4;
-                    if (random == 0) {
-                        child->set_species("Dragon");
-                    } else if (random == 1) {
-                        child->set_species("Cat");
-                    } else if (random == 2) {
-                        child->set_species("Plant");
-                    } else {
-                        child->set_species("Tiger");
-                    }
-                } else if (B->get_elements() == "Electric") {
-                    child->set_elements(B->get_elements());
-                    child->set_species(B->get_species());
-                } else if (B->get_elements() == "Ground") {
-                    child->set_elements(A->get_elements());
-                    child->set_species(A->get_species());
-                } else {
-                    // kombinasi Ice dengan engimon dua element
-                }
-            } else {
-                // kombinasi engimon dua elemen dengan engimon dua element
-            }
-        }
-        A->set_level(A->get_level() - 30);
-        B->set_level(B->get_level() - 30);
-        engiInventory.addThing(child);
-    } else {
-        cout << "Level parent belum cukup untuk breeding!" << endl;
-    }
 }
 
 // void Battle(); jadi kelas
@@ -335,4 +167,8 @@ void Player::addEngimonPlayer(EngimonPlayer* engi){
 void Player::addSkillItem(Skill* _skill){
     skillInventory.addThing(_skill);
     cout<<_skill->getNamaSkill()<<" berhasil ditambahkan!\n";
+}
+
+void Player::deleteEngimonPlayer(EngimonPlayer* object){
+    engiInventory.deleteThing(object);
 }
