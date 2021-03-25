@@ -2,9 +2,9 @@
 #define GENERATEENGIMON_HPP
 
 #include "Generate.hpp"
-#include "../Engimon/engimon.hpp"
 #include <cstdlib>
 #include <ctime>
+#include "../Engimon/engimon.hpp"
 
 class GenerateEngimon: public Generate{
     public:
