@@ -12,6 +12,12 @@ Skill::Skill(string _namaSkill, string elemen, int basePower){
     this->basePower = basePower;
 }
 
+Skill::Skill(const Skill& S){
+    namaSkill = S.namaSkill;
+    unique = S.unique;
+    basePower = S.basePower;
+}
+
 Skill& Skill::operator=(const Skill& other) {
     this->namaSkill = other.namaSkill;
     this->unique = other.unique;

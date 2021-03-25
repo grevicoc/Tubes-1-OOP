@@ -1,5 +1,4 @@
 #include "Generate.hpp"
-#include <fstream>
 
 vector<vector<string>> Generate::readFromFile(string pathToFile){
     vector<vector<string>> retVal;

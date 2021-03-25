@@ -15,6 +15,7 @@ class Skill{
     public:
         Skill();
         Skill(string _namaSkill, string elemen, int basePower);
+        Skill(const Skill&);
         Skill& operator=(const Skill&);
         ~Skill();
 
