@@ -1,6 +1,11 @@
 #ifndef CELL_HPP
 #define CELL_HPP
 
+#include <iostream>
+#include <utility>
+
+using namespace std;
+
 class Cell{
 public :
     Cell();
@@ -9,11 +14,9 @@ public :
     int getX();
     int getY();
     char getCellType();
-    friend class Peta;
     
 protected :
-    int x;
-    int y;
+    pair<int,int> point;
     char cellType;
 };
 

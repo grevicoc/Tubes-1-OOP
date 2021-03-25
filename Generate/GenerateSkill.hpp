@@ -8,7 +8,7 @@
 
 class GenerateSkill: public Generate{
     public:
-        static Skill* generateSkill();
+        static Skill* generateSkill(vector<Skill*>&);
 };
 
 #endif

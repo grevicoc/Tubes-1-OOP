@@ -8,7 +8,7 @@
 
 class GenerateEngimon: public Generate{
     public:
-        static Engimon* generateEngimon();
+        static Engimon* generateEngimon(vector<Engimon*>&);
 };
 
 #endif
