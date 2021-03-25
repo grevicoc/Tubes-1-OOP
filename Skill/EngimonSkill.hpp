@@ -18,6 +18,8 @@ class EngimonSkill : public Skill{
         void setEngimonElemen(string);
         void setEngimonBasePower(int);
         int damage();
+        int getMasteryLevel();
+        void setMasteryLevel(int);
     protected:
         int masteryLevel;   
 };

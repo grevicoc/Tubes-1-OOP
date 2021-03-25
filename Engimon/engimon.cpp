@@ -1,7 +1,6 @@
 //File engimon.cpp
 #include "engimon.hpp"
 
-
 using namespace std;
 
 int Engimon::numOfEngimon = 0;
@@ -12,10 +11,7 @@ Engimon::Engimon() : id(Engimon::numOfEngimon+1) {
     level = 1;
     numOfEngimon = numOfEngimon+1;
     posisi = Point();
-    skill = new Skill[4];   //biarin kosong dulu aja
-    // for (int i = 0; i < 4; i++){
-    //     skill[i] = Skill("XXX", this->elements, 50);
-    // }
+    skill = new Skill[4];
 }
 Engimon::Engimon(string species, int level, Point posisi) : id(Engimon::numOfEngimon+1) {
     if (species == "Dragon" || species == "dragon") {
@@ -117,10 +113,7 @@ Engimon::Engimon(const Engimon& otherEngimon) : id(otherEngimon.id) {
         this->skill[i] = otherEngimon.skill[i];
     }
 }
-Engimon::~Engimon(){
-    // delete[] skill;  //masalahnya di sini gara2 engimonPlayer ngedelete skill tp karena engimonPlayer turunan dari engimon, waktu dia ngedestroy parentnya ngedelete skill lagi (2x delete skill)
-    cout<<"DESTRUCTOR ENGIMON\n";
-}
+Engimon::~Engimon(){}
 Engimon& Engimon::operator=(const Engimon& otherEngimon) {
     delete [] skill;
     this->species = otherEngimon.species;

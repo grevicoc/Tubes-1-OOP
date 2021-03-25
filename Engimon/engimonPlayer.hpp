@@ -10,7 +10,7 @@ class EngimonPlayer :  public Engimon {
         EngimonPlayer();
         EngimonPlayer(Engimon&);
         EngimonPlayer(const EngimonPlayer&);
-        virtual ~EngimonPlayer();
+        ~EngimonPlayer();
         EngimonPlayer& operator=(const EngimonPlayer&);
 
         //getter, setter
