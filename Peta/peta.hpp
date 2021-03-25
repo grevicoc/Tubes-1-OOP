@@ -5,6 +5,8 @@
 
 
 #include "cell.hpp"
+#include "../Engimon/engimon.hpp"
+#include "../Point/Point.hpp"
 #include <iostream>
 
 using namespace std;
@@ -18,7 +20,7 @@ class Peta{
         ~Peta();
 
         // Method
-        void movingWildEngimon();
+        void movingWildEngimon(Engimon&);
         void spawnWildEngimon();
         void loadMap();
 
