@@ -8,6 +8,7 @@ class EngimonSkill : public Skill{
 
     public:
         EngimonSkill();
+        EngimonSkill(string, int, string);
         EngimonSkill(const Skill&);         //bakal berguna di method learn
         EngimonSkill(const EngimonSkill&);
         EngimonSkill& operator=(const EngimonSkill&);

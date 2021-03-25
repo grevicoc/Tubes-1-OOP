@@ -27,7 +27,7 @@ void Player::setActiveEngimon(EngimonPlayer* EP) {
 
 void Player::Bergerak() {
     if (this->inputCommandMove == "up" || this->inputCommandMove == "UP") {
-        if (Point::isValidPosisi(posisi.getX() - 1, posisi.getY())) {
+        if (posisi.isValidPosisiRelatif(-1, 0)) {
             if (posisi.getTypePeta(posisi.getX() - 1, posisi.getY()) == 'o' || posisi.getTypePeta(posisi.getX() - 1, posisi.getY()) == '-') {
                 posisi.set(posisi.getX() - 1, posisi.getY());
             } else {
@@ -38,7 +38,7 @@ void Player::Bergerak() {
         }
     }
     else if (this->inputCommandMove == "down" || this->inputCommandMove == "DOWN") {
-        if (Point::isValidPosisi(posisi.getX() + 1, posisi.getY())) {
+        if (posisi.isValidPosisiRelatif(1, 0)) {
             if (posisi.getTypePeta(posisi.getX() + 1, posisi.getY()) == 'o' || posisi.getTypePeta(posisi.getX() + 1, posisi.getY()) == '-') {
                 posisi.set(posisi.getX() + 1, posisi.getY());
             } else {
@@ -49,7 +49,7 @@ void Player::Bergerak() {
         }
     }
     else if (this->inputCommandMove == "right" || this->inputCommandMove == "RIGHT") {
-        if (Point::isValidPosisi(posisi.getX(), posisi.getY() + 1)) {
+        if (posisi.isValidPosisiRelatif(0, 1)) {
             if (posisi.getTypePeta(posisi.getX(), posisi.getY() + 1) == 'o' || posisi.getTypePeta(posisi.getX(), posisi.getY() + 1) == '-') {
                 posisi.set(posisi.getX(), posisi.getY() + 1);
             } else {
@@ -60,7 +60,7 @@ void Player::Bergerak() {
         }
     }
     else if (this->inputCommandMove == "left" || this->inputCommandMove == "LEFT") {
-        if (Point::isValidPosisi(posisi.getX(), posisi.getY() - 1)) {
+        if (posisi.isValidPosisiRelatif(0, -1)) {
             if (posisi.getTypePeta(posisi.getX(), posisi.getY() - 1) == 'o' || posisi.getTypePeta(posisi.getX(), posisi.getY() - 1) == '-') {
                 posisi.set(posisi.getX(), posisi.getY() - 1);
             } else {

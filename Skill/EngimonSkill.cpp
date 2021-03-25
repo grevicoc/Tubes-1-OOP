@@ -2,6 +2,13 @@
 
 EngimonSkill::EngimonSkill(): Skill(){}
 
+EngimonSkill::EngimonSkill(string skill, int power, string elemen) {
+    this->namaSkill = skill;
+    this->basePower = power;
+    this->unique = elemen;
+    this->masteryLevel = 1;
+}
+
 EngimonSkill::EngimonSkill(const Skill& baseSkill): Skill(baseSkill){
     masteryLevel = 1;
 }

@@ -20,7 +20,9 @@ class Point{
         // bool operator!=(const Point& other);
         static bool isValidPosisi(int _x, int _y); // menentukan apakah titik valid/tidak di luar map
         static bool isAdjacent(int _x1, int _y1, int _x2, int _y2);    // menentukan apa dua posisi bertetanggaan
-        // char getTypePeta(int x, int y); // menentukan type peta dari suatu point
+        bool isPosisiNotEngimonRelatif(int _x, int _y); // menentukan apakah posisi relatif terhadap objek Point bukanlah Engimon
+        char getTypePeta(int _x, int _y); // menentukan type peta dari suatu point
+        char getTypePetaRelatif(int _x, int _Y); // menetukan type peta relatif dari suatu objek Point
 
     protected:
         int x;
