@@ -1,39 +1,36 @@
 #include "EngimonSkill.hpp"
 
-EngimonSkill::EngimonSkill(){}
+EngimonSkill::EngimonSkill(): Skill(){}
 
-EngimonSkill::EngimonSkill(Skill& baseSkill){
-    namaSkill = baseSkill.getNamaSkill();
-    basePower = baseSkill.getBasePower();
-    unique = baseSkill.getElemen();
+EngimonSkill::EngimonSkill(const Skill& baseSkill): Skill(baseSkill){
     masteryLevel = 1;
+}
+
+EngimonSkill::EngimonSkill(const EngimonSkill& ES){
+    namaSkill = ES.namaSkill;
+    basePower = ES.basePower;
+    unique = ES.unique;
+    masteryLevel = ES.masteryLevel;
+}
+        
+EngimonSkill& EngimonSkill::operator=(const EngimonSkill& other){
+    this->namaSkill = other.getNamaSkill();
+    this->unique = other.getElemen();
+    this->basePower = other.getBasePower();
+    this->masteryLevel = other.getMasteryLevel();
+    return *this;
 }
 
 EngimonSkill::~EngimonSkill(){}
 
-string EngimonSkill::getEngimonNamaSkill() {
-    return this->namaSkill;
-}
-
-string EngimonSkill::getEngimonElemen() {
-    return this->unique;
-}
-int EngimonSkill::getEngimonBasePower() {
-    return this->basePower;
-}
-
-void EngimonSkill::setEngimonNamaSkill(string namaskill){
-    this->namaSkill = namaskill;
-}
-
-void EngimonSkill::setEngimonElemen(string element){
-    this->unique = element;
-}
-
-void EngimonSkill::setEngimonBasePower(int base) {
-    this->basePower = base;
-}
-
 int EngimonSkill::damage(){
     return basePower*masteryLevel;
+}
+
+int EngimonSkill::getMasteryLevel() const{
+    return this->masteryLevel;
+}
+
+void EngimonSkill::setMasteryLevel(int masteryLevel) {
+    this->masteryLevel = masteryLevel;
 }

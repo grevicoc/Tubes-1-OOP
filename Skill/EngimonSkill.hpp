@@ -8,16 +8,15 @@ class EngimonSkill : public Skill{
 
     public:
         EngimonSkill();
-        EngimonSkill(Skill&);
-        ~EngimonSkill();
+        EngimonSkill(const Skill&);         //bakal berguna di method learn
+        EngimonSkill(const EngimonSkill&);
+        EngimonSkill& operator=(const EngimonSkill&);
+        virtual ~EngimonSkill();
 
-        string getEngimonNamaSkill();
-        string getEngimonElemen();
-        int getEngimonBasePower();
-        void setEngimonNamaSkill(string);
-        void setEngimonElemen(string);
-        void setEngimonBasePower(int);
         int damage();
+        int getMasteryLevel() const;
+        void setMasteryLevel(int);
+
     protected:
         int masteryLevel;   
 };

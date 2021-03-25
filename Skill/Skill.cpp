@@ -1,11 +1,21 @@
 #include "Skill.hpp"
 
-Skill::Skill(){}
+Skill::Skill(){
+    namaSkill;
+    unique;
+    basePower;
+}
 
 Skill::Skill(string _namaSkill, string elemen, int basePower){
     namaSkill = _namaSkill;
     unique = elemen;
     this->basePower = basePower;
+}
+
+Skill::Skill(const Skill& S){
+    namaSkill = S.namaSkill;
+    unique = S.unique;
+    basePower = S.basePower;
 }
 
 Skill& Skill::operator=(const Skill& other) {
@@ -15,16 +25,18 @@ Skill& Skill::operator=(const Skill& other) {
     return *this;
 }
 
-Skill::~Skill(){}
+Skill::~Skill(){
+    //cout<<"Skill hilang!\n";    //buat debugging
+}
 
-string Skill::getNamaSkill() {
+string Skill::getNamaSkill() const{
     return this->namaSkill;
 }
 
-string Skill::getElemen() {
+string Skill::getElemen() const{
     return this->unique;
 }
-int Skill::getBasePower() {
+int Skill::getBasePower() const{
     return this->basePower;
 }
 

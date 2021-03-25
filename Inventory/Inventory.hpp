@@ -8,7 +8,7 @@
 using namespace std;
 
 template<class T>
-class Inventory{
+class Inventory {
     protected:
         unordered_map<T*,int> things;         //dengan T* adalah pointer yang mengarah ke objek 
         static int currentCapacity;

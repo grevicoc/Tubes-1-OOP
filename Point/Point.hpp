@@ -5,7 +5,7 @@
 #include "../Peta/cell.hpp"
 #include "../Peta/peta.hpp"
 
-class Point : public Peta {
+class Point{
     public:
         Point();    // inisialisasi koordinat awal player di (0, 0)
         Point(int _x, int _y);  // inisialisasi koordinat awal player di (_x, _y)

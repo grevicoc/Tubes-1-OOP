@@ -1,6 +1,6 @@
 //File Player.hpp
 #ifndef PLAYER_HPP
-#define PLAYYER_HPP
+#define PLAYER_HPP
 
 #include "../Engimon/engimon.hpp"
 #include "../Engimon/engimonPlayer.hpp"
@@ -14,6 +14,7 @@ using namespace std;
 class Player {
     public:
         Player();
+        ~Player();
         EngimonPlayer& getActiveEngimon();
         void setActiveEngimon(EngimonPlayer*);
         void Bergerak();

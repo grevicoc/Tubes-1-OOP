@@ -1,7 +1,6 @@
 //File engimon.cpp
 #include "engimon.hpp"
 
-
 using namespace std;
 
 int Engimon::numOfEngimon = 0;
@@ -13,9 +12,6 @@ Engimon::Engimon() : id(Engimon::numOfEngimon+1) {
     numOfEngimon = numOfEngimon+1;
     posisi = Point();
     skill = new Skill[4];
-    for (int i = 0; i < 4; i++){
-        skill[i] = Skill("XXX", this->elements, 50);
-    }
 }
 Engimon::Engimon(string species, int level, Point posisi) : id(Engimon::numOfEngimon+1) {
     if (species == "Dragon" || species == "dragon") {
@@ -117,9 +113,7 @@ Engimon::Engimon(const Engimon& otherEngimon) : id(otherEngimon.id) {
         this->skill[i] = otherEngimon.skill[i];
     }
 }
-Engimon::~Engimon() {
-    delete [] skill;
-}
+Engimon::~Engimon(){}
 Engimon& Engimon::operator=(const Engimon& otherEngimon) {
     delete [] skill;
     this->species = otherEngimon.species;
@@ -157,6 +151,9 @@ void Engimon::set_elements(string _elements){
 }
 void Engimon::set_level(int _level){
     this->level = _level;
+}
+void Engimon::set_Posisi(Point Pos){
+    this->posisi = Pos;
 }
 
 void Engimon::displayEngiInfo(){
