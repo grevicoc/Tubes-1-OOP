@@ -5,9 +5,10 @@
 
 
 #include "cell.hpp"
-// #include "../Engimon/engimon.hpp"
+#include "../Engimon/engimon.hpp"
 #include "../Point/Point.hpp"
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -20,9 +21,10 @@ class Peta{
         ~Peta();
 
         // Method
-        // void movingWildEngimon(Engimon&);
+        void movingWildEngimon(vector<Engimon*>&);
         void spawnWildEngimon();
         void loadMap();
+        void printMap(vector<Engimon*>& listOfWildEngimon);
         
     protected:
         Cell peta[10][12];

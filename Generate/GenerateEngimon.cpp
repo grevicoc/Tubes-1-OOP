@@ -14,8 +14,8 @@ Engimon* GenerateEngimon::generateEngimon(vector<Engimon*>& listOfWildEngimon){
         
 
         if (generatedEngimon->get_elements()=="Water" || generatedEngimon->get_elements()=="Water/Ice" || generatedEngimon->get_elements()=="Ice"){
-            int xRandom = 6 + ( rand() % ( 11 - 6 + 1 ) );
-            int yRandom = 0 + ( rand() % ( 5 - 0 + 1 ) );
+            int xRandom = 6 + ( rand() % ( 11 - 6 + 1 ) );  //6-11
+            int yRandom = 0 + ( rand() % ( 5 - 0 + 1 ) );   //0-5
             cout<<"here!1\n";
             
             bool berhasil = false;
@@ -57,8 +57,8 @@ Engimon* GenerateEngimon::generateEngimon(vector<Engimon*>& listOfWildEngimon){
                     berhasil = true;
                 }else{
                     //generate posisi baru
-                    xRandom = 6 + ( rand() % ( 11 - 6 + 1 ) );
-                    yRandom = 0 + ( rand() % ( 5 - 0 + 1 ) );
+                    xRandom = 0 + ( rand() % ( 11 - 0 + 1 ) );
+                    yRandom = 0 + ( rand() % ( 9 - 0 + 1 ) );
                 }
                 
             }

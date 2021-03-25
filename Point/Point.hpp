@@ -3,7 +3,7 @@
 #define POINT_HPP
 
 #include "../Peta/cell.hpp"
-#include "../Peta/peta.hpp"
+
 
 class Point{
     public:

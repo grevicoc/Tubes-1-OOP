@@ -13,6 +13,8 @@
 
 #include "../Breeding/Breeding.hpp"
 
+#include "../Peta/peta.hpp"
+
 #include <vector>
 
 vector<Skill*> listOfSkillGenerated;
@@ -22,9 +24,13 @@ int main(){
     srand(time(0));
     Engimon* generatedEngimon = GenerateEngimon::generateEngimon(listOfWildEngimon);
     generatedEngimon->displayEngiInfo();
+    
+    Peta P;
+    P.loadMap();
+    P.printMap(listOfWildEngimon);
 
-    Player P;
-    EngimonPlayer* starterEngimon1 = new EngimonPlayer();
+    // Player P;
+    // EngimonPlayer* starterEngimon1 = new EngimonPlayer();
     // starterEngimon1->set_level(35);
     // P.addEngimonPlayer(starterEngimon1);
     // starterEngimon1->displayEngiInfo();
@@ -37,11 +43,12 @@ int main(){
     // Breeding B;
     // EngimonPlayer* childStarterEngimon = B.makeBreeding(starterEngimon1,starterEngimon2);
     // childStarterEngimon->displayEngiInfo();
+    // starterEngimon2->displayEngiInfo();
     
     
     // Skill* generatedSkill = GenerateSkill::generateSkill(listOfSkillGenerated);
 
-    BattleCommand::battleBetween(starterEngimon1,generatedEngimon,P,listOfSkillGenerated);
+    // BattleCommand::battleBetween(starterEngimon1,generatedEngimon,P,listOfSkillGenerated);
     
 
     // cout<<generatedSkill->getNamaSkill()<<endl;
