@@ -28,6 +28,8 @@ class Player {
         string input();
         void addEngimonPlayer(EngimonPlayer*);
         void addSkillItem(Skill*);
+        Point getPosisiPlayer();
+        void setPosisiPlayer();
         
     protected:
         Point posisi;

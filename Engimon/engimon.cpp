@@ -140,6 +140,9 @@ int Engimon::get_posisiX(){
 int Engimon::get_posisiY(){
     return this->posisi.getY(); 
 }
+Point Engimon::get_posisi() {
+    return this->posisi;
+}
 int Engimon::get_id() const{
     return this->id;
 }

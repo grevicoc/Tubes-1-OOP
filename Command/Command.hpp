@@ -12,6 +12,7 @@ protected:
   string currentCommand;
   char gameMode;
 public:
+  Command();
   void inputCommand();
   void updateGameMode(char);
   void executeCommand();
