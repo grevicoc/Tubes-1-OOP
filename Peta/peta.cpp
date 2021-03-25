@@ -9,9 +9,9 @@ using namespace std;
 Peta::Peta(){
     for(int i = 0; i<10; i++){
         for(int j=0; j<12; j++){
-            peta[i][j].x = i;
-            peta[i][j].y = j;
-            peta[i][j].cellType = '.';
+            peta[i][j].setX(i);
+            peta[i][j].setY(j);
+            peta[i][j].setCellType('.');
         }
     }
 }
@@ -41,7 +41,7 @@ void Peta::movingWildEngimon(Engimon& engimon){
 
         xTemp += random_x;
         yTemp += random_y;
-        type_peta = peta[xTemp][yTemp].cellType;
+        type_peta = peta[xTemp][yTemp].getCellType();
 
         // Penentuan area yang diperbolehkan bergerak
         if(type_elemen == "Fire"){
@@ -55,7 +55,7 @@ void Peta::movingWildEngimon(Engimon& engimon){
         }else if(type_elemen == "Ice"){
             valid_move = (type_peta == 'o');
         }else if(type_elemen == "Ground"){
-            valid_move = (type_peta == '-')
+            valid_move = (type_peta == '-');
         }else if(type_elemen == "Water/Ground"){
             valid_move = (type_peta == 'o') || (type_peta == '-');
         }else if(type_elemen == "Fire/Electric"){
@@ -72,17 +72,16 @@ void Peta::movingWildEngimon(Engimon& engimon){
 //void Peta::spawnWildEngimon();
 void Peta::loadMap(){
     string line;
-    ifstream myPeta();
-    if(myPeta.is_open("../Test/map1.txt")){
+    ifstream myPeta("../Test/map1.txt");
+    if(myPeta.is_open()){
         int i = 0;
         while(!myPeta.eof()){
             getline(myPeta,line);
             for (int j = 0; j <line.length(); j++){
-                this->peta[i][j].cellType = line[j];
-                this->peta[i][j].x = i;
-                this->peta[i][j].y = j;
+                this->peta[i][j].setCellType(line[j]);
+                this->peta[i][j].setX(i);
+                this->peta[i][j].setY(j);
             }
-
             i++;
         }
     }else{

@@ -52,6 +52,6 @@ bool Point::isAdjacent(int _x1, int _y1, int _x2, int _y2) {
     return ((_x1 == _x2 + 1 && _y1 == _y2) || (_x1 = _x2 - 1 && _y1 == _y2) || (_x1 == _x2 && _y1 == _y2 + 1) || (_x1 = _x2 && _y1 == _y2 - 1));
 }
 
-char Point::getTypePeta(int x, int y) {
-    return (Peta::peta[x][y].getCellType());
-}
+// char Point::getTypePeta(int x, int y) {
+//     return (Peta::peta[x][y].getCellType());
+// }

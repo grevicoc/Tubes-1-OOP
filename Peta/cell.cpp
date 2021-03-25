@@ -20,6 +20,18 @@ Cell& Cell::operator=(const Cell& other) {
 
 int Cell::getX(){ return point.first; }
 
+void Cell::setX(int x){
+    point.first = x;
+}
+
 int Cell::getY(){ return point.second; }
 
+void Cell::setY(int y){
+    point.second = y;
+}
+
 char Cell::getCellType(){ return cellType; }
+
+void Cell::setCellType(char c){
+    cellType = c;
+}

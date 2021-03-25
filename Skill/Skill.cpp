@@ -29,14 +29,14 @@ Skill::~Skill(){
     //cout<<"Skill hilang!\n";    //buat debugging
 }
 
-string Skill::getNamaSkill() {
+string Skill::getNamaSkill() const{
     return this->namaSkill;
 }
 
-string Skill::getElemen() {
+string Skill::getElemen() const{
     return this->unique;
 }
-int Skill::getBasePower() {
+int Skill::getBasePower() const{
     return this->basePower;
 }
 

@@ -5,7 +5,7 @@
 #include "../Peta/cell.hpp"
 #include "../Peta/peta.hpp"
 
-class Point : public Peta {
+class Point{
     public:
         Point();    // inisialisasi koordinat awal player di (0, 0)
         Point(int _x, int _y);  // inisialisasi koordinat awal player di (_x, _y)
@@ -18,7 +18,7 @@ class Point : public Peta {
         Point& operator=(const Point& other); // operator
         static bool isValidPosisi(int _x, int _y); // menentukan apakah titik valid/tidak di luar map
         static bool isAdjacent(int _x1, int _y1, int _x2, int _y2);    // menentukan apa dua posisi bertetanggaan
-        char getTypePeta(int x, int y); // menentukan type peta dari suatu point
+        // char getTypePeta(int x, int y); // menentukan type peta dari suatu point
 
     protected:
         int x;
