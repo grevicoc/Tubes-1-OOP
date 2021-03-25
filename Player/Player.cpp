@@ -117,6 +117,14 @@ void Player::interactActiveEngimon() {
     }
 }
 
+Point Player::getPosisiPlayer() {
+    return this->posisi;
+}
+
+void Player::setPosisiPlayer(Point P) {
+    this->posisi = P;
+}
+
 // string Player::input() {
 //     string dest;
 //     cin >> dest;

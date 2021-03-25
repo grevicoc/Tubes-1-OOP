@@ -1,15 +1,18 @@
 #include "Command.hpp"
 
-Command::inputCommand() {
+Command::Command() {
+}
+
+void Command::inputCommand() {
   cout << ">>> ";
   cin >> currentCommand;
 }
 
-Command::updateGameMode(char gm) {
+void Command::updateGameMode(char gm) {
   gameMode = gm;
 }
 
-Command::executeCommand() {
+void Command::executeCommand() {
   try {
     if (isCommandValid) {
       //
@@ -20,7 +23,7 @@ Command::executeCommand() {
   }
 }
 
-Command::isCommandValid() {
+bool Command::isCommandValid() {
   if (gameMode == 'E') {  // exploration mode
     // cek
     // ...

@@ -23,7 +23,7 @@ class Peta{
         // void movingWildEngimon(Engimon&);
         void spawnWildEngimon();
         void loadMap();
-
+        
     protected:
         Cell peta[10][12];
 

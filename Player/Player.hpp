@@ -31,6 +31,8 @@ class Player {
         void deleteEngimonPlayer(EngimonPlayer*);
         Inventory<EngimonPlayer> engiInventory;
         Inventory<Skill> skillInventory;
+        Point getPosisiPlayer();
+        void setPosisiPlayer();
         
     protected:
         Point posisi;

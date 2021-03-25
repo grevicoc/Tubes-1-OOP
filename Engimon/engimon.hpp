@@ -24,6 +24,7 @@ class Engimon {
         int get_level();
         int get_posisiX();
         int get_posisiY();
+        Point get_posisi();
         int get_id() const;
         void set_posisi(Point);
         void set_species(string);
