@@ -27,6 +27,7 @@ class Engimon {
         void set_species(string);
         void set_elements(string);
         void set_level(int);
+        void set_Posisi(Point);
         int powerEngimon(Engimon&);
 
         //methods

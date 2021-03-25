@@ -152,6 +152,9 @@ void Engimon::set_elements(string _elements){
 void Engimon::set_level(int _level){
     this->level = _level;
 }
+void Engimon::set_Posisi(Point Pos){
+    this->posisi = Pos;
+}
 
 void Engimon::displayEngiInfo(){
     cout << "~~ Profile Engimon ~~" << endl;
