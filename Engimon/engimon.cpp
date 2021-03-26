@@ -45,7 +45,7 @@ Engimon::Engimon(string species, int level, Point posisi) : id(Engimon::numOfEng
         }
     } else if (species == "Cat" || species == "cat") {
         string list_skill[4] = {"Electric Ball", "Electric Claw", "Electric Slash", "Giga Volt"};
-        int list_basePower[4] = {65, 105, 140, 170};
+        int list_basePower[4] = {65, 105, 140, 185};
         for (int i = 0; i < 4; i++){
             EngimonSkill skill = EngimonSkill(list_skill[i], list_basePower[i], this->elements);  
             engiSkill.push_back(skill);
@@ -87,7 +87,7 @@ Engimon::Engimon(string species, int level, Point posisi) : id(Engimon::numOfEng
         }
     } else if (species == "Tiger" || species == "tiger") {
         string list_skill[4] = {"Fire Ball", "Electric Claw", "Fire Breathe", "Giga Volt"};
-        int list_basePower[4] = {50, 105, 150, 170};
+        int list_basePower[4] = {50, 105, 150, 185};
         for (int i = 0; i < 4; i++){
             EngimonSkill skill = EngimonSkill(list_skill[i], list_basePower[i], this->elements);  
             engiSkill.push_back(skill);
@@ -160,64 +160,3 @@ void Engimon::displayEngiInfo(){
         cout << i+1 << ". " << engiSkill.at(i).getNamaSkill() << ", Base Power : " << engiSkill.at(i).getBasePower() << endl;
     }
 }
-
-/*int Engimon::powerEngimon(Engimon& other) {
-    int power = 0;
-    int sum = 0;
-    engiSkill = new EngimonSkill[4];
-    for (int i = 0; i<4; i++){
-        engiSkill[i] = skill[i];
-    }
-    for (int k = 0; k<4; k++){
-        sum = sum + engiSkill[k].damage();
-    }
-    if (this->elements == "Fire" && other.elements == "Water") {
-        power = this->level*0+sum;
-    } else if (this->elements == "Water" && other.elements == "Fire") {
-        power = this->level*2+sum;
-    } else if (this->elements == "Fire" && other.elements == "Fire") {
-        power = this->level*1+sum;
-    } else if (this->elements == "Water" && other.elements == "Water") {
-        power = this->level*1+sum;
-    } else if (this->elements == "Fire" && other.elements == "Electric") {
-        power = this->level*1+sum;
-    } else if (this->elements == "Electric" && other.elements == "Fire") {
-        power = this->level*1+sum;
-    } else if (this->elements == "Electric" && other.elements == "Electric") {
-        power = this->level*1+sum;
-    } else if (this->elements == "Fire" && other.elements == "Ground") {
-        power = this->level*0.5+sum;
-    } else if (this->elements == "Ground" && other.elements == "Fire") {
-        power = this->level*1.5+sum;
-    } else if (this->elements == "Ground" && other.elements == "Ground") {
-        power = this->level*1+sum;
-    } else if (this->elements == "Fire" && other.elements == "Ice") {
-        power = this->level*2+sum;
-    } else if (this->elements == "Ice" && other.elements == "Fire") {
-        power = this->level*0+sum;
-    } else if (this->elements == "Ice" && other.elements == "Ice") {
-        power = this->level*1+sum;
-    } else if (this->elements == "Water" && other.elements == "Electric") {
-        power = this->level*0+sum;
-    } else if (this->elements == "Electric" && other.elements == "Water") {
-        power = this->level*2+sum;
-    } else if (this->elements == "Water" && other.elements == "Ground") {
-        power = this->level*1+sum;
-    } else if (this->elements == "Ground" && other.elements == "Water") {
-        power = this->level*1+sum;
-    } else if (this->elements == "Water" && other.elements == "Ice") {
-        power = this->level*1+sum;
-    } else if (this->elements == "Ice" && other.elements == "Water") {
-        power = this->level*1+sum;
-    } else if (this->elements == "Electric" && other.elements == "Ground") {
-        power = this->level*0+sum;
-    } else if (this->elements == "Ground" && other.elements == "Electric") {
-        power = this->level*2+sum;
-    } else if (this->elements == "Electric" && other.elements == "Ice") {
-        power = this->level*1.5+sum;
-    } else if (this->elements == "Ice" && other.elements == "Electric") {
-        power = this->level*0.5+sum;
-    }
-    return power;
-
-}*/

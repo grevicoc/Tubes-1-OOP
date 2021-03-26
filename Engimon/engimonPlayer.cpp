@@ -5,7 +5,7 @@ using namespace std;
 
 int EngimonPlayer::numOfEngimonPlayer = 0;
 
-EngimonPlayer::EngimonPlayer() : Engimon("Dragon", 1, Point(1,0)), idEngiPlayer(EngimonPlayer::numOfEngimonPlayer+1) {
+EngimonPlayer::EngimonPlayer() : Engimon("Cat", 1, Point(1,0)), idEngiPlayer(EngimonPlayer::numOfEngimonPlayer+1) {
     name = "Pikachu";
     parentsName = "Pika";
     numOfEngimonPlayer = numOfEngimonPlayer+1;
@@ -16,7 +16,7 @@ EngimonPlayer::EngimonPlayer() : Engimon("Dragon", 1, Point(1,0)), idEngiPlayer(
 EngimonPlayer::EngimonPlayer(Engimon& wildEngi) : Engimon(wildEngi.get_species(), wildEngi.get_level(), Point(-1,-1)), idEngiPlayer(EngimonPlayer::numOfEngimonPlayer+1){
     cout << "\nYou got a engimon!" << endl; cout << endl;
     wildEngi.displayEngiInfo(); cout << endl;
-    //set_name(); cout << endl;
+    this->set_name();
     this->parentsName = "Unknown";
     this->numOfEngimonPlayer = this->numOfEngimonPlayer+1;
     this->exp = 0;

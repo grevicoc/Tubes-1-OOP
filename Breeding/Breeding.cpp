@@ -19,6 +19,8 @@ EngimonPlayer* Breeding::makeBreeding(EngimonPlayer* A, EngimonPlayer* B) {
         A->set_level(A->get_level() - 30);
         B->set_level(B->get_level() - 30);
         return child;
+    }else{
+        throw 6;
     }
 }
 

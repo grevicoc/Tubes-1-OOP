@@ -31,25 +31,36 @@ vector<Engimon*> listOfWildEngimon;
 
 int main(){
     srand(time(0));
-    Player currentPlayer;
-    //harus diinisiasiin dulu active engimon pertamanya player biar pas checkavailibility ga error
-    EngimonPlayer* test = new EngimonPlayer();
+    Peta P;
+    P.loadMap();
+    Command game;
+    
+    while (true){
+        game.inputCommand();
+        game.executeCommand(listOfWildEngimon,listOfSkillGenerated);
+        GenerateEngimon::generateEngimon(listOfWildEngimon,game.me);
+        P.movingWildEngimon(listOfWildEngimon,game.me);
+        P.printMap(listOfWildEngimon,game.me);
+    }
+    // Player currentPlayer;
+    // //harus diinisiasiin dulu active engimon pertamanya player biar pas checkavailibility ga error
+    // EngimonPlayer* test = new EngimonPlayer();
 
-    currentPlayer.setActiveEngimon(test);
-    Engimon* generatedEngimon = GenerateEngimon::generateEngimon(listOfWildEngimon,currentPlayer);
-    test = new EngimonPlayer(*generatedEngimon);
-    currentPlayer.addEngimonPlayer(test);
+    // currentPlayer.setActiveEngimon(test);
+    // Engimon* generatedEngimon = GenerateEngimon::generateEngimon(listOfWildEngimon,currentPlayer);
+    // test = new EngimonPlayer(*generatedEngimon);
+    // currentPlayer.addEngimonPlayer(test);
 
-    generatedEngimon = GenerateEngimon::generateEngimon(listOfWildEngimon,currentPlayer);
-    test = new EngimonPlayer(*generatedEngimon);
-    currentPlayer.addEngimonPlayer(test);
+    // generatedEngimon = GenerateEngimon::generateEngimon(listOfWildEngimon,currentPlayer);
+    // test = new EngimonPlayer(*generatedEngimon);
+    // currentPlayer.addEngimonPlayer(test);
 
-    generatedEngimon = GenerateEngimon::generateEngimon(listOfWildEngimon,currentPlayer);
-    test = new EngimonPlayer(*generatedEngimon);
-    currentPlayer.addEngimonPlayer(test);
+    // generatedEngimon = GenerateEngimon::generateEngimon(listOfWildEngimon,currentPlayer);
+    // test = new EngimonPlayer(*generatedEngimon);
+    // currentPlayer.addEngimonPlayer(test);
 
-    currentPlayer.displayAllEngimon();
-    currentPlayer.displaySpecificEngimon(2);
+    // currentPlayer.displayAllEngimon();
+    // currentPlayer.displaySpecificEngimon(2);
 
     // generatedEngimon->displayEngiInfo();
     
@@ -74,9 +85,7 @@ int main(){
     // EngimonPlayer* childStarterEngimon = B.makeBreeding(starterEngimon1,starterEngimon2);
     // childStarterEngimon->displayEngiInfo();
     // starterEngimon2->displayEngiInfo();
-    Command game;
-    game.inputCommand();
-    game.executeCommand();
+    
 
     // Skill* generatedSkill = GenerateSkill::generateSkill(listOfSkillGenerated);
 

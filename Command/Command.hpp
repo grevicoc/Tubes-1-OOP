@@ -11,6 +11,7 @@
 #include "../Point/Point.hpp"
 #include "../Peta/peta.hpp"
 #include "../Peta/cell.hpp"
+#include "../Breeding/Breeding.hpp"
 #include <vector>
 
 using namespace std;
@@ -22,22 +23,28 @@ class Command {
     static float getElementsAdvantage(Engimon* engimon1 , Engimon* engimon2);
     static float elementAdvChart(string,string);
     static vector<string> elementsParser(string);
-    Player me;
+    
     vector<Engimon*> listEngimon;
     Peta map;
+
   public:
     Command();
     void inputCommand();
     void updateGameMode(char);
-    void executeCommand();
+    void executeCommand(vector<Engimon*>&, vector<Skill*>&);
     bool isCommandValid() const;
-    static void battleBetween(EngimonPlayer*, Engimon*, Player& ,vector<Skill*>& listOfSkillGenerated);
+    static void battleBetween(EngimonPlayer*, Engimon*, Player& ,vector<Skill*>&,vector<Engimon*>&);
     void MoveCommand(Player&, vector<Engimon*>&, const Peta&);
     void executeMoveCommand();
-    bool validateNewPositionPlayer();
+    // bool validateNewPositionPlayer();
     bool isPositionValid(Point);
     bool resolvePlayerNewPosition(string);
     void moveActiveEngimon(Point);
+
+    Player me;
+
+    private:
+      Engimon* findWildEngi(vector<Engimon*>& listOfWildEngimon);
 };
 
 class CommandException {

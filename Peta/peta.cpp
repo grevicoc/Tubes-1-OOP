@@ -26,10 +26,10 @@ void Peta::movingWildEngimon(vector<Engimon*>& listOfWildEngimon, Player& P){
     for (int i=0;i<listOfWildEngimon.size();i++){
         int xCurrent = listOfWildEngimon.at(i)->get_posisiX();
         int yCurrent = listOfWildEngimon.at(i)->get_posisiY();
-        ;
+        
         //kondisi engimon yang bisa di water
         if (listOfWildEngimon.at(i)->get_elements()=="Ice" || listOfWildEngimon.at(i)->get_elements()=="Water" || listOfWildEngimon.at(i)->get_elements()=="Water/Ice"){
-            while(xCurrent+xDiff>5 || yCurrent+yDiff<6 || xCurrent+xDiff>9 || yCurrent+yDiff>11){
+            while(xCurrent+xDiff>5 || yCurrent+yDiff<6 || xCurrent+xDiff>9 || yCurrent+yDiff>11 || xCurrent+xDiff<0 || yCurrent+yDiff<0){
                 xDiff = -1 + (rand() % 3);
                 yDiff = -1 + (rand() % 3);
                 
@@ -43,10 +43,10 @@ void Peta::movingWildEngimon(vector<Engimon*>& listOfWildEngimon, Player& P){
             }
 
         }else{
-            while((xCurrent+xDiff<6 && yCurrent+yDiff>5) || (xCurrent+xDiff>9 || yCurrent+yDiff>11)){
+            while((xCurrent+xDiff<6 && yCurrent+yDiff>5) || (xCurrent+xDiff>9 || yCurrent+yDiff>11 ||xCurrent+xDiff<0 || yCurrent+yDiff<0)){
                 xDiff = -1 + (rand() % 3);
                 yDiff = -1 + (rand() % 3);
-                cout<<"hai\n";
+                
             }
             
             Point newPosition(xCurrent+xDiff,yCurrent+yDiff);
@@ -135,7 +135,7 @@ void Peta::printMap(vector<Engimon*>& listOfWildEngimon, Player& P){
         
     }
     peta[P.getPosisiPlayer().getX()][P.getPosisiPlayer().getY()].setCellType('P');
-    peta[P.getActiveEngimon().get_posisiX()][P.getActiveEngimon().get_posisiY()].setCellType('A');
+    peta[P.getActiveEngimon()->get_posisiX()][P.getActiveEngimon()->get_posisiY()].setCellType('A');
 
     for (int i=0;i<10;i++){
         for (int j=0;j<12;j++){
@@ -155,7 +155,7 @@ bool Peta::checkAvailability(Point wantToCheck, vector<Engimon*>& listOfWildEngi
         i++;
     }
     if (retVal){
-        if (wantToCheck==P.getPosisiPlayer() || wantToCheck==P.getActiveEngimon().get_posisi()){
+        if (wantToCheck==P.getPosisiPlayer() || wantToCheck==P.getActiveEngimon()->get_posisi()){
             retVal = false;
         }
     }

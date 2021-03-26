@@ -2,6 +2,11 @@
 #include "../Generate/GenerateSkill.hpp"
 
 Command::Command() {
+  EngimonPlayer* pokemonStarter = new EngimonPlayer();
+  me.addEngimonPlayer(pokemonStarter);
+  me.setActiveEngimon(pokemonStarter);
+  me.setPosisiPlayer(Point(3,4));
+  me.getActiveEngimon()->set_posisi(Point(3,3));
 }
 
 void Command::inputCommand() {
@@ -13,7 +18,7 @@ void Command::updateGameMode(char gm) {
   gameMode = gm;
 }
 
-void Command::executeCommand() {
+void Command::executeCommand(vector<Engimon*>& listOfWildEngimon, vector<Skill*>& listOfSkillGenerated) {
   try {
     if (isCommandValid()) {
       if (currentCommand == "up" || currentCommand == "down"  || currentCommand == "left"  || currentCommand == "right"){
@@ -23,15 +28,72 @@ void Command::executeCommand() {
         }  
       } else if (currentCommand == "talk") {
         me.interactActiveEngimon();
+      } else if (currentCommand == "battle"){
+        Engimon* enemy = findWildEngi(listOfWildEngimon);
+        cout<<"Ketemu Engimon Liar!\n";
+        enemy->displayEngiInfo();
+        battleBetween(me.getActiveEngimon(),enemy,me,listOfSkillGenerated,listOfWildEngimon);
+      } else if (currentCommand=="breeding"){
+        me.displayAllEngimon();
+        cout<<"Pilih engimon yang ingin di-breeding!\n";
+        cout<<"Masukkan ID engimon 1: ";
+        int id1;
+        cin>>id1;
+        cout<<"Masukkan ID engimon 2: ";
+        int id2;
+        cin>>id2;
+        Breeding B;
+        EngimonPlayer* hasilBreeding = B.makeBreeding(me.findEngimon(id1),me.findEngimon(id2));
+        me.addEngimonPlayer(hasilBreeding);
+        cout<<"Yeay punya anak!\n";
+      }else if (currentCommand=="showallengimon"){
+        me.displayAllEngimon();
+
+      }else if (currentCommand=="showallskillitem"){
+        me.displayAllSkillItem();
+
+      }else if (currentCommand=="switchactiveengimon"){
+        me.switchActiveEngimon();
+        
+      }else if (currentCommand=="learnskill"){
+        me.learnSkill(listOfSkillGenerated);
+        
+      }else if (currentCommand=="showspecificengimon"){
+        me.displaySpecificEngimon();
+        
+      }else{
+        cout<<"COMMAND INVALID\n\n";
       }
     }
   }
-  catch (CommandException err) {
+  catch (int err) {
     // exceptions
+    if (err==1){
+      cout<<"Gaada engimon liar di dekatmu!\n\n";
+    }else if (err==2){
+      cout<<"Oops, engimon dengan ID yang anda masukkan tidak ada.\n\n";
+    }else if (err==3){
+      cout<<"Inventory engimon kamu kosong:(\n\n";
+    }else if (err==4){
+      cout<<"Drop item kamu gabisa diambil, inventory penuh.\n\n";
+    }else if (err==5){
+      cout<<"Engimon liarnya gabisa ditangkep, inventory penuh.\n\n";
+    }else if (err==6){
+      cout<<"Level parent engimonmu kurang dari 30!\n\n";
+    }
   }
 }
 
-void Command::battleBetween(EngimonPlayer * eng1 , Engimon *eng2, Player& currentPlayer, vector<Skill*>& listOfSkillGenerated){
+Engimon* Command::findWildEngi(vector<Engimon*>& listOfWildEngimon){
+  for (int i=0;i<listOfWildEngimon.size();i++){
+    if (Point::isAdjacent(listOfWildEngimon.at(i)->get_posisiX(),listOfWildEngimon.at(i)->get_posisiY(),me.getPosisiPlayer().getX(),me.getPosisiPlayer().getY())){
+      return listOfWildEngimon.at(i);
+    }
+  }
+  throw 1;
+}
+
+void Command::battleBetween(EngimonPlayer * eng1 , Engimon *eng2, Player& currentPlayer, vector<Skill*>& listOfSkillGenerated, vector<Engimon*>& listOfWildEngimon){
   //Mendapatkan nilai elements advantage
     float eng1ElemenAdv = getElementsAdvantage(eng1,eng2);
     float eng2ElemenAdv = getElementsAdvantage(eng2,eng1);
@@ -61,14 +123,35 @@ void Command::battleBetween(EngimonPlayer * eng1 , Engimon *eng2, Player& curren
     cout<<power2<<endl;
     if ( power1 < power2){
         cout << eng1->get_name() << " Telah Kalah! " << endl;
+        currentPlayer.switchActiveEngimon();
         currentPlayer.deleteEngimonPlayer(eng1);
     }
     else{
         cout << eng1->get_name() << " Telah Menang! " << endl;
-        if (Inventory<EngimonPlayer>::getMaxCapacity()-Inventory<EngimonPlayer>::getCurrentCapacity()==0){
-            currentPlayer.skillInventory.addThing(GenerateSkill::generateSkill(listOfSkillGenerated));
-        }
+
+        //xp nambah
         eng1->set_exp(sumSkill1-sumSkill2);
+
+        //drop item
+        Skill* dropSkill = GenerateSkill::generateSkill(listOfSkillGenerated);
+        cout<<"Item Drop!\n";
+        cout<<"Nama: "<<dropSkill->getNamaSkill()<<endl;
+        cout<<"\n";
+        bool berhasil = currentPlayer.skillInventory.addThing(dropSkill);
+        cout<<"YOU ARE HERE\n";
+        if (!berhasil){
+          throw 4;
+        }
+  
+        //mendapatkan eng2 
+        for (int i=0;i<listOfWildEngimon.size();i++){
+          if (listOfWildEngimon.at(i)->get_id()==eng2->get_id()){
+            EngimonPlayer* dropEngimon = new EngimonPlayer(*listOfWildEngimon.at(i));
+            delete listOfWildEngimon.at(i);
+            listOfWildEngimon.erase(listOfWildEngimon.begin()+i); //hapus ke-i
+            currentPlayer.addEngimonPlayer(dropEngimon);
+          }
+        }
     }
 }
 
@@ -141,20 +224,20 @@ void Command::MoveCommand(Player& P, vector<Engimon*>& _listEng, const Peta& _ma
   this->map = _map;
 }
 
-void Command::executeMoveCommand() {
-  Engimon activeEngimon = me.getActiveEngimon();
+// void Command::executeMoveCommand() {
+//   Engimon activeEngimon = me.getActiveEngimon();
 
-}
+// }
 
-bool Command::validateNewPositionPlayer() {
-  Point playerPosition = me.getPosisiPlayer();
+// bool Command::validateNewPositionPlayer() {
+//   Point playerPosition = me.getPosisiPlayer();
 
-}
+// }
 
 bool Command::isPositionValid(Point P) {
   int x = P.getX();
   int y = P.getY();
-  return (x >= 0) && (x < 12) && (y >= 0) && (y < 10);
+  return (x >= 0) && (x < 10) && (y >= 0) && (y < 12);
 }
 
 bool Command::resolvePlayerNewPosition(string command) {
@@ -169,14 +252,14 @@ bool Command::resolvePlayerNewPosition(string command) {
 
   Point newPosition = Point(oldPosition.getX()+xDif, oldPosition.getY()+yDif);
   if (isPositionValid(newPosition)) {
-    Point Ptemp;
-    for (Engimon* Ei : this->listEngimon) {
-      Ptemp = Ei->get_posisi();
-      if (Ptemp.getX() == newPosition.getX() && Ptemp.getY() == newPosition.getY()) {
-        // player tidak dapat bergerak ke arah sana
-        return false;
-      }
-    }
+    // Point Ptemp;
+    // for (Engimon* Ei : this->listEngimon) {
+    //   Ptemp = Ei->get_posisi();
+    //   if (Ptemp.getX() == newPosition.getX() && Ptemp.getY() == newPosition.getY()) {
+    //     // player tidak dapat bergerak ke arah sana
+    //     return false;
+    //   }
+    // }
     // player dapat bergerak
     me.setPosisiPlayer(newPosition);
     moveActiveEngimon(oldPosition);
@@ -186,16 +269,17 @@ bool Command::resolvePlayerNewPosition(string command) {
 }
 
 void Command::moveActiveEngimon(Point oldPlayerPosition) {  // Exception handling belom
-    me.getActiveEngimon().set_posisi(oldPlayerPosition);
+    me.getActiveEngimon()->set_posisi(oldPlayerPosition);
 }
 
 bool Command::isCommandValid() const{
-  // if (currentCommand!="up"||currentCommand!="down"||currentCommand!="left"||currentCommand!="right"||currentCommand!="breeding" || currentCommand!="battle" || currentCommand!="showallengimon" || currentCommand!="showallskillitem" || currentCommand!="interact" || currentCommand!="swicthactiveengimon" || currentCommand!="learnskill" || currentCommand!="showspecificengimon"){
+  // if (currentCommand!="up"||currentCommand!="down"||currentCommand!="left"||currentCommand!="right"||currentCommand!="breeding" || currentCommand!="battle" || currentCommand!="showallengimon" || currentCommand!="showallskillitem" || currentCommand!="talk" || currentCommand!="switchactiveengimon" || currentCommand!="learnskill" || currentCommand!="showspecificengimon"){
   //   return false;
   // }else{
   //   return true;
   // }
 
-  CommandException error("INVALID_COMMAND", gameMode);
-  throw error;
+  // CommandException error("INVALID_COMMAND", gameMode);
+  // throw error;
+  return true;
 }

@@ -48,7 +48,7 @@ Electric
 
 Giga Volt
 Electric
-170
+185
 
 Ice Ball
 Ice

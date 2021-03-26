@@ -55,9 +55,8 @@ bool Point::operator==(const Point& other){
 bool Point::operator!=(const Point& other){
     if (this->getX()!=other.x || this->getY()!=other.y){
         return true;
-    }else if (this->getX()==other.x && this->getY()==other.y){
-        return false;
     }
+    return false;
 }
 
 bool Point::isValidPosisi(int _x, int _y) {

@@ -10,7 +10,7 @@
 
 class GenerateEngimon: public Generate{
     public:
-        static Engimon* generateEngimon(vector<Engimon*>&, Player&);
+        static void generateEngimon(vector<Engimon*>&, Player&);
 };
 
 #endif

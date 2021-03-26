@@ -3,8 +3,8 @@
 Skill* GenerateSkill::generateSkill(vector<Skill*>& listOfSkillGenerated){
     vector<vector<string>> vectorOfSkill(Generate::readFromFile("Skill.txt"));
     //srand(time(0));
-    int randomNumber = rand() % 25;
-    cout<<randomNumber<<endl;
+    int randomNumber = rand() % 45;
+    
 
     Skill* retVal =  new Skill(vectorOfSkill[randomNumber][0],vectorOfSkill[randomNumber][1],stoi(vectorOfSkill[randomNumber][2]));
 

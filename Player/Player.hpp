@@ -15,16 +15,17 @@ class Player {
     public:
         Player();
         ~Player();
-        EngimonPlayer& getActiveEngimon();
+        EngimonPlayer* getActiveEngimon();
         void setActiveEngimon(EngimonPlayer*);
         
         void displayAllEngimon();
-        void displaySpecificEngimon(int);
+        void displaySpecificEngimon();
         void displayAllSkillItem();
         void useSkillItem();
         
         EngimonPlayer* findEngimon(int);
-        void Player::switchActiveEngimon();
+        void switchActiveEngimon();
+        void learnSkill(vector<Skill*>& listOfGeneratedSkill);
         
         void interactActiveEngimon();
         string input();

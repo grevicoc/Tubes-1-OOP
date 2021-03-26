@@ -41,6 +41,7 @@ template<class T>
 bool Inventory<T>::addThing(T* object){
     //Cek apakah inventory penuh atau tidak
     if (getMaxCapacity()-getCurrentCapacity()==0){
+        delete object;
         return false;
     }else{
         //Cek apakah barang tersebut sudah ada

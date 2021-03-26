@@ -14,8 +14,8 @@ Player::Player(){
 
 Player::~Player(){}
 
-EngimonPlayer& Player::getActiveEngimon() {
-    return *(this->activeEngimon);
+EngimonPlayer* Player::getActiveEngimon() {
+    return activeEngimon;
 }
 
 void Player::setActiveEngimon(EngimonPlayer* EP) {
@@ -37,14 +37,18 @@ void Player::displayAllEngimon(){
 }
 
 EngimonPlayer* Player::findEngimon(int id){
-    unordered_map<EngimonPlayer*,int> tempMap = engiInventory.getThings();
-    unordered_map<EngimonPlayer*,int>::iterator itrTest;
-    for (itrTest=tempMap.begin(); itrTest!=tempMap.end();itrTest++){
-        if (itrTest->first->get_idEngiPlayer()==id){
-            itrTest->first->displayEngiInfo();
-            return itrTest->first;
+    if (engiInventory.getThings().size()==0){
+        throw 3;
+    }else{
+        unordered_map<EngimonPlayer*,int> tempMap = engiInventory.getThings();
+        unordered_map<EngimonPlayer*,int>::iterator itrTest;
+        for (itrTest=tempMap.begin(); itrTest!=tempMap.end();itrTest++){
+            if (itrTest->first->get_idEngiPlayer()==id){
+                return itrTest->first;
+            }
+            
         }
-        
+        throw 2;
     }
 }
 
@@ -54,15 +58,66 @@ void Player::switchActiveEngimon(){
     cin>>idEngimon;
     
     EngimonPlayer* newActive = findEngimon(idEngimon);
-    newActive->set_posisi(getActiveEngimon().get_posisi());
-    getActiveEngimon().set_posisi(Point(-1,-1));
-    
+    newActive->set_posisi(getActiveEngimon()->get_posisi());
+    getActiveEngimon()->set_posisi(Point(-1,-1));
+
     setActiveEngimon(newActive);
     cout<<newActive->get_name()<<" berhasil menjadi aktif!\n";
 }
+ 
+void Player::learnSkill(vector<Skill*>& listOfGeneratedSkill){
+    displayAllSkillItem();
+    bool sama = false;
+    Skill* newSkill;
+    string skillWantToUse;
+    while(!sama){
+        cout<<"Masukkan nama skill yang ingin anda pakai: ";
+        cin>>skillWantToUse;
+        for (int i=0;i<listOfGeneratedSkill.size();i++){
+            if (listOfGeneratedSkill.at(i)->getNamaSkill()==skillWantToUse){
+                newSkill = listOfGeneratedSkill.at(i);
+                sama =true;
+            }
+        }
+        if (!sama){
+            cout<<"Oops, masukan anda salah. Ulangi.\n";
+        }
+    }
+    
+    skillInventory.deleteThing(newSkill);   //terpakai sehingga didelete
+
+    displayAllEngimon();
+    cout<<"Masukkan id Engimon yang ingin anda beri skill: ";
+    int id;
+    cin>>id;
+    EngimonPlayer* currentEngimon = findEngimon(id);
+
+    currentEngimon->displayEngiInfo();
+    sama=false;
+    string skillRemoved;
+    while(!sama){
+        cout<<"Masukkan nama skill Engimon yang ingin anda replace: ";
+        cin>>skillRemoved;
+        //replace skill
+        for (int i=0;i<4;i++){
+            if (currentEngimon->engiSkill.at(i).getNamaSkill()==skillRemoved){
+                currentEngimon->engiSkill.at(i) = *newSkill;
+                sama= true;
+            }
+        }
+        if (!sama){
+            cout<<"Oops, masukan anda salah. Ulangi.\n";
+        }
+    }
+    cout<<"Skill berhasil di-replace!\n\n";
+    
+}
 
 //berdasarkan ID
-void Player::displaySpecificEngimon(int id) {
+void Player::displaySpecificEngimon() {
+    cout<<"Masukkan ID Engimon yang ingin dilihat: ";
+    int id;
+    cin>>id;
     EngimonPlayer* tempEngi = findEngimon(id);
     tempEngi->displayEngiInfo();
 }
@@ -151,8 +206,12 @@ void Player::moveActiveEngimon() {  // Exception handling belom
 }
 
 void Player::addEngimonPlayer(EngimonPlayer* engi){
-    engiInventory.addThing(engi);
-    cout<<engi->get_name()<<" berhasil ditambahkan!\n";
+    bool berhasil = engiInventory.addThing(engi);
+    if (berhasil){
+        cout<<engi->get_name()<<" berhasil ditambahkan!\n";
+    }else{
+        throw 5;
+    }
 }
 
 void Player::addSkillItem(Skill* _skill){

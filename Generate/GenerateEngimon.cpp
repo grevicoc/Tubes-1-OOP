@@ -3,7 +3,7 @@
 #include "../Peta/peta.hpp"
 
 
-Engimon* GenerateEngimon::generateEngimon(vector<Engimon*>& listOfWildEngimon,Player& P){
+void GenerateEngimon::generateEngimon(vector<Engimon*>& listOfWildEngimon,Player& P){
     vector<vector<string>> vectorOfEngimon(Generate::readFromFile("Engimon.txt"));
     // srand(time(0));
     int randomNumber = rand() % 24;         //ada 24 engimon
@@ -47,8 +47,5 @@ Engimon* GenerateEngimon::generateEngimon(vector<Engimon*>& listOfWildEngimon,Pl
         }
         
         listOfWildEngimon.push_back(generatedEngimon);
-        return generatedEngimon;
-        
     }
-    return nullptr;
 }
