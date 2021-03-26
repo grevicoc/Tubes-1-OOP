@@ -33,14 +33,13 @@ class Player {
         Inventory<Skill> skillInventory;
         Point getPosisiPlayer();
         void setPosisiPlayer(Point);
+        void moveActiveEngimon();
+        string inputCommandMove;
         
     protected:
         Point posisi;
         EngimonPlayer* activeEngimon;
-        string inputCommandMove;
-
-    private:
-        void moveActiveEngimon();
+        
 };
 
 #endif

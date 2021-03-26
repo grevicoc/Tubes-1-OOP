@@ -32,7 +32,7 @@ bool MoveCommand::resolvePlayerNewPosition(string command) {
   if (command == "left" || command == "LEFT") yDif = -1;
   if (command == "right" || command == "RIGHT") yDif = 1;
 
-  Point newPosition = new Point(oldPosition.getX()+xDif, oldPosition.getY()+yDif);
+  Point newPosition = Point(oldPosition.getX()+xDif, oldPosition.getY()+yDif);
   if (isPositionValid(newPosition)) {
     Point Ptemp;
     for (Engimon* Ei : this->listEngimon) {
@@ -50,8 +50,6 @@ bool MoveCommand::resolvePlayerNewPosition(string command) {
   return false;
 }
 
-
-
 void MoveCommand::moveActiveEngimon(Point oldPlayerPosition) {  // Exception handling belom
-    me.getActiveEngimon().set_Posisi(oldPlayerPosition);
+    me.getActiveEngimon().set_posisi(oldPlayerPosition);
 }
