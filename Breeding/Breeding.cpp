@@ -57,6 +57,7 @@ void Breeding::setElementSpecies(EngimonPlayer* A, EngimonPlayer* B, EngimonPlay
                 C->set_species(A->get_species());
             } else {
                 // kombinasi fire dengan engimon dua elemen
+                
             }
         } else if (A->get_elements() == "Water") {
             if (B->get_elements() == "Fire") {
@@ -73,6 +74,7 @@ void Breeding::setElementSpecies(EngimonPlayer* A, EngimonPlayer* B, EngimonPlay
                 C->set_species("Bird");
             } else {
                 // kombinasi water dengan engimon dua elemen
+                
             }
         } else if (A->get_elements() == "Electric") {
             if (B->get_elements() == "Fire") {
@@ -89,6 +91,7 @@ void Breeding::setElementSpecies(EngimonPlayer* A, EngimonPlayer* B, EngimonPlay
                 C->set_species(A->get_species());
             } else {
                 // kombinasi electric dengan engimon dua element
+                
             }
         } else if (A->get_elements() == "Ground") {
             if (B->get_elements() == "Fire") {

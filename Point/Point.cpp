@@ -1,5 +1,5 @@
 #include "../Peta/cell.hpp"
-#include "../Peta/peta.hpp"
+// #include "../Peta/peta.hpp"
 #include "Point.hpp"
 
 Point::Point () {
@@ -64,7 +64,7 @@ bool Point::isValidPosisi(int _x, int _y) {
 }
 
 bool Point::isAdjacent(int _x1, int _y1, int _x2, int _y2) {
-    return ((_x1 == _x2 + 1 && _y1 == _y2) || (_x1 = _x2 - 1 && _y1 == _y2) || (_x1 == _x2 && _y1 == _y2 + 1) || (_x1 = _x2 && _y1 == _y2 - 1));
+    return (_x1 == _x2 + 1 && _y1 == _y2) || (_x1 = _x2 - 1 && _y1 == _y2) || (_x1 == _x2 && _y1 == _y2 + 1) || (_x1 = _x2 && _y1 == _y2 - 1);
 }
 
 // bool Point::isPosisiNotEngimonRelatif(int _x, int _y){

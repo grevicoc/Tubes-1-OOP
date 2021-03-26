@@ -51,5 +51,5 @@ bool MoveCommand::resolvePlayerNewPosition(string command) {
 }
 
 void MoveCommand::moveActiveEngimon(Point oldPlayerPosition) {  // Exception handling belom
-    me.getActiveEngimon().set_posisi(oldPlayerPosition);
+    me.getActiveEngimon()->set_posisi(oldPlayerPosition);
 }

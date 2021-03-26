@@ -1,4 +1,3 @@
-#include "../Generate/Generate.hpp"
 #include "../Generate/GenerateSkill.hpp"
 #include "../Generate/GenerateEngimon.hpp"
 
@@ -38,9 +37,11 @@ int main(){
     while (true){
         game.inputCommand();
         game.executeCommand(listOfWildEngimon,listOfSkillGenerated);
+        cout<<"\n\n";
         GenerateEngimon::generateEngimon(listOfWildEngimon,game.me);
         P.movingWildEngimon(listOfWildEngimon,game.me);
         P.printMap(listOfWildEngimon,game.me);
+        cout<<"\n\n";
     }
     // Player currentPlayer;
     // //harus diinisiasiin dulu active engimon pertamanya player biar pas checkavailibility ga error

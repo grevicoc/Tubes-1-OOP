@@ -33,6 +33,7 @@ void Command::executeCommand(vector<Engimon*>& listOfWildEngimon, vector<Skill*>
         cout<<"Ketemu Engimon Liar!\n";
         enemy->displayEngiInfo();
         battleBetween(me.getActiveEngimon(),enemy,me,listOfSkillGenerated,listOfWildEngimon);
+        
       } else if (currentCommand=="breeding"){
         me.displayAllEngimon();
         cout<<"Pilih engimon yang ingin di-breeding!\n";
@@ -90,7 +91,7 @@ Engimon* Command::findWildEngi(vector<Engimon*>& listOfWildEngimon){
       return listOfWildEngimon.at(i);
     }
   }
-  throw 1;
+  // throw 1;
 }
 
 void Command::battleBetween(EngimonPlayer * eng1 , Engimon *eng2, Player& currentPlayer, vector<Skill*>& listOfSkillGenerated, vector<Engimon*>& listOfWildEngimon){
@@ -100,7 +101,7 @@ void Command::battleBetween(EngimonPlayer * eng1 , Engimon *eng2, Player& curren
 
     //Mendapatkan SUM(Basepower * mastery level)
     float sumLevel1 = (float) (eng1->get_level() * eng1ElemenAdv);
-    cout<<eng1ElemenAdv<<endl;
+    
     float sumSkill1 = 0;
     vector<EngimonSkill> tempSkill1 = eng1->getEngiSkill();
     
@@ -110,7 +111,7 @@ void Command::battleBetween(EngimonPlayer * eng1 , Engimon *eng2, Player& curren
     float power1 = sumSkill1 + sumLevel1;
 
     float sumLevel2 = (float) (eng2->get_level()*eng2ElemenAdv);
-    cout<<eng2ElemenAdv<<endl;
+    
     float sumSkill2 = 0;
     vector<EngimonSkill> tempSkill2 = eng2->getEngiSkill();
     
@@ -119,8 +120,8 @@ void Command::battleBetween(EngimonPlayer * eng1 , Engimon *eng2, Player& curren
     }
     float power2 = sumSkill2 + sumLevel2;
 
-    cout<<power1<<endl;
-    cout<<power2<<endl;
+    cout<<"Power Engi1: "<<power1<<endl;
+    cout<<"Power Engi2: "<<power2<<endl;
     if ( power1 < power2){
         cout << eng1->get_name() << " Telah Kalah! " << endl;
         currentPlayer.switchActiveEngimon();
@@ -138,9 +139,9 @@ void Command::battleBetween(EngimonPlayer * eng1 , Engimon *eng2, Player& curren
         cout<<"Nama: "<<dropSkill->getNamaSkill()<<endl;
         cout<<"\n";
         bool berhasil = currentPlayer.skillInventory.addThing(dropSkill);
-        cout<<"YOU ARE HERE\n";
+        
         if (!berhasil){
-          throw 4;
+          // throw 4;
         }
   
         //mendapatkan eng2 

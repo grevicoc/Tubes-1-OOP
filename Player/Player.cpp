@@ -38,7 +38,7 @@ void Player::displayAllEngimon(){
 
 EngimonPlayer* Player::findEngimon(int id){
     if (engiInventory.getThings().size()==0){
-        throw 3;
+        // throw 3;
     }else{
         unordered_map<EngimonPlayer*,int> tempMap = engiInventory.getThings();
         unordered_map<EngimonPlayer*,int>::iterator itrTest;
@@ -48,7 +48,7 @@ EngimonPlayer* Player::findEngimon(int id){
             }
             
         }
-        throw 2;
+        // throw 2;
     }
 }
 
@@ -72,7 +72,7 @@ void Player::learnSkill(vector<Skill*>& listOfGeneratedSkill){
     string skillWantToUse;
     while(!sama){
         cout<<"Masukkan nama skill yang ingin anda pakai: ";
-        cin>>skillWantToUse;
+        getline(cin,skillWantToUse);
         for (int i=0;i<listOfGeneratedSkill.size();i++){
             if (listOfGeneratedSkill.at(i)->getNamaSkill()==skillWantToUse){
                 newSkill = listOfGeneratedSkill.at(i);
@@ -97,7 +97,7 @@ void Player::learnSkill(vector<Skill*>& listOfGeneratedSkill){
     string skillRemoved;
     while(!sama){
         cout<<"Masukkan nama skill Engimon yang ingin anda replace: ";
-        cin>>skillRemoved;
+        getline(cin,skillRemoved);
         //replace skill
         for (int i=0;i<4;i++){
             if (currentEngimon->engiSkill.at(i).getNamaSkill()==skillRemoved){
@@ -131,7 +131,7 @@ void Player::displayAllSkillItem() {
         cout<<i<<". Item: "<<itrTest->first->getNamaSkill()<<endl;
         cout<<"   Base Power: "<<itrTest->first->getBasePower()<<endl;
         cout<<"   Elemen dibutuhkan: "<<itrTest->first->getElemen()<<endl;
-        cout<<"   Jumlah saat ini: "<<itrTest->second;
+        cout<<"   Jumlah saat ini: "<<itrTest->second<<endl;
     }
 }
 
