@@ -7,11 +7,19 @@
 
 #include "../Engimon/engimon.hpp"
 
+#include "../Engimon/engimonPlayer.hpp"
+
 #include "../Player/Player.hpp"
 
-#include "../Command/BattleCommand.hpp"
+#include "../Point/Point.hpp"
+
+#include "../Inventory/Inventory.hpp"
+
+#include "../Command/Command.hpp"
 
 #include "../Breeding/Breeding.hpp"
+
+#include "../Peta/cell.hpp"
 
 #include "../Peta/peta.hpp"
 
@@ -66,8 +74,10 @@ int main(){
     // EngimonPlayer* childStarterEngimon = B.makeBreeding(starterEngimon1,starterEngimon2);
     // childStarterEngimon->displayEngiInfo();
     // starterEngimon2->displayEngiInfo();
-    
-    
+    Command game;
+    game.inputCommand();
+    game.executeCommand();
+
     // Skill* generatedSkill = GenerateSkill::generateSkill(listOfSkillGenerated);
 
     // BattleCommand::battleBetween(starterEngimon1,generatedEngimon,P,listOfSkillGenerated);

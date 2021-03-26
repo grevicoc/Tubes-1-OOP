@@ -20,7 +20,7 @@ class MoveCommand : public Command {
 		bool isPositionValid(Point);
 		bool resolvePlayerNewPosition(string);
 
-		void moveActiveEngimon();
+		void moveActiveEngimon(Point);
 };
 
 #endif
