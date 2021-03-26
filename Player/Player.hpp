@@ -17,13 +17,15 @@ class Player {
         ~Player();
         EngimonPlayer& getActiveEngimon();
         void setActiveEngimon(EngimonPlayer*);
-        // void Bergerak();
+        
         void displayAllEngimon();
-        void displaySpecificEngimon(EngimonPlayer*);
+        void displaySpecificEngimon(int);
         void displayAllSkillItem();
         void useSkillItem();
         
-        // void Battle(); jadi kelas
+        EngimonPlayer* findEngimon(int);
+        void Player::switchActiveEngimon();
+        
         void interactActiveEngimon();
         string input();
         void addEngimonPlayer(EngimonPlayer*);

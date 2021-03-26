@@ -19,77 +19,44 @@ Peta::Peta(){
 
 Peta::~Peta(){}
 
-void Peta::movingWildEngimon(vector<Engimon*>& listOfWildEngimon){
-    int xRandom = rand() % 12;
-    int yRandom = rand() % 10;
+void Peta::movingWildEngimon(vector<Engimon*>& listOfWildEngimon, Player& P){
+    int xDiff = -1 + (rand() % 3);
+    int yDiff = -1 + (rand() % 3);
 
     for (int i=0;i<listOfWildEngimon.size();i++){
+        int xCurrent = listOfWildEngimon.at(i)->get_posisiX();
+        int yCurrent = listOfWildEngimon.at(i)->get_posisiY();
+        ;
+        //kondisi engimon yang bisa di water
         if (listOfWildEngimon.at(i)->get_elements()=="Ice" || listOfWildEngimon.at(i)->get_elements()=="Water" || listOfWildEngimon.at(i)->get_elements()=="Water/Ice"){
-            if(yRandom>5 || xRandom<6){
-                xRandom = rand() % 6;
-                yRandom = rand() % 6;
+            while(xCurrent+xDiff>5 || yCurrent+yDiff<6 || xCurrent+xDiff>9 || yCurrent+yDiff>11){
+                xDiff = -1 + (rand() % 3);
+                yDiff = -1 + (rand() % 3);
+                
             }
-            Point newPosition(xRandom,yRandom);
-            listOfWildEngimon.at(i)->set_posisi(newPosition);
+            Point newPosition(xCurrent+xDiff,yCurrent+yDiff);
+
+
+            //cek apakah point tersebut sudah ada yang nempatin atau belum
+            if (checkAvailability(newPosition,listOfWildEngimon,P)){
+                listOfWildEngimon.at(i)->set_posisi(newPosition);
+            }
+
         }else{
-            while(yRandom<6 && xRandom>5){
-                xRandom = rand() % 12;
-                yRandom = rand() % 10;
+            while((xCurrent+xDiff<6 && yCurrent+yDiff>5) || (xCurrent+xDiff>9 || yCurrent+yDiff>11)){
+                xDiff = -1 + (rand() % 3);
+                yDiff = -1 + (rand() % 3);
+                cout<<"hai\n";
             }
-            Point newPosition(xRandom,yRandom);
-            listOfWildEngimon.at(i)->set_posisi(newPosition);
+            
+            Point newPosition(xCurrent+xDiff,yCurrent+yDiff);
+
+            //cek apakah point tersebut sudah ada yang nempatin atau belum
+            if (checkAvailability(newPosition,listOfWildEngimon,P)){
+                listOfWildEngimon.at(i)->set_posisi(newPosition);
+            }
         }
     }
-    
-    // Point PosTemp;
-    // string type_elemen;
-    // char type_peta;
-    // int type_area;
-    // int random_x;
-    // int random_y;
-    // int xTemp;
-    // int yTemp;
-    // bool valid_move;
-    
-    // type_elemen = engimon.get_elements();
-    // xTemp = engimon.get_posisiX();
-    // yTemp = engimon.get_posisiY();
-    // valid_move = false;
-
-    // // Penetuan variabel penambahan untuk bergerak ke empat arah
-    // while(!valid_move){
-    //     random_x = rand() % 2;
-    //     random_y = rand() % 2;
-
-    //     xTemp += random_x;
-    //     yTemp += random_y;
-    //     type_peta = peta[xTemp][yTemp].getCellType();
-
-    //     // Penentuan area yang diperbolehkan bergerak
-    //     if(type_elemen == "Fire"){
-    //         valid_move = (type_peta == '-');
-    //     }else if(type_elemen == "Electric"){
-    //         valid_move = (type_peta == '-');
-    //     }else if(type_elemen == "Water/Ice"){
-    //         valid_move = (type_peta == 'o');
-    //     }else if(type_elemen == "Water"){
-    //         valid_move = (type_peta == 'o');
-    //     }else if(type_elemen == "Ice"){
-    //         valid_move = (type_peta == 'o');
-    //     }else if(type_elemen == "Ground"){
-    //         valid_move = (type_peta == '-');
-    //     }else if(type_elemen == "Water/Ground"){
-    //         valid_move = (type_peta == 'o') || (type_peta == '-');
-    //     }else if(type_elemen == "Fire/Electric"){
-    //         valid_move = (type_peta == '-');
-    //     }
-    // }
-
-
-    // // Pengubahan Posisi baru engimon
-    // PosTemp = Point(xTemp,yTemp);
-    // engimon.set_posisi(PosTemp);
-
 }
 //void Peta::spawnWildEngimon();
 void Peta::loadMap(){
@@ -111,7 +78,8 @@ void Peta::loadMap(){
     }
 }
 
-void Peta::printMap(vector<Engimon*>& listOfWildEngimon){
+void Peta::printMap(vector<Engimon*>& listOfWildEngimon, Player& P){
+    loadMap();
     for (int i=0; i<listOfWildEngimon.size();i++){
         char simbol;
         if (listOfWildEngimon.at(i)->get_elements()=="Fire"){
@@ -164,12 +132,32 @@ void Peta::printMap(vector<Engimon*>& listOfWildEngimon){
             }
         }
         peta[listOfWildEngimon.at(i)->get_posisiX()][listOfWildEngimon.at(i)->get_posisiY()].setCellType(simbol);
-        cout<<simbol<<endl;
+        
     }
+    peta[P.getPosisiPlayer().getX()][P.getPosisiPlayer().getY()].setCellType('P');
+    peta[P.getActiveEngimon().get_posisiX()][P.getActiveEngimon().get_posisiY()].setCellType('A');
+
     for (int i=0;i<10;i++){
         for (int j=0;j<12;j++){
             cout<<peta[i][j].getCellType();
         }
         cout<<endl;
     }
-}   
+}
+
+bool Peta::checkAvailability(Point wantToCheck, vector<Engimon*>& listOfWildEngimon, Player& P){
+    bool retVal = true;
+    int i=0;
+    while (i<listOfWildEngimon.size() && retVal){
+        if (wantToCheck==listOfWildEngimon.at(i)->get_posisi()){
+            retVal = false;
+        }
+        i++;
+    }
+    if (retVal){
+        if (wantToCheck==P.getPosisiPlayer() || wantToCheck==P.getActiveEngimon().get_posisi()){
+            retVal = false;
+        }
+    }
+    return retVal;
+}

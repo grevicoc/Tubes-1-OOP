@@ -44,21 +44,21 @@ Point& Point::operator=(const Point& other) {
     return *this;
 }
 
-// bool Point::operator==(const Point& other){
-//     if (this->getX()==other.x && this->getY()==other.y){
-//         return true;
-//     }else{
-//         return false;
-//     }
-// }
+bool Point::operator==(const Point& other){
+    if (this->getX()==other.x && this->getY()==other.y){
+        return true;
+    }else{
+        return false;
+    }
+}
 
-// bool Point::operator!=(const Point& other){
-//     if (this->getX()!=other.x || this->getY()!=other.y){
-//         return true;
-//     }else if (this->getX()==other.x && this->getY()==other.y){
-//         return false;
-//     }
-// }
+bool Point::operator!=(const Point& other){
+    if (this->getX()!=other.x || this->getY()!=other.y){
+        return true;
+    }else if (this->getX()==other.x && this->getY()==other.y){
+        return false;
+    }
+}
 
 bool Point::isValidPosisi(int _x, int _y) {
     return (_x >= 0 && _x < 10 && _y >= 0 && _y < 12);

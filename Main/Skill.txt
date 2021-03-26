@@ -18,6 +18,86 @@ Zap Cannon
 Electric
 120
 
+Fire Ball
+Fire
+50
+
+Fire Claw
+Fire
+100
+
+Fire Breathe
+Fire
+150
+
+Fire Punch
+Fire
+180
+
+Electric Ball
+Electric
+65
+
+Electric Claw
+Electric
+105
+
+Electric Slash
+Electric
+140
+
+Giga Volt
+Electric
+170
+
+Ice Ball
+Ice
+45
+
+Ice Smash
+Ice
+60
+
+Water Spread
+Water
+130
+
+Water Bomb
+Water
+190
+
+Water Ball
+Water
+48
+
+Water Float
+Water
+65
+
+Ice punch
+Ice
+145
+
+Ice Bomb
+Ice
+180
+
+Ground Ball
+Ground
+60
+
+Ground Punch
+Ground
+80
+
+Ground Smash
+Ground
+145
+
+Ground Bomb
+Ground
+180
+
 Lava Plume
 Fire
 80

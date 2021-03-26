@@ -20,14 +20,36 @@
 vector<Skill*> listOfSkillGenerated;
 vector<Engimon*> listOfWildEngimon;
 
+
 int main(){
     srand(time(0));
-    Engimon* generatedEngimon = GenerateEngimon::generateEngimon(listOfWildEngimon);
-    generatedEngimon->displayEngiInfo();
+    Player currentPlayer;
+    //harus diinisiasiin dulu active engimon pertamanya player biar pas checkavailibility ga error
+    EngimonPlayer* test = new EngimonPlayer();
+
+    currentPlayer.setActiveEngimon(test);
+    Engimon* generatedEngimon = GenerateEngimon::generateEngimon(listOfWildEngimon,currentPlayer);
+    test = new EngimonPlayer(*generatedEngimon);
+    currentPlayer.addEngimonPlayer(test);
+
+    generatedEngimon = GenerateEngimon::generateEngimon(listOfWildEngimon,currentPlayer);
+    test = new EngimonPlayer(*generatedEngimon);
+    currentPlayer.addEngimonPlayer(test);
+
+    generatedEngimon = GenerateEngimon::generateEngimon(listOfWildEngimon,currentPlayer);
+    test = new EngimonPlayer(*generatedEngimon);
+    currentPlayer.addEngimonPlayer(test);
+
+    currentPlayer.displayAllEngimon();
+    currentPlayer.displaySpecificEngimon(2);
+
+    // generatedEngimon->displayEngiInfo();
     
-    Peta P;
-    P.loadMap();
-    P.printMap(listOfWildEngimon);
+    // Peta P;
+    // P.loadMap();
+    // P.printMap(listOfWildEngimon,currentPlayer);
+    // P.movingWildEngimon(listOfWildEngimon,currentPlayer);
+    // P.printMap(listOfWildEngimon,currentPlayer);
 
     // Player P;
     // EngimonPlayer* starterEngimon1 = new EngimonPlayer();

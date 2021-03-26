@@ -1,8 +1,9 @@
 #include "GenerateEngimon.hpp"
 #include <vector>
+#include "../Peta/peta.hpp"
 
 
-Engimon* GenerateEngimon::generateEngimon(vector<Engimon*>& listOfWildEngimon){
+Engimon* GenerateEngimon::generateEngimon(vector<Engimon*>& listOfWildEngimon,Player& P){
     vector<vector<string>> vectorOfEngimon(Generate::readFromFile("Engimon.txt"));
     // srand(time(0));
     int randomNumber = rand() % 24;         //ada 24 engimon
@@ -14,55 +15,34 @@ Engimon* GenerateEngimon::generateEngimon(vector<Engimon*>& listOfWildEngimon){
         
 
         if (generatedEngimon->get_elements()=="Water" || generatedEngimon->get_elements()=="Water/Ice" || generatedEngimon->get_elements()=="Ice"){
-            int xRandom = 6 + ( rand() % ( 11 - 6 + 1 ) );  //6-11
-            int yRandom = 0 + ( rand() % ( 5 - 0 + 1 ) );   //0-5
-            cout<<"here!1\n";
+            int xRandom = 0 + ( rand() % ( 5 - 0 + 1 ) );   //0-5
+            int yRandom =  6 + ( rand() % ( 11 - 6 + 1 ) );  //6-11
             
-            bool berhasil = false;
-            while (!berhasil){
-                int i=0;
-                while(i<listOfWildEngimon.size()){
-                    if (xRandom==listOfWildEngimon.at(i)->get_posisiX() && yRandom==listOfWildEngimon.at(i)->get_posisiY()){
-                        break;
-                    }
-                    i++;
-                }
-                if (i==listOfWildEngimon.size()){
-                    berhasil = true;
-                }else{
-                    //generate posisi baru
-                    xRandom = 6 + ( rand() % ( 11 - 6 + 1 ) );
-                    yRandom = 0 + ( rand() % ( 5 - 0 + 1 ) );
-                }
-                
-            }
             Point fixPosition(xRandom,yRandom);
-            generatedEngimon->set_posisi(fixPosition);
-        }else{
-            int xRandom = 0 + ( rand() % ( 11 - 0 + 1 ) );
-            int yRandom = 0 + ( rand() % ( 9 - 0 + 1 ) );
-            cout<<"here!2\n";
-            
             bool berhasil = false;
-            while (!berhasil){
-                int i=0;
-                while(i<listOfWildEngimon.size()){
-                    if ((xRandom==listOfWildEngimon.at(i)->get_posisiX() && yRandom==listOfWildEngimon.at(i)->get_posisiY()) || (xRandom>5 && yRandom<6)){
-                        break;
-                    }
-                    i++;
-                }
+            
+            while (!Peta::checkAvailability(fixPosition,listOfWildEngimon,P)){
+                
+                xRandom = 0 + ( rand() % ( 5 - 0 + 1 ) );
+                yRandom = 6 + ( rand() % ( 11 - 6 + 1 ) );
+                fixPosition = Point(xRandom,yRandom); 
 
-                if (i==listOfWildEngimon.size()){
-                    berhasil = true;
-                }else{
-                    //generate posisi baru
-                    xRandom = 0 + ( rand() % ( 11 - 0 + 1 ) );
-                    yRandom = 0 + ( rand() % ( 9 - 0 + 1 ) );
-                }
-                
             }
+            generatedEngimon->set_posisi(fixPosition);
+
+        }else{
+            int xRandom = 0 + ( rand() % ( 9 - 0 + 1 ) );
+            int yRandom = 0 + ( rand() % ( 11 - 0 + 1 ) );
+            
+            bool berhasil = false;
             Point fixPosition(xRandom,yRandom);
+            while (!Peta::checkAvailability(fixPosition,listOfWildEngimon,P) || (xRandom<6 && yRandom>5)){
+            
+                xRandom = 0 + ( rand() % ( 9 - 0 + 1 ) );
+                yRandom = 0 + ( rand() % ( 11 - 0 + 1 ) );
+                fixPosition = Point(xRandom,yRandom);
+
+            }
             generatedEngimon->set_posisi(fixPosition);
         }
         

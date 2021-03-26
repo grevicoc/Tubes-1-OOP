@@ -3,10 +3,9 @@
 #ifndef PETA_HPP
 #define PETA_HPP
 
-
-#include "cell.hpp"
 #include "../Engimon/engimon.hpp"
 #include "../Point/Point.hpp"
+#include "../Player/Player.hpp"
 #include <iostream>
 #include <vector>
 
@@ -21,14 +20,14 @@ class Peta{
         ~Peta();
 
         // Method
-        void movingWildEngimon(vector<Engimon*>&);
+        void movingWildEngimon(vector<Engimon*>&,Player&);
         void spawnWildEngimon();
         void loadMap();
-        void printMap(vector<Engimon*>& listOfWildEngimon);
+        void printMap(vector<Engimon*>& listOfWildEngimon,Player& P);
+        static bool checkAvailability(Point wantToCheck, vector<Engimon*>& listOfWildEngimon, Player& P);
         
     protected:
         Cell peta[10][12];
-
 };
 
 

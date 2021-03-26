@@ -8,7 +8,9 @@
 #include <string>
 using namespace std;
 
-Player::Player(){}
+Player::Player(){
+    posisi = Point(0,0);
+}
 
 Player::~Player(){}
 
@@ -17,61 +19,8 @@ EngimonPlayer& Player::getActiveEngimon() {
 }
 
 void Player::setActiveEngimon(EngimonPlayer* EP) {
-    int i, j;
-    i = this->activeEngimon->get_posisiX();
-    j = this->activeEngimon->get_posisiY();
-    this->activeEngimon = EP;
-    this->activeEngimon->set_PosisiX(i);
-    this->activeEngimon->set_PosisiY(j);
+    activeEngimon = EP;
 }
-
-// void Player::Bergerak() {
-//     if (this->inputCommandMove == "up" || this->inputCommandMove == "UP") {
-//         if (posisi.isValidPosisiRelatif(-1, 0)) {
-//             if (posisi.getTypePeta(posisi.getX() - 1, posisi.getY()) == 'o' || posisi.getTypePeta(posisi.getX() - 1, posisi.getY()) == '-') {
-//                 posisi.set(posisi.getX() - 1, posisi.getY());
-//             } else {
-//                 cout << "Tidak bisa pindah! Ada engimon." << endl;
-//             }
-//         } else {
-//             cout << "Tidak bisa pindah ke luar peta!" << endl;
-//         }
-//     }
-//     else if (this->inputCommandMove == "down" || this->inputCommandMove == "DOWN") {
-//         if (posisi.isValidPosisiRelatif(1, 0)) {
-//             if (posisi.getTypePeta(posisi.getX() + 1, posisi.getY()) == 'o' || posisi.getTypePeta(posisi.getX() + 1, posisi.getY()) == '-') {
-//                 posisi.set(posisi.getX() + 1, posisi.getY());
-//             } else {
-//                 cout << "Tidak bisa pindah! Ada engimon." << endl;
-//             }
-//         } else {
-//             cout << "Tidak bisa pindah ke luar peta!" << endl;
-//         }
-//     }
-//     else if (this->inputCommandMove == "right" || this->inputCommandMove == "RIGHT") {
-//         if (posisi.isValidPosisiRelatif(0, 1)) {
-//             if (posisi.getTypePeta(posisi.getX(), posisi.getY() + 1) == 'o' || posisi.getTypePeta(posisi.getX(), posisi.getY() + 1) == '-') {
-//                 posisi.set(posisi.getX(), posisi.getY() + 1);
-//             } else {
-//                 cout << "Tidak bisa pindah! Ada engimon." << endl;
-//             }
-//         } else {
-//             cout << "Tidak bisa pindah ke luar peta!" << endl;
-//         }
-//     }
-//     else if (this->inputCommandMove == "left" || this->inputCommandMove == "LEFT") {
-//         if (posisi.isValidPosisiRelatif(0, -1)) {
-//             if (posisi.getTypePeta(posisi.getX(), posisi.getY() - 1) == 'o' || posisi.getTypePeta(posisi.getX(), posisi.getY() - 1) == '-') {
-//                 posisi.set(posisi.getX(), posisi.getY() - 1);
-//             } else {
-//                 cout << "Tidak bisa pindah! Ada engimon." << endl;
-//             }
-//         } else {
-//             cout << "Tidak bisa pindah ke luar peta!" << endl;
-//         }
-//     }
-//     // ngubah peta posisi tujuan jd P dan posisi asal ditempati engimon aktif
-// }
 
 void Player::displayAllEngimon(){
     // ini gatau cara akses per engimon gimana, gini bener ga?
@@ -79,12 +28,43 @@ void Player::displayAllEngimon(){
     unordered_map<EngimonPlayer*,int>::iterator itrTest;
     
     for (itrTest = Test.begin();itrTest!=Test.end();itrTest++){
-        itrTest->first->displayEngiInfo();
+        cout<<"======================================\n";
+        cout<<"ID: "<<itrTest->first->get_idEngiPlayer()<<endl;
+        cout<<"Nama: "<<itrTest->first->get_name()<<endl;
+        cout<<"Level: "<<itrTest->first->get_level()<<endl;
+        cout<<"======================================\n\n";
     }
 }
 
-void Player::displaySpecificEngimon(EngimonPlayer* EP) {
-    EP->displayEngiInfo();
+EngimonPlayer* Player::findEngimon(int id){
+    unordered_map<EngimonPlayer*,int> tempMap = engiInventory.getThings();
+    unordered_map<EngimonPlayer*,int>::iterator itrTest;
+    for (itrTest=tempMap.begin(); itrTest!=tempMap.end();itrTest++){
+        if (itrTest->first->get_idEngiPlayer()==id){
+            itrTest->first->displayEngiInfo();
+            return itrTest->first;
+        }
+        
+    }
+}
+
+void Player::switchActiveEngimon(){
+    cout<<"Masukkan ID engimon: ";
+    int idEngimon;
+    cin>>idEngimon;
+    
+    EngimonPlayer* newActive = findEngimon(idEngimon);
+    newActive->set_posisi(getActiveEngimon().get_posisi());
+    getActiveEngimon().set_posisi(Point(-1,-1));
+    
+    setActiveEngimon(newActive);
+    cout<<newActive->get_name()<<" berhasil menjadi aktif!\n";
+}
+
+//berdasarkan ID
+void Player::displaySpecificEngimon(int id) {
+    EngimonPlayer* tempEngi = findEngimon(id);
+    tempEngi->displayEngiInfo();
 }
 
 void Player::displayAllSkillItem() {
@@ -133,12 +113,6 @@ Point Player::getPosisiPlayer() {
 void Player::setPosisiPlayer(Point P) {
     this->posisi = P;
 }
-
-// string Player::input() {
-//     string dest;
-//     cin >> dest;
-//     this->inputCommandMove = dest;
-// }
 
 void Player::moveActiveEngimon() {  // Exception handling belom
     if (this->inputCommandMove == "up" || this->inputCommandMove == "UP") {

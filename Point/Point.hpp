@@ -16,8 +16,8 @@ class Point{
         void set(int _x, int _y);   // mengubah posisi (x,y) menjadi (_x, _y)
         Point(const Point& P);    // cctor
         Point& operator=(const Point& other); // operator
-        // bool operator==(const Point& other);
-        // bool operator!=(const Point& other);
+        bool operator==(const Point& other);
+        bool operator!=(const Point& other);
         static bool isValidPosisi(int _x, int _y); // menentukan apakah titik valid/tidak di luar map
         static bool isAdjacent(int _x1, int _y1, int _x2, int _y2);    // menentukan apa dua posisi bertetanggaan
         bool isPosisiNotEngimonRelatif(int _x, int _y); // menentukan apakah posisi relatif terhadap objek Point bukanlah Engimon

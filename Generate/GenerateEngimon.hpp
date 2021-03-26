@@ -5,11 +5,12 @@
 #include <cstdlib>
 #include <ctime>
 #include "../Engimon/engimon.hpp"
+#include "../Player/Player.hpp"
 
 
 class GenerateEngimon: public Generate{
     public:
-        static Engimon* generateEngimon(vector<Engimon*>&);
+        static Engimon* generateEngimon(vector<Engimon*>&, Player&);
 };
 
 #endif
